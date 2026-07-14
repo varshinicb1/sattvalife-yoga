@@ -1,10 +1,24 @@
-import { drizzle } from 'drizzle-orm/better-sqlite3';
-import Database from 'better-sqlite3';
-import { schema } from './schema';
+import type { schema as schemaType } from './schema';
+import type { drizzle as DrizzleType } from 'drizzle-orm/better-sqlite3';
+import type { BetterSQLite3Database } from 'drizzle-orm/better-sqlite3';
 
-const sqlite = new Database(process.env.DATABASE_URL || 'local.db');
-sqlite.pragma('journal_mode = WAL');
+let _db: BetterSQLite3Database<typeof schemaType> | null = null;
 
-export const db = drizzle(sqlite, { schema, logger: process.env.NODE_ENV === 'development' });
+export function getDb() {
+  if (_db) return _db;
+  try {
+    const { drizzle } = require('drizzle-orm/better-sqlite3') as { drizzle: typeof DrizzleType };
+    const Database = require('better-sqlite3') as typeof import('better-sqlite3').default;
+    const sqlite = new Database(process.env.DATABASE_URL || 'local.db');
+    sqlite.pragma('journal_mode = WAL');
+    _db = drizzle(sqlite, { schema: require('./schema').schema, logger: process.env.NODE_ENV === 'development' }) as BetterSQLite3Database<typeof schemaType>;
+    return _db;
+  } catch (e) {
+    console.warn('Database not available:', (e as Error).message);
+    return null;
+  }
+}
 
-export type DB = typeof db;
+export const db = getDb();
+
+export type DB = NonNullable<ReturnType<typeof getDb>>;

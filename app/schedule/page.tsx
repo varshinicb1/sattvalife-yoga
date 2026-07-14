@@ -4,7 +4,6 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
 
-export const dynamic = 'force-dynamic';
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Clock, MapPin, User, Award, Users, ChevronRight, Leaf, Sparkles, HelpCircle, ExternalLink } from "lucide-react";
 

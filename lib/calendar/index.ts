@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import { db } from '../db';
+import { getDb } from '../db';
 import { schema } from '../db/schema';
 import { eq } from 'drizzle-orm';
 import { encrypt, decrypt } from '../crypto';
@@ -30,6 +30,7 @@ export async function handleGoogleCallback(code: string, state: string) {
   const { tokens } = await oauth2Client.getToken(code);
   
   const encryptedTokens = encrypt(JSON.stringify(tokens));
+  const db = await getDb();
   
   await db.update(schema.users)
     .set({
@@ -42,6 +43,7 @@ export async function handleGoogleCallback(code: string, state: string) {
 }
 
 export async function getCalendarClient(userId: string) {
+  const db = await getDb();
   const user = await db.query.users.findFirst({
     where: eq(schema.users.id, userId),
     columns: { googleTokens: true, googleCalendarConnected: true },
@@ -205,6 +207,7 @@ export async function getCalendarEvents(
 }
 
 export async function disconnectCalendar(userId: string): Promise<void> {
+  const db = await getDb();
   await db.update(schema.users)
     .set({
       googleTokens: null,

@@ -7,7 +7,7 @@ export const maxDuration = 30;
 
 export async function POST(req: NextRequest) {
   try {
-    const { messages } = await req.json();
+    const { messages } = await req.json() as { messages: unknown[] };
 
     if (!messages || !Array.isArray(messages)) {
       return Response.json({ error: 'Invalid messages format' }, { status: 400 });
@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
       return Response.json({ error: 'AI service error' }, { status: 502 });
     }
 
-    const data = await response.json();
+    const data = await response.json() as { choices?: { message?: { content?: string } }[] };
     const reply = data.choices?.[0]?.message?.content || 'I apologize, but I am unable to respond at this moment.';
 
     return Response.json({ role: 'assistant', content: reply });

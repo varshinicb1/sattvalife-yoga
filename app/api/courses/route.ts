@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { getDb } from '@/lib/db';
 import { schema } from '@/lib/db/schema';
-import { eq, and, desc, gte, lte, like, count, or } from 'drizzle-orm';
+import { eq, and, desc, gte, lte, like, or } from 'drizzle-orm';
 import { z } from 'zod';
 
 const courseQuerySchema = z.object({
@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
     const offset = (params.page - 1) * params.limit;
     const where = and(...conditions);
 
-    const [courses, totalResult] = await Promise.all([
+    const [courses, total] = await Promise.all([
       db.query.courses.findMany({
         where,
         with: { location: true, instructor: true },
@@ -46,20 +46,17 @@ export async function GET(request: NextRequest) {
         limit: params.limit,
         offset,
       }),
-      db.select({ count: count() }).from(schema.courses).where(where),
+      db.$count(schema.courses, where),
     ]);
-
-    const total = totalResult[0]?.count ?? 0;
 
     const coursesWithAvailability = await Promise.all(
       courses.map(async (course) => {
-        const sessionCount = await db.select({ count: count() }).from(schema.courseSessions)
-          .where(and(
-            eq(schema.courseSessions.courseId, course.id),
-            gte(schema.courseSessions.sessionDate, new Date()),
-            eq(schema.courseSessions.status, 'scheduled')
-          ));
-        return { ...course, upcomingSessions: sessionCount[0]?.count ?? 0 };
+        const sessionCount = await db.$count(schema.courseSessions, and(
+          eq(schema.courseSessions.courseId, course.id),
+          gte(schema.courseSessions.sessionDate, new Date()),
+          eq(schema.courseSessions.status, 'scheduled')
+        ));
+        return { ...course, upcomingSessions: sessionCount };
       })
     );
 

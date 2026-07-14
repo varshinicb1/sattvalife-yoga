@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { getDb } from '@/lib/db';
 import { schema } from '@/lib/db/schema';
-import { eq, and, desc, gte, lte, count } from 'drizzle-orm';
+import { eq, and, desc, gte, lte } from 'drizzle-orm';
 import { z } from 'zod';
 import { getStripeSession } from '@/lib/stripe';
 
@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
 
     const offset = (params.page - 1) * params.limit;
 
-    const [bookings, totalResult] = await Promise.all([
+    const [bookings, total] = await Promise.all([
       db.query.bookings.findMany({
         where: and(...conditions),
         with: {
@@ -53,10 +53,8 @@ export async function GET(request: NextRequest) {
         limit: params.limit,
         offset,
       }),
-      db.select({ count: count() }).from(schema.bookings).where(and(...conditions)),
+      db.$count(schema.bookings, and(...conditions)),
     ]);
-
-    const total = totalResult[0]?.count ?? 0;
 
     return NextResponse.json({
       bookings,
@@ -127,15 +125,13 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    const existingBookings = await db.select({ count: count() }).from(schema.bookings).where(
-      and(
-        eq(schema.bookings.sessionId, data.sessionId || ''),
-        eq(schema.bookings.status, 'confirmed')
-      )
-    );
+    const existingCount = await db.$count(schema.bookings, and(
+      eq(schema.bookings.sessionId, data.sessionId || ''),
+      eq(schema.bookings.status, 'confirmed')
+    ));
 
     const capacity = sessionRecord?.capacity ?? course.capacity ?? 20;
-    if ((existingBookings[0]?.count ?? 0) >= capacity) {
+    if (existingCount >= capacity) {
       return NextResponse.json({ error: 'Class is full' }, { status: 400 });
     }
 

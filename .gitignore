@@ -87,3 +87,5 @@ biome.lock
 .wrangler
 .dev.vars*
 !.dev.vars.example
+
+.vercel

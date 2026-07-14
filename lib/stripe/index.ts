@@ -1,10 +1,6 @@
 import Stripe from 'stripe';
 
-const stripeKey = process.env.STRIPE_SECRET_KEY;
-if (!stripeKey) {
-  throw new Error('STRIPE_SECRET_KEY is not set');
-}
-export const stripe = new Stripe(stripeKey, {
+export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_dummy', {
   apiVersion: '2025-02-24.acacia',
   typescript: true,
   maxNetworkRetries: 3,

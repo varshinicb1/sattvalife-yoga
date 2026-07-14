@@ -27,7 +27,8 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm build
+      - name: Build & Deploy with OpenNext
+        run: npx opennextjs-cloudflare build && npx opennextjs-cloudflare deploy
         env:
           NEXT_PUBLIC_APP_URL: ${{ vars.NEXT_PUBLIC_APP_URL || 'https://sattvalife.yoga' }}
           STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY || 'sk_test_dummy' }}
@@ -36,9 +37,5 @@ jobs:
           NVIDIA_NIM_API_KEY: ${{ vars.NVIDIA_NIM_API_KEY || 'nvapi-dummy' }}
           GOOGLE_CLIENT_ID: ${{ vars.GOOGLE_CLIENT_ID || 'dummy' }}
           GOOGLE_CLIENT_SECRET: ${{ vars.GOOGLE_CLIENT_SECRET || 'dummy' }}
-
-      - name: OpenNext build & deploy
-        run: npx opennextjs-cloudflare build && npx opennextjs-cloudflare deploy
-        env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: eb752e5583be446361c38bbf05b22517

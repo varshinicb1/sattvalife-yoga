@@ -32,6 +32,10 @@ jobs:
           NEXT_PUBLIC_APP_URL: ${{ vars.NEXT_PUBLIC_APP_URL || 'https://sattvalife.yoga' }}
           STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY || 'sk_test_dummy' }}
           STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET || 'whsec_dummy' }}
+          RESEND_API_KEY: ${{ vars.RESEND_API_KEY || 're_dummy' }}
+          NVIDIA_NIM_API_KEY: ${{ vars.NVIDIA_NIM_API_KEY || 'nvapi-dummy' }}
+          GOOGLE_CLIENT_ID: ${{ vars.GOOGLE_CLIENT_ID || 'dummy' }}
+          GOOGLE_CLIENT_SECRET: ${{ vars.GOOGLE_CLIENT_SECRET || 'dummy' }}
 
       - name: OpenNext build & deploy
         run: npx opennextjs-cloudflare build && npx opennextjs-cloudflare deploy

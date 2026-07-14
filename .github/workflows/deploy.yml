@@ -30,6 +30,8 @@ jobs:
       - run: pnpm build
         env:
           NEXT_PUBLIC_APP_URL: ${{ vars.NEXT_PUBLIC_APP_URL || 'https://sattvalife.yoga' }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY || 'sk_test_dummy' }}
+          STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET || 'whsec_dummy' }}
 
       - name: OpenNext build & deploy
         run: npx opennextjs-cloudflare build && npx opennextjs-cloudflare deploy

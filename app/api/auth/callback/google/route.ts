@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { google } from 'googleapis';
-import { db } from '@/lib/db';
+import { getDb } from '@/lib/db';
 import { schema } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 
@@ -11,6 +11,7 @@ const oauth2Client = new google.auth.OAuth2(
 );
 
 export async function GET(req: NextRequest) {
+  const db = await getDb();
   const { searchParams } = new URL(req.url);
   const code = searchParams.get('code');
   const state = searchParams.get('state');

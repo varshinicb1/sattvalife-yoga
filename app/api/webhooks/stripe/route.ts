@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 import Stripe from 'stripe';
-import { db } from '@/lib/db';
+import { getDb } from '@/lib/db';
 import { schema } from '@/lib/db/schema';
 import { eq, and } from 'drizzle-orm';
 
@@ -68,6 +68,7 @@ export async function POST(req: NextRequest) {
 }
 
 async function handlePaymentSuccess(paymentIntent: Stripe.PaymentIntent) {
+  const db = await getDb();
   const bookingId = paymentIntent.metadata.bookingId;
   if (!bookingId) return;
 
@@ -86,6 +87,7 @@ async function handlePaymentSuccess(paymentIntent: Stripe.PaymentIntent) {
 }
 
 async function handlePaymentFailure(paymentIntent: Stripe.PaymentIntent) {
+  const db = await getDb();
   const bookingId = paymentIntent.metadata.bookingId;
   if (!bookingId) return;
 
@@ -117,6 +119,7 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice) {
 }
 
 async function triggerPostBookingActions(bookingId: string) {
+  const db = await getDb();
   // In production, these would go to a queue (Cloudflare Queues)
   // For now, we'll trigger them directly but they should be async
   

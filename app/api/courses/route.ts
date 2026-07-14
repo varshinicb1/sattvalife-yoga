@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import { db } from '@/lib/db';
+import { getDb } from '@/lib/db';
 import { schema } from '@/lib/db/schema';
 import { eq, and, desc, gte, lte, like, count, or } from 'drizzle-orm';
 import { z } from 'zod';
@@ -18,6 +18,7 @@ const courseQuerySchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
+    const db = await getDb();
     const { searchParams } = new URL(request.url);
     const params = courseQuerySchema.parse(Object.fromEntries(searchParams));
 
@@ -102,6 +103,7 @@ const createCourseSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
+    const db = await getDb();
     const session = await auth();
     if (!session?.user || (session.user as any).role !== 'admin') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

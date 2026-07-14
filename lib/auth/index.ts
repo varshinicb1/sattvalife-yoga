@@ -2,14 +2,16 @@ import NextAuth from 'next-auth';
 import { DrizzleAdapter } from '@auth/drizzle-adapter';
 import Credentials from 'next-auth/providers/credentials';
 import Google from 'next-auth/providers/google';
-import { db } from '@/lib/db';
+import { getDb } from '@/lib/db';
 import { authSchema, schema } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 import bcrypt from 'bcryptjs';
 import { z } from 'zod';
+const db = await getDb();
+
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: DrizzleAdapter(db, authSchema as any),
+  adapter: DrizzleAdapter(db as any, authSchema as any),
   session: {
     strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60,

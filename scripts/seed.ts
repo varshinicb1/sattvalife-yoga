@@ -1,7 +1,8 @@
-import { db } from '../lib/db';
+import { getDb } from '../lib/db';
 import { schema } from '../lib/db/schema';
 
 async function seed() {
+  const db = await getDb();
   console.log('Seeding database...');
 
   // Locations

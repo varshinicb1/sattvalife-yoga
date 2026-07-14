@@ -24,5 +24,12 @@
 		// Enable image optimization
 		// see https://opennext.js.org/cloudflare/howtos/image
 		"binding": "IMAGES"
-	}
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_id": "cd832ccf-b7f3-473a-8cd5-075cd14c7ed2",
+			"database_name": "sattvalife-yoga-db"
+		}
+	]
 }

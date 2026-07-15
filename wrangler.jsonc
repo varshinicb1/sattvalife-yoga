@@ -7,9 +7,6 @@
 		"nodejs_compat",
 		"global_fetch_strictly_public"
 	],
-	"cache": {
-		"enabled": true
-	},
 	"assets": {
 		"directory": ".open-next/assets",
 		"binding": "ASSETS"

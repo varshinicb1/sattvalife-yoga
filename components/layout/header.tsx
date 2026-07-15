@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -54,28 +55,22 @@ export function Header({ navigation: nav }: { navigation?: Array<{ name: string;
     >
       <nav className="container mx-auto px-4" aria-label="Main navigation">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2" aria-label="Sattvalife Yoga Home">
-            <svg
-              className="h-10 w-10 text-primary"
-              viewBox="0 0 100 100"
-              fill="none"
+          <Link href="/" className="flex items-center gap-2" aria-label="Sattvalife Yoga Home">
+            <Image
+              src="/brand/lotus.png"
+              alt=""
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain"
+              priority
               aria-hidden="true"
-            >
-              <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="2" strokeDasharray="90 270" />
-              <path
-                d="M50 15c-19.3 0-35 15.7-35 35s15.7 35 35 35 35-15.7 35-35-15.7-35-35-35z"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-              />
-              <path
-                d="M50 30v20M40 45h20"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-            <span className="font-display text-xl font-semibold text-foreground">Sattvalife</span>
+            />
+            <span className="font-display text-xl font-semibold text-foreground">
+              Sattvalife
+              <span className="block text-[0.6rem] font-sans font-medium tracking-[0.25em] uppercase text-muted-foreground leading-none">
+                Yoga &amp; Wellness
+              </span>
+            </span>
           </Link>
 
           <div className="hidden md:flex md:items-center md:space-x-8">
@@ -139,12 +134,8 @@ export function Header({ navigation: nav }: { navigation?: Array<{ name: string;
         </SheetTrigger>
         <SheetContent side="right" className="w-72 p-4">
           <div className="flex items-center justify-between mb-8">
-            <Link href="/" className="flex items-center space-x-2">
-              <svg className="h-8 w-8 text-primary" viewBox="0 0 100 100" fill="none">
-                <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="2" strokeDasharray="90 270" />
-                <path d="M50 15c-19.3 0-35 15.7-35 35s15.7 35 35 35 35-15.7 35-35-15.7-35-35-35z" stroke="currentColor" strokeWidth="2" fill="none" />
-                <path d="M50 30v20M40 45h20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              </svg>
+            <Link href="/" className="flex items-center gap-2">
+              <Image src="/brand/lotus.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" aria-hidden="true" />
               <span className="font-display text-lg font-semibold">Sattvalife</span>
             </Link>
             <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>

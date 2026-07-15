@@ -14,29 +14,31 @@
   --color-text-inverse: #FAFAF9;
   --color-text-link: #2E7D32;
 
-  --color-brand-50: #F3F7F2;
-  --color-brand-100: #E3EDE5;
-  --color-brand-200: #C5D9C9;
-  --color-brand-300: #A0C0A3;
-  --color-brand-400: #78A37D;
-  --color-brand-500: #5A8D5E;
-  --color-brand-600: #48754B;
-  --color-brand-700: #3A5E3D;
-  --color-brand-800: #2E4A31;
-  --color-brand-900: #1F3622;
-  --color-brand-950: #0D1B10;
+  /* Coral-rose lotus palette — sampled from the Sattvalife logo (#F7838D) */
+  --color-brand-50: #FEF3F4;
+  --color-brand-100: #FDE6E8;
+  --color-brand-200: #FBCCD1;
+  --color-brand-300: #F9AAB2;
+  --color-brand-400: #F7838D;
+  --color-brand-500: #F15C6A;
+  --color-brand-600: #DE3E4E;
+  --color-brand-700: #BC2E3D;
+  --color-brand-800: #9B2833;
+  --color-brand-900: #81262F;
+  --color-brand-950: #470F15;
 
-  --color-accent-50: #FEF7EE;
-  --color-accent-100: #FDEDD6;
-  --color-accent-200: #FBD9AD;
-  --color-accent-300: #F8C076;
-  --color-accent-400: #F4A142;
-  --color-accent-500: #F0851A;
-  --color-accent-600: #E06B12;
-  --color-accent-700: #C45210;
-  --color-accent-800: #9D4112;
-  --color-accent-900: #7E3511;
-  --color-accent-950: #411A09;
+  /* Warm gold accent — from the original site (#D7B26D) */
+  --color-accent-50: #FBF7EE;
+  --color-accent-100: #F5ECD3;
+  --color-accent-200: #EEE2B5;
+  --color-accent-300: #E3CB91;
+  --color-accent-400: #D7B26D;
+  --color-accent-500: #C99A4C;
+  --color-accent-600: #B07F3A;
+  --color-accent-700: #906330;
+  --color-accent-800: #764F2C;
+  --color-accent-900: #624327;
+  --color-accent-950: #382312;
 
   --color-success: #2E7D32;
   --color-warning: #F57F17;

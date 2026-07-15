@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
@@ -109,8 +110,16 @@ export default function HomePage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary-50 via-background to-accent-50">
-          <div className="absolute inset-0 bg-[url('/hero-pattern.svg')] opacity-5" aria-hidden="true" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" aria-hidden="true" />
+          <Image
+            src="/brand/hero-yoga.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="absolute inset-0 object-cover opacity-20"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-50/70 via-background/85 to-accent-50/70" aria-hidden="true" />
           
           <div className="relative container mx-auto px-4 py-20 md:py-32">
             <div className="max-w-4xl mx-auto text-center">

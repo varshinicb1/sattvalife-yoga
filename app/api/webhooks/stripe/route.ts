@@ -5,13 +5,12 @@ import { getDb } from '@/lib/db';
 import { schema } from '@/lib/db/schema';
 import { eq, and } from 'drizzle-orm';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-02-24.acacia',
-});
-
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
-
 export async function POST(req: NextRequest) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+    apiVersion: '2025-02-24.acacia',
+  });
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+
   const body = await req.text();
   const headersList = await headers();
   const signature = headersList.get('stripe-signature')!;

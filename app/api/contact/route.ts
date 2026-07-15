@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { z } from 'zod';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const contactSchema = z.object({
   firstName: z.string().min(1, 'First name is required'),
   lastName: z.string().min(1, 'Last name is required'),
@@ -16,6 +14,8 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const validated = contactSchema.parse(body);
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     // Send email to admin
     const adminEmail = await resend.emails.send({

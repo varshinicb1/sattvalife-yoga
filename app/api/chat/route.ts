@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
         Authorization: `Bearer ${process.env.NVIDIA_NIM_API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'google/gemma-4-27b',
+        model: 'google/gemma-4-31b-it',
         messages: [
           { role: 'system', content: SYSTEM_PROMPT },
           ...validMessages,

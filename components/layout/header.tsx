@@ -15,6 +15,7 @@ const defaultNavigation: Array<{ name: string; href: string }> = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Schedule", href: "/schedule" },
+  { name: "Online", href: "/online" },
   { name: "Register", href: "/register" },
   { name: "Corporate", href: "/corporate" },
 ];

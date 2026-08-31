@@ -20,7 +20,8 @@ export async function getDb(): Promise<DB> {
 
   const Database = (await import('better-sqlite3')).default;
   const { drizzle } = await import('drizzle-orm/better-sqlite3');
-  const sqlite = new Database(process.env.DATABASE_URL || 'local.db');
+  const dbPath = process.env.DATABASE_URL?.replace(/^file:/, '') || 'local.db';
+  const sqlite = new Database(dbPath, { timeout: 10000 });
   sqlite.pragma('journal_mode = WAL');
   _db = drizzle(sqlite, { schema, logger: process.env.NODE_ENV === 'development' }) as unknown as DB;
   return _db;

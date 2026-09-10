@@ -233,7 +233,12 @@ export const REGISTRATION_FORM = {
     { label: 'Additional notes / information', type: 'textarea' },
   ],
   painAreas: ['Neck', 'Shoulders', 'Elbows', 'Hands', 'Wrists', 'Hips', 'Lower Back', 'Upper Back', 'Knees', 'Feet', 'Other'],
-  waiver: "If at any time during the class, you feel discomfort or strain, gently come out of the posture. You may rest at any time. Yoga is not a substitute for medical attention. I accept that neither the instructor nor the hosting facility is liable for any injury. Those under 18 must have this form signed by a parent or guardian.",
+  waiver: [
+    "If at any time during the class, you feel discomfort or strain, gently come out of the posture. You may rest at anytime during the class. It is important in yoga that you listen to your body, and respect its limits on any given day.",
+    "I understand that yoga is not a substitute for medical attention, examination, diagnosis, or treatment. I should consult a physician prior to beginning any activity program, including yoga. I recognise that it is my responsibility to notify my teacher of any serious illness or injury before yoga class. I will not perform any postures to the extent of the strain or pain.",
+    "I accept that neither the instructor, nor the hosting facility, is liable for any injury, or any damages, to person or property, resulting from the taking of the class. Those under 18 years of age must have this form signed by a parent or guardian.",
+    "I give consent for any pictures or videos taken during the class to be used for Sattva Yoga promotion.",
+  ],
 }
 
 export const BLOG_POSTS: BlogPost[] = [

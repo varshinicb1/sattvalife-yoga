@@ -16,11 +16,21 @@ export default function RegistrationPage() {
 
     const formData = new FormData(e.currentTarget)
     const painAreas = formData.getAll('pain').map(String)
+    const firstName = formData.get('firstName') as string
+    const lastName = formData.get('lastName') as string
 
     const payload = {
-      name: formData.get('name') as string,
+      name: [firstName, lastName].filter(Boolean).join(' '),
+      firstName,
+      lastName,
+      dob: formData.get('dob') as string,
+      occupation: formData.get('occupation') as string,
+      address: formData.get('address') as string,
+      city: formData.get('city') as string,
+      postCode: formData.get('postCode') as string,
       email: formData.get('email') as string,
       phone: formData.get('phone') as string,
+      emergencyContact: formData.get('emergencyContact') as string,
       regType: formData.get('regType') as string,
       experience: formData.get('experience') as string,
       experienceDetail: formData.get('experienceDetail') as string,
@@ -84,32 +94,97 @@ export default function RegistrationPage() {
               {/* Personal Details */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-forest-800 mb-1">Full Name *</label>
+                  <label className="block text-xs font-semibold text-forest-800 mb-1">First Name *</label>
                   <input
-                    name="name"
+                    name="firstName"
                     required
-                    placeholder="Jane Doe"
+                    placeholder="Jane"
                     className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-forest-800 mb-1">Email Address *</label>
+                  <label className="block text-xs font-semibold text-forest-800 mb-1">Last Name *</label>
                   <input
-                    name="email"
-                    type="email"
+                    name="lastName"
                     required
-                    placeholder="jane@example.com"
+                    placeholder="Doe"
+                    className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-forest-800 mb-1">Date of Birth</label>
+                  <input
+                    name="dob"
+                    type="date"
+                    className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-forest-800 mb-1">Occupation</label>
+                  <input
+                    name="occupation"
+                    placeholder="Occupation"
                     className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-forest-800 mb-1">Phone Number (for WhatsApp/SMS updates)</label>
+                <label className="block text-xs font-semibold text-forest-800 mb-1">Address</label>
                 <input
-                  name="phone"
-                  type="tel"
-                  placeholder="+44 7700 900077"
+                  name="address"
+                  placeholder="Address"
+                  className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-forest-800 mb-1">City</label>
+                  <input
+                    name="city"
+                    placeholder="City"
+                    className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-forest-800 mb-1">Post Code</label>
+                  <input
+                    name="postCode"
+                    placeholder="Post Code"
+                    className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-forest-800 mb-1">Mobile</label>
+                  <input
+                    name="phone"
+                    type="tel"
+                    placeholder="+44 7700 900077"
+                    className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-forest-800 mb-1">Emergency Contact Number</label>
+                  <input
+                    name="emergencyContact"
+                    type="tel"
+                    placeholder="Emergency Contact Number"
+                    className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-forest-800 mb-1">E-mail Address *</label>
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="jane@example.com"
                   className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
                 />
               </div>
@@ -132,11 +207,15 @@ export default function RegistrationPage() {
               </div>
             </div>
 
-            <input name="experienceDetail" placeholder="If yes, specify when and how long for?" className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20" />
+            <div>
+              <label className="block text-xs font-semibold text-forest-800 mb-1">If yes, specify when and how long for? (years)</label>
+              <input name="experienceDetail" type="number" min="0" placeholder="Years" className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20" />
+            </div>
 
             {/* Pain areas */}
             <div>
-              <p className="text-sm font-semibold text-forest-800 mb-3">Do you have numbness/pain in (click all that apply):</p>
+              <p className="text-sm font-semibold text-forest-800 mb-1">Limitations / Injuries:</p>
+              <p className="text-sm text-forest-700/80 mb-3">Do you have numbness/pain in (click all that apply):</p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {REGISTRATION_FORM.painAreas.map((area) => (
                   <label key={area} className="flex items-center gap-2 text-sm text-forest-700">
@@ -147,15 +226,17 @@ export default function RegistrationPage() {
               </div>
             </div>
 
-            <input name="surgeries" placeholder="Any past surgeries or illness not mentioned above?" className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20" />
+            <input name="surgeries" placeholder="Any past surgeries or any illness that is not mentioned in our existing options" className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20" />
 
             <textarea name="notes" rows={3} placeholder="Additional notes / information" className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20 resize-none" />
 
             {/* Waiver */}
-            <div className="rounded-xl bg-forest-50 p-5 text-sm text-forest-700/80 leading-relaxed">
-              <p className="font-semibold text-forest-800 mb-2">Waiver</p>
-              <p>{REGISTRATION_FORM.waiver}</p>
-              <label className="mt-4 flex items-start gap-3">
+            <div className="rounded-xl bg-forest-50 p-5 text-sm text-forest-700/80 leading-relaxed space-y-3">
+              <p className="font-semibold text-forest-800">Waiver</p>
+              {REGISTRATION_FORM.waiver.map((paragraph) => (
+                <p key={paragraph.slice(0, 24)}>{paragraph}</p>
+              ))}
+              <label className="mt-1 flex items-start gap-3">
                 <input type="checkbox" required className="mt-1 text-forest-600 rounded" />
                 <span>I have read and agree to the <Link to="/terms" className="text-amber-500 underline">Terms & Conditions</Link></span>
               </label>

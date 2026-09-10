@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sattvalife Yoga — Blog</title>
+    <link>https://sattvalife-yoga.web.app/blog</link>
+    <description>Yoga tips, wellness insights and class updates from Sattvalife Yoga in Leicester.</description>
+    <language>en-gb</language>
+    <atom:link href="https://sattvalife-yoga.web.app/rss.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Sat, 19 Jul 2026 00:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>5 Benefits of Vinyasa Flow for Beginners</title>
+      <link>https://sattvalife-yoga.web.app/blog/benefits-of-vinyasa-flow</link>
+      <description>Why flow yoga is the perfect starting point for your wellness journey in Leicester.</description>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
+      <guid>https://sattvalife-yoga.web.app/blog/benefits-of-vinyasa-flow</guid>
+    </item>
+
+    <item>
+      <title>Why Workplace Yoga is Good for Your Team</title>
+      <link>https://sattvalife-yoga.web.app/blog/workplace-yoga-benefits</link>
+      <description>How regular yoga sessions can boost productivity, morale, and health at your company.</description>
+      <pubDate>Thu, 28 May 2026 00:00:00 GMT</pubDate>
+      <guid>https://sattvalife-yoga.web.app/blog/workplace-yoga-benefits</guid>
+    </item>
+
+    <item>
+      <title>How to Prepare for Your First Yoga Class</title>
+      <link>https://sattvalife-yoga.web.app/blog/first-yoga-class-guide</link>
+      <description>Everything you need to know before your first session — from what to wear to what to expect.</description>
+      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
+      <guid>https://sattvalife-yoga.web.app/blog/first-yoga-class-guide</guid>
+    </item>
+  </channel>
+</rss>

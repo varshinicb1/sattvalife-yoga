@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sattvalife-yoga.web.app/sitemap.xml

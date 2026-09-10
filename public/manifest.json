@@ -1,0 +1,13 @@
+{
+  "name": "Sattvalife Yoga",
+  "short_name": "Sattvalife",
+  "description": "Personalised yoga classes in Leicester — Vinyasa flow for small groups, individuals and workplaces.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F4EF",
+  "theme_color": "#3C552D",
+  "icons": [
+    { "src": "/images/logo.png", "sizes": "196x196", "type": "image/png" },
+    { "src": "/images/logo.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

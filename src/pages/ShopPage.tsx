@@ -177,7 +177,7 @@ export default function ShopPage() {
   return (
     <div className="pt-24 pb-20">
       {/* Header */}
-      <section className="relative py-16 px-5 bg-gradient-to-b from-cream-100/60 via-cream-50 to-transparent">
+      <section className="relative py-8 md:py-10 px-5 bg-gradient-to-b from-cream-100/60 via-cream-50 to-transparent">
         <div className="mx-auto max-w-4xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-amber-400/20 px-3.5 py-1 text-xs font-semibold text-amber-900 border border-amber-400/40 mb-4">
             Sattvalife Living · Curated Essentials
@@ -261,7 +261,7 @@ export default function ShopPage() {
                       <h3 className="font-serif text-xl font-semibold text-forest-900 mt-1 group-hover:text-amber-700 transition-colors">
                         {product.name}
                       </h3>
-                      <p className="mt-2 text-xs text-forest-800/80 line-clamp-2">
+                      <p className="mt-2 text-sm text-forest-800/80 line-clamp-2">
                         {product.description}
                       </p>
 
@@ -330,7 +330,7 @@ export default function ShopPage() {
         </div>
 
         {/* Shipping & Ethical Values Banner */}
-        <div className="mt-16 grid sm:grid-cols-3 gap-6 rounded-3xl border border-cream-200/80 bg-white/80 p-6 text-center">
+        <div className="mt-12 grid sm:grid-cols-3 gap-6 rounded-3xl border border-cream-200/80 bg-white/80 p-6 text-center">
           <div className="flex flex-col items-center p-2">
             <Truck className="h-6 w-6 text-amber-600 mb-2" />
             <h4 className="font-semibold text-sm text-forest-900">Carbon-Neutral UK Shipping</h4>

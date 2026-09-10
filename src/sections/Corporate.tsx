@@ -15,12 +15,12 @@ export default function Corporate() {
         <SectionHeading eyebrow="Corporate Programme" title={CORPORATE.title} />
         <Reveal className="mx-auto max-w-3xl text-center">
           <p className="font-serif italic text-2xl text-forest-700">“{CORPORATE.tagline}”</p>
-          <p className="mt-5 leading-relaxed text-forest-800/85">{CORPORATE.body}</p>
+          <p className="mt-5 text-lg leading-relaxed text-forest-800/85">{CORPORATE.body}</p>
         </Reveal>
       </div>
 
       {/* Image gallery — native horizontal scroll on mobile, scroll-driven on desktop */}
-      <div className="mt-16">
+      <div className="mt-10">
         {/* Desktop: scroll-driven parallax */}
         <div ref={stripRef} className="hidden md:block overflow-visible" style={{ perspective: 1200 }}>
           <motion.div style={{ x }} className="flex gap-8 pl-[8vw] w-max">
@@ -54,7 +54,7 @@ export default function Corporate() {
         </div>
       </div>
 
-      <div className="mx-auto mt-20 max-w-5xl px-5 grid md:grid-cols-2 gap-10 items-start">
+      <div className="mx-auto mt-12 max-w-5xl px-5 grid md:grid-cols-2 gap-10 items-start">
         <Reveal>
           <h3 className="font-serif text-3xl text-forest-900">{CORPORATE.offersTitle}</h3>
           <p className="mt-3 text-forest-800/80">{CORPORATE.offersIntro}</p>

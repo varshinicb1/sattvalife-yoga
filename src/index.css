@@ -6,35 +6,35 @@
 
 @layer base {
   :root {
-    /* ───── Brand theme (forest / lotus / cream) ───── */
-    --background: 40 33% 97%;         /* cream-100 */
-    --foreground: 110 20% 16%;        /* forest-900 */
+    /* ───── Brand theme (sage / brass / cream) ───── */
+    --background: 38 30% 96%;         /* cream-100 */
+    --foreground: 78 24% 15%;         /* forest-900 */
     --card: 0 0% 100%;
-    --card-foreground: 110 20% 16%;
+    --card-foreground: 78 24% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 110 20% 16%;
-    --primary: 100 25% 28%;           /* forest-600 */
-    --primary-foreground: 40 33% 97%;
-    --secondary: 40 33% 95%;
-    --secondary-foreground: 100 25% 28%;
-    --muted: 40 33% 95%;
-    --muted-foreground: 100 10% 40%;
-    --accent: 46 63% 52%;            /* gold D4AF37 */
-    --accent-foreground: 110 20% 16%;
+    --popover-foreground: 78 24% 15%;
+    --primary: 78 20% 27%;            /* forest-600 */
+    --primary-foreground: 38 30% 96%;
+    --secondary: 38 30% 94%;
+    --secondary-foreground: 78 20% 27%;
+    --muted: 38 30% 94%;
+    --muted-foreground: 78 10% 40%;
+    --accent: 38 45% 55%;             /* amber-400 antique brass */
+    --accent-foreground: 78 24% 15%;
     --destructive: 0 100% 67%;
-    --destructive-foreground: 40 33% 97%;
-    --border: 100 20% 80%;
-    --input: 100 20% 80%;
-    --ring: 100 25% 28%;
+    --destructive-foreground: 38 30% 96%;
+    --border: 78 15% 80%;
+    --input: 78 15% 80%;
+    --ring: 78 20% 27%;
     --radius: 0.75rem;
-    --sidebar-background: 40 33% 97%;
-    --sidebar-foreground: 110 20% 16%;
-    --sidebar-primary: 100 25% 28%;
-    --sidebar-primary-foreground: 40 33% 97%;
-    --sidebar-accent: 46 63% 52%;
-    --sidebar-accent-foreground: 110 20% 16%;
-    --sidebar-border: 100 20% 80%;
-    --sidebar-ring: 100 25% 28%;
+    --sidebar-background: 38 30% 96%;
+    --sidebar-foreground: 78 24% 15%;
+    --sidebar-primary: 78 20% 27%;
+    --sidebar-primary-foreground: 38 30% 96%;
+    --sidebar-accent: 38 45% 55%;
+    --sidebar-accent-foreground: 78 24% 15%;
+    --sidebar-border: 78 15% 80%;
+    --sidebar-ring: 78 20% 27%;
   }
 
   .dark {
@@ -123,7 +123,7 @@ a, button {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, transparent 30%, #f5d68a 45%, #f7e8b8 50%, #d4a847 55%, transparent 70%);
+  background: linear-gradient(135deg, transparent 30%, #d7bd8c 45%, #e8d9b8 50%, #a9834c 55%, transparent 70%);
   background-size: 300% 300%;
   opacity: 0;
   pointer-events: none;

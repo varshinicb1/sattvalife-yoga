@@ -68,8 +68,8 @@ const defaultState: CmsContentState = {
   },
   blogPosts: DEFAULT_BLOG_POSTS,
   settings: {
-    primaryColor: '#3C552D',
-    accentColor: '#c4843e',
+    primaryColor: '#4B5338',
+    accentColor: '#A9834C',
     fontHeading: 'Cormorant Garamond',
     fontBody: 'Raleway',
     whatsappNumber: '+44 7551 100218',

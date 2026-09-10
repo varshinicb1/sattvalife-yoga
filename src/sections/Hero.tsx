@@ -11,7 +11,7 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
 
   return (
-    <section id="home" ref={ref} className="relative min-h-svh flex items-center justify-center overflow-hidden bg-gradient-to-b from-cream-50 via-cream-50 to-cream-100">
+    <section id="home" ref={ref} className="relative min-h-svh lg:min-h-0 lg:py-32 xl:py-40 flex items-center justify-center overflow-hidden bg-gradient-to-b from-cream-50 via-cream-50 to-cream-100">
       {/* Lotus frame — sized to cradle the headline rather than sprawl the whole viewport */}
       <motion.img
         src="/images/lotus-element.png"

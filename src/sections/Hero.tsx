@@ -12,14 +12,14 @@ export default function Hero() {
 
   return (
     <section id="home" ref={ref} className="relative min-h-svh lg:min-h-0 lg:py-32 xl:py-40 flex items-center justify-center overflow-hidden bg-gradient-to-b from-cream-50 via-cream-50 to-cream-100">
-      {/* Lotus frame — sized to cradle the headline rather than sprawl the whole viewport */}
+      {/* Lotus frame — sized to fully cradle the headline + subtext, not just skim them */}
       <motion.img
         src="/images/lotus-element.png"
         alt=""
         loading="lazy"
         decoding="async"
         style={{ opacity: useTransform(scrollYProgress, [0, 0.5], [0.4, 0.15]) }}
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[85vw] max-w-md sm:max-w-xl md:max-w-2xl h-auto object-contain pointer-events-none"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[94vw] max-w-sm sm:max-w-2xl md:max-w-3xl h-auto object-contain pointer-events-none"
       />
 
       <motion.div

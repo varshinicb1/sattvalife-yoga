@@ -24,7 +24,7 @@ export default function Timetable() {
   const [selectedDay, setSelectedDay] = useState<string | null>(null)
 
   return (
-    <section id="timetable" ref={ref} className="relative py-16 md:py-20 lg:py-24 overflow-hidden">
+    <section id="timetable" ref={ref} className="relative py-12 md:py-16 lg:py-20 overflow-hidden">
       <motion.div style={{ y: bgY, willChange: 'transform' }} className="absolute inset-0 -z-0">
         <img src="/images/about-hero.jpg" alt="" className="h-[124%] w-full object-cover" />
         <div className="absolute inset-0 bg-forest-950/70" />

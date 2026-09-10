@@ -47,7 +47,7 @@ export default function RegistrationPage() {
   }
 
   return (
-    <div className="relative py-20 md:py-24 lg:py-28">
+    <div className="relative py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-3xl px-5">
         <Reveal>
           <h1 className="font-serif text-5xl text-forest-900 mb-4">Registration</h1>

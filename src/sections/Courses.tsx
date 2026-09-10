@@ -12,7 +12,7 @@ export default function Courses() {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null)
 
   return (
-    <section id="courses" className="relative py-16 md:py-20 lg:py-24">
+    <section id="courses" className="relative py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-5">
         <SectionHeading eyebrow="Wellness Courses" title="Choose Your Path to Wellbeing" />
         <p className="mx-auto -mt-8 mb-16 max-w-2xl text-center text-forest-800/75">

@@ -26,7 +26,7 @@ export default function GetInTouch() {
   }
 
   return (
-    <section id="get-in-touch" className="relative py-16 md:py-20 lg:py-24">
+    <section id="get-in-touch" className="relative py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-3xl px-5">
         <Reveal>
           <p className="text-center uppercase tracking-[0.3em] text-xs font-semibold text-amber-500 mb-3">Get in Touch</p>

@@ -10,7 +10,7 @@ export default function Corporate() {
   const x = useTransform(scrollYProgress, [0, 1], ['8%', '-28%'])
 
   return (
-    <section id="corporate" className="relative py-16 md:py-20 lg:py-24 overflow-hidden">
+    <section id="corporate" className="relative py-12 md:py-16 lg:py-20 overflow-hidden">
       <div className="mx-auto max-w-7xl px-5">
         <SectionHeading eyebrow="Corporate Programme" title={CORPORATE.title} />
         <Reveal className="mx-auto max-w-3xl text-center">

@@ -59,7 +59,7 @@ export default function Reviews() {
   const visible = reviews.slice(page * perPage, page * perPage + perPage)
 
   return (
-    <section id="reviews" className="relative py-16 md:py-20 lg:py-24">
+    <section id="reviews" className="relative py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-5">
         <SectionHeading eyebrow="Testimonials" title="What Our Students Say" />
 

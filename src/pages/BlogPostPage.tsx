@@ -25,7 +25,7 @@ export default function BlogPostPage() {
   }
 
   return (
-    <article className="relative py-20 md:py-24 lg:py-28">
+    <article className="relative py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-3xl px-5">
         <Link to="/blog" className="text-sm text-forest-700/60 hover:text-amber-500 transition-colors mb-8 inline-block">← Back to blog</Link>
 

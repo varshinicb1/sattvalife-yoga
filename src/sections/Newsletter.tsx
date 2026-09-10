@@ -45,7 +45,7 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="relative py-16 md:py-20 lg:py-24 bg-gradient-to-b from-forest-800 to-forest-900 overflow-hidden text-cream-50">
+    <section className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-forest-800 to-forest-900 overflow-hidden text-cream-50">
       <img
         src="/images/lotus.png"
         alt=""

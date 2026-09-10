@@ -8,7 +8,7 @@ export function About() {
   const { welcome, aboutVinyasa, images } = useCmsContent()
 
   return (
-    <section id="about" className="relative py-16 md:py-20 lg:py-24">
+    <section id="about" className="relative py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-5">
         <SectionHeading eyebrow="Sattvalife" title={welcome.title} />
         <Reveal className="mx-auto max-w-3xl text-center">
@@ -65,7 +65,7 @@ export function Journey() {
   const { images } = useCmsContent()
 
   return (
-    <section className="relative py-16 md:py-20 lg:py-24 overflow-hidden">
+    <section className="relative py-12 md:py-16 lg:py-20 overflow-hidden">
       <div className="absolute inset-0 bg-forest-600" />
       <div
         className="absolute inset-0 opacity-15 bg-cover bg-center"

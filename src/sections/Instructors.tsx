@@ -3,7 +3,7 @@ import { INSTRUCTORS } from '@/data/content'
 
 export default function Instructors() {
   return (
-    <section id="teachers" className="relative py-16 md:py-20 lg:py-24">
+    <section id="teachers" className="relative py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-6xl px-5">
         <SectionHeading eyebrow="About Us" title="Who We Are & What We Stand For" />
         <div className="space-y-20">

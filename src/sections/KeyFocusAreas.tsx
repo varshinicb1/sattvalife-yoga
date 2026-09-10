@@ -6,7 +6,7 @@ const ICONS = [Activity, Flame, Wind]
 
 export default function KeyFocusAreas() {
   return (
-    <section className="relative py-16 md:py-20 lg:py-24 bg-gradient-to-b from-cream-50 to-cream-100">
+    <section className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-cream-50 to-cream-100">
       <div className="mx-auto max-w-5xl px-5 text-center">
         <Reveal>
           <p className="uppercase tracking-[0.3em] text-xs font-semibold text-amber-500 mb-3">Our Approach</p>

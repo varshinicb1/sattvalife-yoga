@@ -6,7 +6,7 @@ export default function Blog() {
   const { blogPosts } = useCmsContent()
 
   return (
-    <section className="relative py-16 md:py-20 lg:py-24">
+    <section className="relative py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-6xl px-5">
         <SectionHeading eyebrow="Sattvalife Journal" title="Yoga Tips & Wellness Insights" />
         <p className="mx-auto -mt-8 mb-16 max-w-xl text-center text-sm text-forest-700/60">

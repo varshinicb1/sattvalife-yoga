@@ -4,7 +4,7 @@ import { Scale, CheckCircle2, AlertCircle } from 'lucide-react'
 
 export default function TermsPage() {
   return (
-    <div className="relative py-20 md:py-24 lg:py-28">
+    <div className="relative py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-4xl px-5">
         <Reveal>
           <div className="inline-flex items-center gap-2 rounded-full bg-amber-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-600 mb-4">

@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router'
 import { useCmsContent } from '@/hooks/useCmsContent'
+import { CANONICAL_ORIGIN } from '@/lib/site'
 
-export const SITE_URL = 'https://sattvalife-yoga.web.app'
+export const SITE_URL = CANONICAL_ORIGIN
 
 const ROUTE_META: Record<string, { title: string; desc: string }> = {
   '/': {

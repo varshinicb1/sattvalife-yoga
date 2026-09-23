@@ -28,6 +28,116 @@
         "source": "/timetable",
         "destination": "/classes",
         "type": 301
+      },
+      {
+        "source": "/about-us",
+        "destination": "/teachers",
+        "type": 301
+      },
+      {
+        "source": "/about-us/",
+        "destination": "/teachers",
+        "type": 301
+      },
+      {
+        "source": "/classes-timetable",
+        "destination": "/classes",
+        "type": 301
+      },
+      {
+        "source": "/classes-timetable/",
+        "destination": "/classes",
+        "type": 301
+      },
+      {
+        "source": "/terms-and-conditions",
+        "destination": "/terms",
+        "type": 301
+      },
+      {
+        "source": "/terms-and-conditions/",
+        "destination": "/terms",
+        "type": 301
+      },
+      {
+        "source": "/blog-standard",
+        "destination": "/blog",
+        "type": 301
+      },
+      {
+        "source": "/blog-standard/",
+        "destination": "/blog",
+        "type": 301
+      },
+      {
+        "source": "/3-quick-yoga-asanas-to-get-relief-from-back-pain",
+        "destination": "/blog/3-quick-yoga-asanas-for-back-pain",
+        "type": 301
+      },
+      {
+        "source": "/3-quick-yoga-asanas-to-get-relief-from-back-pain/",
+        "destination": "/blog/3-quick-yoga-asanas-for-back-pain",
+        "type": 301
+      },
+      {
+        "source": "/yoga-and-meditation",
+        "destination": "/blog/yoga-and-meditation",
+        "type": 301
+      },
+      {
+        "source": "/yoga-and-meditation/",
+        "destination": "/blog/yoga-and-meditation",
+        "type": 301
+      },
+      {
+        "source": "/conclusion-empowering-children-through-yoga",
+        "destination": "/blog/empowering-children-through-yoga",
+        "type": 301
+      },
+      {
+        "source": "/conclusion-empowering-children-through-yoga/",
+        "destination": "/blog/empowering-children-through-yoga",
+        "type": 301
+      },
+      {
+        "source": "/timetable-for-wordpress",
+        "destination": "/classes",
+        "type": 301
+      },
+      {
+        "source": "/timetable-for-wordpress/",
+        "destination": "/classes",
+        "type": 301
+      },
+      {
+        "source": "/feed",
+        "destination": "/rss.xml",
+        "type": 301
+      },
+      {
+        "source": "/feed/",
+        "destination": "/rss.xml",
+        "type": 301
+      },
+      {
+        "source": "/sitemap_index.xml",
+        "destination": "/sitemap.xml",
+        "type": 301
+      },
+      {
+        "source": "/post-sitemap.xml",
+        "destination": "/sitemap.xml",
+        "type": 301
+      },
+      {
+        "source": "/page-sitemap.xml",
+        "destination": "/sitemap.xml",
+        "type": 301
+      },
+      {
+        "source": "/timetable-for-wordpress-sample-:n",
+        "destination": "/classes",
+        "type": 301
       }
     ],
     "rewrites": [

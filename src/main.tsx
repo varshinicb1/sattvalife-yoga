@@ -8,6 +8,9 @@ import '@fontsource-variable/plus-jakarta-sans/wght.css'
 import './index.css'
 import App from './App.tsx'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
+import { redirectToCanonicalHost } from '@/lib/site'
+
+redirectToCanonicalHost()
 
 /*
  * Service worker (offline fallback + fresh deploys). Only reload when a *new*

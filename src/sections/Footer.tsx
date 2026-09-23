@@ -1,84 +1,123 @@
 import { Link } from 'react-router'
-import { Instagram, Facebook, Youtube, Mail, Phone, MapPin } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
+import NewsletterForm from '@/components/NewsletterForm'
+import { BrandIcon } from '@/components/BrandIcon'
+import { Logo } from '@/sections/Navbar'
+import { NAV_LINKS } from '@/lib/nav'
+import { CONTACT, TIMETABLE } from '@/data/content'
+import { useCmsContent, whatsappHref } from '@/hooks/useCmsContent'
+import { formatRange } from '@/lib/schedule'
 
 export default function Footer() {
+  const { settings } = useCmsContent()
+  const year = new Date().getFullYear()
+
   return (
-    <footer className="relative bg-forest-950 text-cream-50 pt-20 pb-12 overflow-hidden border-t border-amber-400/20">
-      <div className="mx-auto max-w-7xl px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-16 border-b border-white/10">
-        
-        {/* Brand & Slogan */}
-        <div className="lg:col-span-1 space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-amber-400/20 to-cream-50/10 p-2 border border-amber-400/40">
-              <img src="/images/lotus.png" alt="Sattvalife" className="h-full w-full object-contain" />
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span className="font-serif text-2xl font-semibold text-cream-50">Sattvalife</span>
-              <span className="font-sans text-xs font-medium tracking-[0.15em] uppercase text-cream-100/60">Yoga & Wellness</span>
-            </div>
+    <footer className="relative overflow-hidden bg-forest-900 text-cream-100">
+      <img
+        src="/images/opt/lotus-mark-900.webp"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        width={900}
+        height={484}
+        className="pointer-events-none absolute -right-24 -top-10 w-[34rem] max-w-none opacity-[0.05]"
+      />
+
+      <div className="container-page relative">
+        {/* Newsletter */}
+        <div className="grid gap-8 border-b border-cream-50/10 py-14 md:grid-cols-2 md:items-center md:py-16">
+          <div>
+            <h2 className="text-3xl !text-cream-50 sm:text-4xl">Stay in the flow</h2>
+            <p className="mt-3 max-w-md text-cream-100/70">New classes, workshops and seasonal wellbeing tips from Amisha and Nish.</p>
           </div>
-          <p className="text-xs md:text-sm text-cream-100/70 max-w-sm leading-relaxed">
-            Traditional Hatha, dynamic Vinyasa flow, gentle Yin, and sound meditation across the UK. Rooted in authentic practice and mindful living.
-          </p>
-          <div className="flex items-center gap-3 pt-2">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="p-2 rounded-xl bg-white/5 hover:bg-amber-400/20 hover:text-amber-300 transition-colors">
-              <Instagram className="h-4 w-4" />
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="p-2 rounded-xl bg-white/5 hover:bg-amber-400/20 hover:text-amber-300 transition-colors">
-              <Facebook className="h-4 w-4" />
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer" className="p-2 rounded-xl bg-white/5 hover:bg-amber-400/20 hover:text-amber-300 transition-colors">
-              <Youtube className="h-4 w-4" />
-            </a>
-          </div>
+          <NewsletterForm />
         </div>
 
-        {/* Classes & Experiences */}
-        <div className="space-y-3">
-          <p className="font-serif text-sm font-semibold text-amber-300 tracking-wide uppercase">Classes & Events</p>
-          <ul className="space-y-2 text-xs text-cream-100/80">
-            <li><Link to="/courses" className="hover:text-amber-400 transition-colors">Studio & Online Classes</Link></li>
-            <li><Link to="/timetable" className="hover:text-amber-400 transition-colors">Live Weekly Timetable</Link></li>
-            <li><Link to="/experiences" className="hover:text-amber-400 transition-colors">Pop-Ups & UK Retreats</Link></li>
-            <li><Link to="/corporate" className="hover:text-amber-400 transition-colors">Workplace Wellbeing</Link></li>
-          </ul>
-        </div>
-
-        {/* Studio & Community */}
-        <div className="space-y-3">
-          <p className="font-serif text-sm font-semibold text-amber-300 tracking-wide uppercase">Studio & Lineage</p>
-          <ul className="space-y-2 text-xs text-cream-100/80">
-            <li><Link to="/teachers" className="hover:text-amber-400 transition-colors">Our Teachers & Lineage</Link></li>
-            <li><Link to="/reviews" className="hover:text-amber-400 transition-colors">Google Reviews & Stories</Link></li>
-            <li><Link to="/blog" className="hover:text-amber-400 transition-colors">Wellness Journal & Articles</Link></li>
-            <li><Link to="/registration" className="hover:text-amber-400 transition-colors">Health & Consent Form</Link></li>
-          </ul>
-        </div>
-
-        {/* Direct Contact */}
-        <div className="space-y-3">
-          <p className="font-serif text-sm font-semibold text-amber-300 tracking-wide uppercase">Direct Contact</p>
-          <div className="space-y-2 text-xs text-cream-100/80">
-            <p className="flex items-center gap-2"><MapPin className="h-3.5 w-3.5 text-amber-400 shrink-0" /> London & UK Wide Pop-ups</p>
-            <p className="flex items-center gap-2"><Mail className="h-3.5 w-3.5 text-amber-400 shrink-0" /> info@sattvalife.yoga</p>
-            <p className="flex items-center gap-2"><Phone className="h-3.5 w-3.5 text-amber-400 shrink-0" /> +44 7921 549320</p>
-            <div className="pt-2">
-              <span className="inline-block px-2.5 py-1 rounded bg-amber-400/15 text-amber-300 text-xs font-semibold border border-amber-400/30">
-                UK GDPR & SSL Protected
-              </span>
+        {/* Link columns */}
+        <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr_1.2fr]">
+          <div>
+            <Link to="/" aria-label="Sattvalife Yoga, home" className="inline-block">
+              <Logo light />
+            </Link>
+            <p className="mt-5 max-w-xs text-[0.95rem] leading-relaxed text-cream-100/70">
+              Personalised Vinyasa yoga for small groups, individuals and workplaces in Leicester.
+            </p>
+            <div className="mt-6 flex gap-2">
+              <a href={CONTACT.instagram} target="_blank" rel="noreferrer" aria-label="Sattvalife on Instagram" className="flex h-11 w-11 items-center justify-center rounded-full border border-cream-50/15 transition-colors hover:border-amber-300 hover:text-amber-300">
+                <BrandIcon name="instagram" className="h-[18px] w-[18px]" />
+              </a>
+              <a href={CONTACT.facebook} target="_blank" rel="noreferrer" aria-label="Sattvalife on Facebook" className="flex h-11 w-11 items-center justify-center rounded-full border border-cream-50/15 transition-colors hover:border-amber-300 hover:text-amber-300">
+                <BrandIcon name="facebook" className="h-[18px] w-[18px]" />
+              </a>
+              <a href={whatsappHref(settings.whatsappNumber)} target="_blank" rel="noreferrer" aria-label="Message Sattvalife on WhatsApp" className="flex h-11 w-11 items-center justify-center rounded-full border border-cream-50/15 transition-colors hover:border-amber-300 hover:text-amber-300">
+                <BrandIcon name="whatsapp" className="h-[18px] w-[18px]" />
+              </a>
             </div>
           </div>
+
+          <nav aria-label="Footer">
+            <h2 className="font-sans text-xs font-semibold uppercase tracking-[0.2em] !text-amber-300">Explore</h2>
+            <ul className="mt-5 space-y-3 text-[0.95rem]">
+              {NAV_LINKS.map((l) => (
+                <li key={l.to}>
+                  <Link to={l.to} className="inline-block py-1 text-cream-100/80 transition-colors hover:text-cream-50">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div>
+            <h2 className="font-sans text-xs font-semibold uppercase tracking-[0.2em] !text-amber-300">Weekly classes</h2>
+            <ul className="mt-5 space-y-5 text-[0.95rem]">
+              {TIMETABLE.venues.map((v) => (
+                <li key={v.id}>
+                  <p className="font-semibold text-cream-50">
+                    {v.day}s, {formatRange(v)}
+                  </p>
+                  <a href={v.mapsUrl} target="_blank" rel="noreferrer" className="mt-1 flex items-start gap-2 py-1 text-cream-100/75 hover:text-cream-50">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-amber-300" strokeWidth={1.6} />
+                    <span>
+                      {v.hall}, {v.area} {v.postcode}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="font-sans text-xs font-semibold uppercase tracking-[0.2em] !text-amber-300">Get in touch</h2>
+            <ul className="mt-5 space-y-3 text-[0.95rem]">
+              <li>
+                <a href={whatsappHref(settings.whatsappNumber)} target="_blank" rel="noreferrer" className="flex items-center gap-2 py-1 text-cream-100/80 hover:text-cream-50">
+                  <BrandIcon name="whatsapp" className="h-4 w-4 text-amber-300" />
+                  {settings.whatsappNumber}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${settings.contactEmail}`} className="flex items-center gap-2 break-all py-1 text-cream-100/80 hover:text-cream-50">
+                  <Mail className="h-4 w-4 shrink-0 text-amber-300" strokeWidth={1.6} />
+                  {settings.contactEmail}
+                </a>
+              </li>
+              <li className="pt-2">
+                <Link to="/registration" className="inline-block py-1 text-cream-100/80 underline decoration-amber-300/50 underline-offset-4 hover:text-cream-50">
+                  New student registration form
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="mx-auto max-w-7xl px-5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cream-100/50">
-        <p>© {new Date().getFullYear()} Sattvalife Yoga & Wellness. All rights reserved.</p>
-        <div className="flex items-center gap-6">
-          <Link to="/privacy" className="hover:text-cream-100 transition-colors">Privacy Policy</Link>
-          <Link to="/terms" className="hover:text-cream-100 transition-colors">Terms of Service</Link>
-          <a href="https://sattvalife.yoga" className="hover:text-cream-100 transition-colors">sattvalife.yoga</a>
+        <div className="flex flex-col gap-3 border-t border-cream-50/10 py-8 text-sm text-cream-100/55 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} Sattvalife Yoga, Leicester. All rights reserved.</p>
+          <div className="flex gap-6">
+            <Link to="/privacy" className="inline-block py-1 hover:text-cream-50">Privacy</Link>
+            <Link to="/terms" className="inline-block py-1 hover:text-cream-50">Terms</Link>
+          </div>
         </div>
       </div>
     </footer>

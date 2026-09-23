@@ -1,47 +1,56 @@
-const CACHE = 'sattvalife-v7'; // bump version → triggers auto-reload on all stale clients
-const STATIC = ['/'];
+/*
+ * Sattvalife service worker.
+ * - Navigations: network-first, falling back to the cached app shell when offline.
+ * - Same-origin static assets (hashed JS/CSS, images, fonts): stale-while-revalidate.
+ * - Everything else (Worker API, Stripe, analytics, POSTs) is never touched.
+ */
+const CACHE = 'sattvalife-v8';
+const SHELL = ['/', '/manifest.json', '/favicon-32.png'];
 
 self.addEventListener('install', (e) => {
-  self.skipWaiting(); // activate immediately, don't wait for old tabs to close
-  e.waitUntil(
-    caches.open(CACHE).then((c) => c.addAll(STATIC))
-  );
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (e) => {
   e.waitUntil(
-    // 1. Delete ALL old cache versions
-    caches.keys()
+    caches
+      .keys()
       .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
-      .then(() => clients.claim()) // take control of all open tabs immediately
-      .then(() =>
-        // 2. Tell every open tab: "new version activated — please reload"
-        clients.matchAll({ type: 'window', includeUncontrolled: true }).then((all) => {
-          all.forEach((client) => client.postMessage({ type: 'SW_UPDATED' }));
-        })
-      )
+      .then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', (e) => {
-  // Navigation requests always go network-first (prevents stale index.html)
-  if (e.request.mode === 'navigate') {
+  const req = e.request;
+  if (req.method !== 'GET') return;
+  const url = new URL(req.url);
+  if (url.origin !== self.location.origin) return;
+
+  if (req.mode === 'navigate') {
     e.respondWith(
-      fetch(e.request).catch(() => caches.match('/'))
+      fetch(req)
+        .then((res) => {
+          const copy = res.clone();
+          caches.open(CACHE).then((c) => c.put('/', copy));
+          return res;
+        })
+        .catch(() => caches.match('/'))
     );
     return;
   }
 
-  // Static assets: network-first with cache fallback
-  e.respondWith(
-    fetch(e.request)
-      .then((res) => {
-        if (res.status === 200) {
-          const clone = res.clone();
-          caches.open(CACHE).then((c) => c.put(e.request, clone));
-        }
-        return res;
+  if (/\.(?:js|css|woff2|png|jpe?g|webp|svg|ico|json)$/.test(url.pathname)) {
+    e.respondWith(
+      caches.open(CACHE).then(async (cache) => {
+        const cached = await cache.match(req);
+        const network = fetch(req)
+          .then((res) => {
+            if (res.ok) cache.put(req, res.clone());
+            return res;
+          })
+          .catch(() => cached);
+        return cached || network;
       })
-      .catch(() => caches.match(e.request))
-  );
+    );
+  }
 });

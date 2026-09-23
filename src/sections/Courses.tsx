@@ -1,97 +1,66 @@
-import { useState } from 'react'
-import { AnimatePresence } from 'framer-motion'
-import { Reveal, SectionHeading, TiltCard } from '@/components/motion-primitives'
+import { Check } from 'lucide-react'
+import { Reveal } from '@/components/motion-primitives'
 import { COURSES, type Course } from '@/data/content'
-import { Zap, Check } from 'lucide-react'
-import StripeOneClickCheckout from '@/components/StripeOneClickCheckout'
-import { PaymentBadges } from '@/components/PaymentBadges'
+import { openBooking } from '@/lib/bookingStore'
 
-const fmt = (n: number) => `£${n}`
+const CTA: Record<Course['id'], string> = {
+  dropIn: 'Book a drop-in',
+  monthly: 'Start Monthly Flow',
+  corporate: 'Book for your team',
+}
 
-export default function Courses() {
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null)
-
+/** The three plans. Monthly Flow is the featured (dark, raised) card. */
+export function PlanCards() {
+  // 3 columns only from lg: at tablet width they squeeze to ~230px and the copy cramps
   return (
-    <section id="courses" className="relative py-12 md:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-5">
-        <SectionHeading eyebrow="Wellness Courses" title="Choose Your Path to Wellbeing" />
-        <p className="mx-auto -mt-8 mb-16 max-w-2xl text-center text-forest-800/75">
-          3 key focus areas — Back, Belly & Breath. Every programme builds improved back strength,
-          a toned belly with improved digestion, and deeper, relaxed, corrective breathing.
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-8 items-stretch" style={{ perspective: 1400 }}>
-          {COURSES.map((c, i) => (
-            <Reveal key={c.id} delay={i * 0.12} className="h-full">
-              <TiltCard className="h-full">
-                <div
-                  className={`relative h-full rounded-3xl p-8 flex flex-col shadow-xl transition-shadow hover:shadow-2xl ${
-                    c.popular
-                      ? 'bg-gradient-to-b from-forest-700 via-forest-800 to-forest-900 text-cream-50 shadow-forest-900/30 ring-4 ring-amber-400/60'
-                      : 'glass text-forest-900 shadow-forest-900/10'
-                  }`}
-                  style={{ transform: 'translateZ(30px)' }}
-                >
-                  {c.popular && (
-                    <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-forest-950 shadow-lg shadow-amber-500/40">
-                      Most Popular
-                    </span>
-                  )}
-                  <h3 className="font-serif text-3xl">{c.name}</h3>
-                  <div className="mt-4 flex items-end gap-2">
-                    <span className="font-serif text-5xl font-bold">{fmt(c.price)}</span>
-                    <span className={`pb-1.5 text-sm ${c.popular ? 'text-cream-100/75' : 'text-forest-700/70'}`}>
-                      {c.unit}
-                    </span>
-                  </div>
-                  <p className={`mt-4 text-sm leading-relaxed ${c.popular ? 'text-cream-100/85' : 'text-forest-800/75'}`}>
-                    {c.blurb}
-                  </p>
-                  <ul className="mt-6 space-y-3 flex-1">
-                    {c.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2.5 text-sm">
-                        <Check className={`h-4 w-4 shrink-0 mt-0.5 ${c.popular ? 'text-amber-400' : 'text-forest-600'}`} />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <button
-                    onClick={() => setSelectedCourse(c)}
-                    className={`mt-8 w-full rounded-xl py-3.5 font-bold transition-all hover:-translate-y-0.5 active:scale-[0.99] flex items-center justify-center gap-2 shadow-lg ${
-                      c.popular
-                        ? 'bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-forest-950 shadow-amber-500/30 hover:brightness-105'
-                        : 'bg-forest-600 text-cream-50 shadow-forest-600/30 hover:bg-forest-500'
-                    }`}
-                  >
-                    <Zap className="h-4 w-4 fill-current" />
-                    <span>1-Click Checkout</span>
-                  </button>
-                  <div className="mt-4">
-                    <PaymentBadges dark={c.popular} />
-                  </div>
-                </div>
-              </TiltCard>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal className="mt-12 text-center">
-          <p className="text-sm text-forest-700/70">
-            Registering for someone else? After purchase you'll receive an email with fees, venue
-            and payment details. Under-18s require a parent or guardian's consent.
-          </p>
-        </Reveal>
-      </div>
-
-      <AnimatePresence>
-        {selectedCourse && (
-          <StripeOneClickCheckout
-            course={selectedCourse}
-            onClose={() => setSelectedCourse(null)}
-          />
-        )}
-      </AnimatePresence>
-    </section>
+    <div className="grid items-stretch gap-5 lg:grid-cols-3 lg:gap-6">
+      {COURSES.map((c, i) => {
+        const featured = !!c.popular
+        return (
+          <Reveal key={c.id} delay={i * 0.08} className={`h-full ${featured ? 'lg:-mt-4' : 'lg:mt-4'}`}>
+            <article
+              className={`relative flex h-full flex-col rounded-3xl p-7 sm:p-8 ${
+                featured ? 'bg-forest-800 text-cream-50 shadow-lift' : 'border border-forest-900/[0.08] bg-white/85 shadow-soft'
+              }`}
+            >
+              {featured && (
+                <p className="absolute -top-3 left-7 rounded-full bg-amber-300 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-forest-950 sm:left-8">
+                  Most popular
+                </p>
+              )}
+              <h3 className={`text-3xl ${featured ? '!text-cream-50' : ''}`}>{c.name}</h3>
+              <p className="mt-5 flex items-baseline gap-2">
+                <span className={`font-serif text-6xl font-medium leading-none ${featured ? 'text-cream-50' : 'text-forest-900'}`}>£{c.price}</span>
+                <span className={featured ? 'text-cream-100/75' : 'text-forest-800/70'}>{c.unit}</span>
+              </p>
+              <p className={`mt-5 leading-relaxed ${featured ? 'text-cream-100/85' : 'text-forest-800/80'}`}>{c.blurb}</p>
+              <ul className={`mt-6 flex-1 space-y-3 border-t pt-6 ${featured ? 'border-cream-50/15' : 'border-forest-900/[0.08]'}`}>
+                {c.features.map((f) => (
+                  <li key={f} className="flex gap-3 text-[0.95rem]">
+                    <Check className={`mt-0.5 h-4 w-4 shrink-0 ${featured ? 'text-amber-300' : 'text-forest-600'}`} strokeWidth={2.2} />
+                    <span className={featured ? 'text-cream-100/90' : 'text-forest-800/85'}>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <button
+                type="button"
+                onClick={() => openBooking({ courseId: c.id })}
+                className={`mt-8 w-full ${featured ? 'btn-brass' : 'btn-primary'}`}
+              >
+                {CTA[c.id]}
+              </button>
+            </article>
+          </Reveal>
+        )
+      })}
+    </div>
   )
 }
 
+export function PaymentNote({ className = '' }: { className?: string }) {
+  return (
+    <p className={`text-center text-[0.95rem] text-forest-800/70 ${className}`}>
+      Secure online payment by card, Apple Pay or Google Pay through Stripe. Under-18s need a parent or guardian’s consent.
+    </p>
+  )
+}

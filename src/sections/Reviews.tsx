@@ -1,146 +1,110 @@
-import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { Reveal, SectionHeading, TiltCard, Stars, GoogleG } from '@/components/motion-primitives'
-import { useGoogleReviews } from '@/hooks/useGoogleReviews'
-import { GOOGLE_REVIEWS_CONFIG } from '@/config'
-import type { Review } from '@/data/content'
+import { useState } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { GoogleG, Reveal, Stars } from '@/components/motion-primitives'
+import { RATING, REVIEWS, type Review } from '@/data/content'
 
-const AVATAR_COLORS = ['#F08080', '#557c46', '#D9B36C', '#7A9B6A', '#e86363', '#c69c4d']
+/** Short, punchy reviews read best as a hero quote. */
+const FEATURED = REVIEWS.filter((r) => r.text.length > 60 && r.text.length < 200)
 
-function Avatar({ name, i }: { name: string; i: number }) {
-  const initials = name
-    .split(' ')
-    .map((w) => w[0])
-    .slice(0, 2)
-    .join('')
+export function RatingSummary({ dark = false }: { dark?: boolean }) {
   return (
-    <div
-      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white shadow-md"
-      style={{ background: AVATAR_COLORS[i % AVATAR_COLORS.length] }}
-    >
-      {initials}
+    <div>
+      <div className="flex items-end gap-4">
+        <span className={`font-serif text-7xl font-medium leading-none sm:text-8xl ${dark ? 'text-cream-50' : 'text-forest-900'}`}>{RATING.value.toFixed(1)}</span>
+        <div className="pb-2">
+          <Stars className="h-5 w-5" label={`Rated ${RATING.value} out of 5`} />
+          <p className={`mt-1.5 flex items-center gap-2 text-sm ${dark ? 'text-cream-100/75' : 'text-forest-800/75'}`}>
+            <GoogleG className="h-4 w-4" /> {RATING.total} Google reviews
+          </p>
+        </div>
+      </div>
+      <a href={RATING.googleUrl} target="_blank" rel="noreferrer" className={`mt-6 inline-flex items-center gap-2 font-semibold ${dark ? 'text-cream-50' : 'text-forest-800'}`}>
+        <span className="link-underline">Read every review on Google</span>
+        <ArrowRight className="h-4 w-4" />
+      </a>
     </div>
   )
 }
 
-function ReviewCard({ review, i }: { review: Review; i: number }) {
-  return (
-    <TiltCard className="h-full">
-      <div className="flex h-full flex-col rounded-3xl glass p-6 shadow-lg shadow-forest-900/5">
-        <div className="flex items-center gap-3">
-          <Avatar name={review.author} i={i} />
-          <div className="min-w-0">
-            <p className="truncate font-semibold text-forest-900">{review.author}</p>
-            <p className="text-xs text-forest-700/60">{review.time} · posted on Google</p>
-          </div>
-          <GoogleG className="ml-auto h-5 w-5 shrink-0" />
-        </div>
-        <div className="mt-3">
-          <Stars n={review.rating} />
-        </div>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-forest-800/85">{review.text}</p>
-      </div>
-    </TiltCard>
-  )
-}
-
-export default function Reviews() {
-  const { reviews, rating, total, live, lastSync } = useGoogleReviews()
-  const [page, setPage] = useState(0)
-  const perPage = 3
-  const pages = Math.max(1, Math.ceil(reviews.length / perPage))
-
-  // auto-rotate the carousel for a "live feed" feel
-  useEffect(() => {
-    const id = setInterval(() => setPage((p) => (p + 1) % pages), 5000)
-    return () => clearInterval(id)
-  }, [pages])
-
-  const visible = reviews.slice(page * perPage, page * perPage + perPage)
+/** Home: one large quote at a time with manual controls (no autoplay). */
+export function ReviewsShowcase() {
+  const [i, setI] = useState(0)
+  const reduce = useReducedMotion()
+  const r = FEATURED[i]
+  const go = (d: number) => setI((p) => (p + d + FEATURED.length) % FEATURED.length)
 
   return (
-    <section id="reviews" className="relative py-12 md:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-5">
-        <SectionHeading eyebrow="Testimonials" title="What Our Students Say" />
-
-        {/* Google summary banner */}
+    <section className="bg-cream-100 py-20 sm:py-28" aria-label="Reviews">
+      <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <Reveal>
-          <div className="mx-auto max-w-2xl rounded-3xl glass p-7 shadow-xl shadow-forest-900/10 text-center">
-            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-              <div>
-                <p className="font-serif text-6xl text-forest-900">{rating.toFixed(1)}</p>
-                <div className="mt-1 flex justify-center">
-                  <Stars n={5} className="h-5 w-5" />
-                </div>
-              </div>
-              <div className="text-left">
-                <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-500">Excellent</p>
-                <p className="mt-1 text-sm text-forest-800/80">
-                  Based on <span className="font-bold text-forest-900">{total} reviews</span>
-                </p>
-                <div className="mt-1.5 flex items-center gap-2">
-                  <GoogleG />
-                  <span className="text-sm font-medium text-forest-800">Google Reviews</span>
-                  <span
-                    className={`ml-2 inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider ${
-                      live ? 'bg-forest-100 text-forest-700' : 'bg-amber-300/40 text-amber-500'
-                    }`}
-                  >
-                    <span className={`h-1.5 w-1.5 rounded-full ${live ? 'bg-forest-500' : 'bg-amber-500'} animate-pulse`} />
-                    {live ? 'Live' : 'Auto-updating'}
-                  </span>
-                </div>
-              </div>
-            </div>
-            <p className="mt-4 text-xs text-forest-700/50">
-              Synced {lastSync.toLocaleTimeString()} · refreshes every{' '}
-              {GOOGLE_REVIEWS_CONFIG.refreshInterval / 1000}s
+          <p className="eyebrow">Loved in Leicester</p>
+          <h2 className="mt-4 text-4xl leading-[1.08] sm:text-5xl">What our students say</h2>
+          <div className="mt-10">
+            <RatingSummary />
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.1} className="flex flex-col justify-between">
+          <div className="relative min-h-[15rem] sm:min-h-[13rem]" aria-live="polite">
+            <AnimatePresence mode="wait">
+              <motion.figure
+                key={r.author}
+                initial={reduce ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduce ? undefined : { opacity: 0, y: -12 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <blockquote className="font-serif text-[1.75rem] italic leading-snug text-forest-900 sm:text-[2.1rem]">
+                  “{r.text}”
+                </blockquote>
+                <figcaption className="mt-6">
+                  <span className="block font-semibold text-forest-900">{r.author}</span>
+                  {r.context && <span className="text-forest-800/70">{r.context}</span>}
+                </figcaption>
+              </motion.figure>
+            </AnimatePresence>
+          </div>
+          <div className="mt-10 flex items-center gap-3">
+            <button type="button" onClick={() => go(-1)} aria-label="Previous review" className="flex h-12 w-12 items-center justify-center rounded-full border border-forest-900/15 text-forest-800 transition-colors hover:border-forest-600 hover:bg-forest-600 hover:text-cream-50">
+              <ArrowLeft className="h-5 w-5" />
+            </button>
+            <button type="button" onClick={() => go(1)} aria-label="Next review" className="flex h-12 w-12 items-center justify-center rounded-full border border-forest-900/15 text-forest-800 transition-colors hover:border-forest-600 hover:bg-forest-600 hover:text-cream-50">
+              <ArrowRight className="h-5 w-5" />
+            </button>
+            <p className="ml-3 text-sm text-forest-800/70">
+              {i + 1} of {FEATURED.length}
             </p>
           </div>
         </Reveal>
-
-        {/* rotating review cards */}
-        <div className="mt-12 grid md:grid-cols-3 gap-6 min-h-[240px]">
-          <AnimatePresence mode="popLayout">
-            {visible.map((r, i) => (
-              <motion.div
-                key={`${r.author}-${i}-${page}`}
-                initial={{ opacity: 0, y: 40, rotateX: -14 }}
-                animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                exit={{ opacity: 0, y: -30, rotateX: 10 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-              >
-                <ReviewCard review={r} i={i} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-
-        {/* dots + link */}
-        <div className="mt-8 flex items-center justify-center gap-2">
-          {Array.from({ length: pages }).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setPage(i)}
-              aria-label={`Reviews page ${i + 1}`}
-              className={`h-2.5 rounded-full transition-all ${
-                i === page ? 'w-8 bg-lotus-400' : 'w-2.5 bg-forest-600/25 hover:bg-forest-600/50'
-              }`}
-            />
-          ))}
-        </div>
-        <Reveal className="mt-8 text-center">
-          <a
-            href={GOOGLE_REVIEWS_CONFIG.googleMapsUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full gold-click border-2 border-forest-600/30 px-6 py-2.5 text-sm font-semibold text-forest-700 hover:border-forest-600 hover:bg-forest-600 hover:text-cream-50 transition-all"
-          >
-            <GoogleG className="h-4 w-4" />
-            Read all {total} reviews on Google
-          </a>
-        </Reveal>
       </div>
     </section>
+  )
+}
+
+function ReviewCard({ review }: { review: Review }) {
+  return (
+    <figure className="break-inside-avoid rounded-3xl border border-forest-900/[0.07] bg-white/85 p-7 shadow-soft">
+      <Stars className="h-4 w-4" label={`${review.rating} out of 5 stars`} n={review.rating} />
+      <blockquote className="mt-4 text-[1.05rem] leading-relaxed text-forest-900">“{review.text}”</blockquote>
+      <figcaption className="mt-5 flex items-center justify-between gap-3 border-t border-forest-900/[0.07] pt-4">
+        <span>
+          <span className="block font-semibold text-forest-900">{review.author}</span>
+          {review.context && <span className="text-sm text-forest-800/70">{review.context}</span>}
+        </span>
+        <GoogleG className="h-5 w-5 shrink-0" />
+      </figcaption>
+    </figure>
+  )
+}
+
+/** Reviews page: every verified review in a masonry layout. */
+export function ReviewWall() {
+  return (
+    <div className="columns-1 gap-5 space-y-5 md:columns-2 lg:columns-3">
+      {REVIEWS.map((r) => (
+        <ReviewCard key={r.author} review={r} />
+      ))}
+    </div>
   )
 }

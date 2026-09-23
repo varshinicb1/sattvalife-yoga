@@ -5,8 +5,18 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans: ['Raleway', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        /* Self-hosted variable fonts (@fontsource-variable), imported in main.tsx */
+        serif: ['"Cormorant Garamond Variable"', '"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans: ['"Raleway Variable"', 'Raleway', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
+      /* z-index scale: nav 40 · floating buttons 30 · cookie banner 50 · sheets/modals 60 · toasts 70 · grain overlay 80 */
+      zIndex: {
+        float: '30',
+        nav: '40',
+        banner: '50',
+        sheet: '60',
+        toast: '70',
+        grain: '80',
       },
       fontSize: {
         /* Bumped up from Tailwind defaults — body copy read too small */
@@ -120,6 +130,9 @@ module.exports = {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
         glow: "0 0 40px -8px rgb(60 69 45 / 0.25)",
         "glow-amber": "0 0 40px -8px rgb(196 132 62 / 0.3)",
+        /* Shadows tinted with the forest hue, never pure black */
+        soft: "0 1px 2px rgb(30 34 21 / 0.04), 0 8px 24px -12px rgb(30 34 21 / 0.12)",
+        lift: "0 2px 4px rgb(30 34 21 / 0.04), 0 24px 48px -20px rgb(30 34 21 / 0.28)",
       },
       keyframes: {
         "accordion-down": {

@@ -2,37 +2,42 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
 import { ReactLenis } from 'lenis/react'
+import '@fontsource-variable/cormorant-garamond/wght.css'
+import '@fontsource-variable/cormorant-garamond/wght-italic.css'
+import '@fontsource-variable/raleway/wght.css'
 import './index.css'
 import App from './App.tsx'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 
-/* Register service worker for PWA — force update on new deployments */
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', async () => {
-    try {
-      const reg = await navigator.serviceWorker.register('/sw.js')
-      // Force update check on every load so stale caches don't persist on mobile
-      reg.update()
-    } catch {
-      // SW registration failed — not fatal
-    }
+/*
+ * Service worker (offline fallback + fresh deploys). Only reload when a *new*
+ * worker replaces an existing one; a first-time visitor must never be reloaded.
+ */
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
+  const hadController = !!navigator.serviceWorker.controller
+  let reloaded = false
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadController || reloaded) return
+    reloaded = true
+    window.location.reload()
   })
-
-  // When the new SW activates and sends SW_UPDATED, reload once to get fresh assets
-  // This fixes users stuck on old pink-logo cached site without any manual action
-  navigator.serviceWorker.addEventListener('message', (event) => {
-    if (event.data?.type === 'SW_UPDATED') {
-      // Small delay so the SW finishes claiming clients before we reload
-      setTimeout(() => window.location.reload(), 200)
-    }
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('/sw.js')
+      .then((reg) => reg.update())
+      .catch(() => {
+        /* not fatal: the site works without a service worker */
+      })
   })
 }
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ErrorBoundary>
       <BrowserRouter>
-        <ReactLenis root options={{ duration: 1.2, lerp: 0.06, wheelMultiplier: 1, touchMultiplier: 1.2 }}>
+        <ReactLenis root options={{ lerp: 0.1, smoothWheel: !prefersReducedMotion, wheelMultiplier: 1 }}>
           <App />
         </ReactLenis>
       </BrowserRouter>

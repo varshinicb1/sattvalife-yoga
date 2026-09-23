@@ -1,259 +1,254 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { Link } from 'react-router'
+import { CheckCircle2 } from 'lucide-react'
+import PageHero from '@/components/PageHero'
 import { Reveal } from '@/components/motion-primitives'
 import { REGISTRATION_FORM } from '@/data/content'
-import { CheckCircle2 } from 'lucide-react'
+import { HONEYPOT, submitForm } from '@/lib/api'
+
+function Field({ label, id, optional, children }: { label: string; id: string; optional?: boolean; children: React.ReactNode }) {
+  return (
+    <div>
+      <label htmlFor={id} className="field-label">
+        {label} {optional && <span className="font-normal text-forest-800/60">(optional)</span>}
+      </label>
+      {children}
+    </div>
+  )
+}
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <fieldset className="border-t border-forest-900/[0.08] pt-8 first:border-t-0 first:pt-0">
+      <legend className="float-left mb-6 w-full font-serif text-2xl text-forest-900">{title}</legend>
+      <div className="clear-left grid gap-5 sm:grid-cols-2">{children}</div>
+    </fieldset>
+  )
+}
 
 export default function RegistrationPage() {
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const id = useId()
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [error, setError] = useState('')
+  const [experienced, setExperienced] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setLoading(true)
-    setError(null)
+    const fd = new FormData(e.currentTarget)
+    const get = (k: string) => String(fd.get(k) ?? '').trim()
+    const photo = fd.get('photoConsent') === 'on'
+    const notes = [get('notes'), `Photo/video consent: ${photo ? 'yes' : 'no'}`].filter(Boolean).join('\n\n')
 
-    const formData = new FormData(e.currentTarget)
-    const painAreas = formData.getAll('pain').map(String)
-    const firstName = formData.get('firstName') as string
-    const lastName = formData.get('lastName') as string
-
-    const payload = {
-      name: [firstName, lastName].filter(Boolean).join(' '),
-      firstName,
-      lastName,
-      dob: formData.get('dob') as string,
-      occupation: formData.get('occupation') as string,
-      address: formData.get('address') as string,
-      city: formData.get('city') as string,
-      postCode: formData.get('postCode') as string,
-      email: formData.get('email') as string,
-      phone: formData.get('phone') as string,
-      emergencyContact: formData.get('emergencyContact') as string,
-      regType: formData.get('regType') as string,
-      experience: formData.get('experience') as string,
-      experienceDetail: formData.get('experienceDetail') as string,
-      painAreas,
-      surgeries: formData.get('surgeries') as string,
-      notes: formData.get('notes') as string,
-    }
-
+    setStatus('sending')
+    setError('')
     try {
-      const res = await fetch('https://sattvalife-cms.cbvarshini1.workers.dev/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+      await submitForm('/api/register', {
+        name: [get('firstName'), get('lastName')].filter(Boolean).join(' '),
+        firstName: get('firstName'),
+        lastName: get('lastName'),
+        dob: get('dob'),
+        occupation: get('occupation'),
+        address: get('address'),
+        city: get('city'),
+        postCode: get('postCode'),
+        email: get('email'),
+        phone: get('phone'),
+        emergencyContact: get('emergencyContact'),
+        regType: get('regType'),
+        experience: get('experience'),
+        experienceDetail: get('experienceDetail'),
+        painAreas: fd.getAll('pain').map(String),
+        surgeries: get('surgeries'),
+        notes,
+        [HONEYPOT]: get(HONEYPOT),
       })
-
-      if (!res.ok) throw new Error('Registration failed')
-      setSubmitted(true)
+      setStatus('sent')
+      window.scrollTo({ top: 0 })
     } catch (err) {
-      console.error('Registration submission failed', err)
-      setError('We could not submit your registration — please check your connection and try again, or email us directly.')
-    } finally {
-      setLoading(false)
+      setError((err as Error).message)
+      setStatus('error')
     }
   }
 
-  return (
-    <div className="relative py-16 md:py-20 lg:py-24">
-      <div className="mx-auto max-w-3xl px-5">
-        <Reveal>
-          <h1 className="font-serif text-5xl text-forest-900 mb-4">Registration</h1>
-          <p className="text-forest-700/75 mb-10">Fill in the form below and we'll get back to you with class details, fees, and venue information.</p>
-        </Reveal>
+  if (status === 'sent') {
+    return (
+      <section className="container-page flex min-h-[80dvh] items-center justify-center pt-[calc(72px+env(safe-area-inset-top))]">
+        <div role="status" className="max-w-lg py-16 text-center">
+          <CheckCircle2 className="mx-auto h-14 w-14 text-forest-600" strokeWidth={1.4} />
+          <h1 className="mt-6 text-5xl">Thank you for registering</h1>
+          <p className="lead mx-auto mt-4">
+            Your details are safely with us. If you have not booked yet, choose your first class below. We look forward to meeting you.
+          </p>
+          <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+            <Link to="/courses" className="btn-primary btn-lg">Book a class</Link>
+            <Link to="/" className="btn-outline btn-lg">Back to home</Link>
+          </div>
+        </div>
+      </section>
+    )
+  }
 
-        <Reveal delay={0.1}>
-          {submitted ? (
-            <div className="glass rounded-3xl p-8 md:p-12 shadow-xl text-center space-y-4">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-amber-500/10 text-amber-600">
-                <CheckCircle2 className="h-8 w-8" />
-              </div>
-              <h2 className="font-serif text-3xl md:text-4xl text-forest-900">Registration Received!</h2>
-              <p className="text-forest-700/85 max-w-md mx-auto leading-relaxed">
-                Thank you for registering! Your booking confirmation, calendar invite, and preparation guidelines have been triggered.
-              </p>
-              <div className="pt-4">
-                <Link
-                  to="/"
-                  className="rounded-xl gold-click bg-forest-600 px-7 py-3 font-semibold text-cream-50 hover:bg-forest-500 transition-all inline-block"
-                >
-                  Return to Home
-                </Link>
-              </div>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="glass rounded-3xl p-8 md:p-10 shadow-xl space-y-6">
-              {error && (
-                <div className="rounded-xl bg-red-50 p-3 text-sm text-red-600">
-                  {error}
+  const f = (name: string) => `${id}-${name}`
+
+  return (
+    <>
+      <PageHero
+        eyebrow="New students"
+        title="Registration & health form"
+        intro="Please complete this once before your first class. It helps us understand your body and keep you safe. It takes about three minutes."
+      />
+
+      <section className="pb-24 pt-2">
+        <div className="container-page">
+          <Reveal className="mx-auto max-w-3xl">
+            <form onSubmit={handleSubmit} className="space-y-10 rounded-3xl border border-forest-900/[0.08] bg-white p-6 shadow-soft sm:p-10">
+              <Section title="About you">
+                <Field label="First name" id={f('first')}>
+                  <input id={f('first')} name="firstName" required autoComplete="given-name" className="field" />
+                </Field>
+                <Field label="Last name" id={f('last')}>
+                  <input id={f('last')} name="lastName" required autoComplete="family-name" className="field" />
+                </Field>
+                <Field label="Date of birth" id={f('dob')} optional>
+                  <input id={f('dob')} name="dob" type="date" autoComplete="bday" className="field" />
+                </Field>
+                <Field label="Occupation" id={f('occupation')} optional>
+                  <input id={f('occupation')} name="occupation" autoComplete="organization-title" className="field" />
+                </Field>
+                <div className="sm:col-span-2">
+                  <Field label="Address" id={f('address')} optional>
+                    <input id={f('address')} name="address" autoComplete="street-address" className="field" />
+                  </Field>
                 </div>
+                <Field label="Town or city" id={f('city')} optional>
+                  <input id={f('city')} name="city" autoComplete="address-level2" className="field" />
+                </Field>
+                <Field label="Postcode" id={f('postcode')} optional>
+                  <input id={f('postcode')} name="postCode" autoComplete="postal-code" className="field uppercase" />
+                </Field>
+              </Section>
+
+              <Section title="Contact">
+                <Field label="Email" id={f('email')}>
+                  <input id={f('email')} name="email" type="email" required autoComplete="email" inputMode="email" className="field" />
+                </Field>
+                <Field label="Mobile" id={f('phone')}>
+                  <input id={f('phone')} name="phone" type="tel" required autoComplete="tel" inputMode="tel" className="field" />
+                </Field>
+                <Field label="Emergency contact number" id={f('emergency')}>
+                  <input id={f('emergency')} name="emergencyContact" type="tel" required inputMode="tel" className="field" />
+                </Field>
+                <fieldset>
+                  <legend className="field-label">Registering for</legend>
+                  <div className="flex gap-6 pt-2">
+                    {[['self', 'Myself'], ['someone-else', 'Someone else']].map(([v, l]) => (
+                      <label key={v} className="flex items-center gap-2.5 text-forest-900">
+                        <input type="radio" name="regType" value={v} defaultChecked={v === 'self'} className="h-5 w-5 accent-forest-600" />
+                        {l}
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              </Section>
+
+              <Section title="Your practice & health">
+                <fieldset className="sm:col-span-2">
+                  <legend className="field-label">Have you practised yoga before?</legend>
+                  <div className="flex gap-6 pt-2">
+                    {[['yes', 'Yes'], ['no', 'No']].map(([v, l]) => (
+                      <label key={v} className="flex items-center gap-2.5 text-forest-900">
+                        <input
+                          type="radio"
+                          name="experience"
+                          value={v}
+                          defaultChecked={v === 'no'}
+                          onChange={() => setExperienced(v === 'yes')}
+                          className="h-5 w-5 accent-forest-600"
+                        />
+                        {l}
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+                {experienced && (
+                  <div className="sm:col-span-2">
+                    <Field label="When, and for how long?" id={f('expdetail')}>
+                      <input id={f('expdetail')} name="experienceDetail" placeholder="e.g. On and off for two years" className="field" />
+                    </Field>
+                  </div>
+                )}
+                <fieldset className="sm:col-span-2">
+                  <legend className="field-label">Do you have numbness or pain in any of these areas?</legend>
+                  <p className="field-help !mt-0">Select all that apply.</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {REGISTRATION_FORM.painAreas.map((area) => (
+                      <label key={area} className="cursor-pointer">
+                        <input type="checkbox" name="pain" value={area} className="peer sr-only" />
+                        <span className="inline-flex rounded-full border border-forest-900/15 px-4 py-2 text-[0.95rem] text-forest-800 transition-colors peer-checked:border-forest-600 peer-checked:bg-forest-600 peer-checked:text-cream-50 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-amber-600">
+                          {area}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+                <div className="sm:col-span-2">
+                  <Field label="Any past surgeries or illnesses we should know about?" id={f('surgeries')} optional>
+                    <input id={f('surgeries')} name="surgeries" className="field" />
+                  </Field>
+                </div>
+                <div className="sm:col-span-2">
+                  <Field label="Anything else?" id={f('notes')} optional>
+                    <textarea id={f('notes')} name="notes" rows={3} placeholder="Pregnancy, medication, goals, or anything that helps us teach you well." className="field resize-y" />
+                  </Field>
+                </div>
+              </Section>
+
+              <fieldset className="border-t border-forest-900/[0.08] pt-8">
+                <legend className="float-left mb-4 w-full font-serif text-2xl text-forest-900">Waiver & consent</legend>
+                <div className="clear-left max-h-64 space-y-3 overflow-y-auto rounded-2xl bg-cream-100 p-5 text-[0.95rem] leading-relaxed text-forest-800" data-lenis-prevent tabIndex={0} aria-label="Waiver text">
+                  {REGISTRATION_FORM.waiver.map((p) => (
+                    <p key={p.slice(0, 24)}>{p}</p>
+                  ))}
+                </div>
+                <div className="mt-5 space-y-4">
+                  <label className="flex items-start gap-3 text-forest-900">
+                    <input type="checkbox" required className="mt-1 h-5 w-5 shrink-0 accent-forest-600" />
+                    <span>
+                      I have read and agree to the waiver above and the{' '}
+                      <Link to="/terms" target="_blank" className="link-underline font-semibold">terms & conditions</Link>.
+                    </span>
+                  </label>
+                  <label className="flex items-start gap-3 text-forest-900">
+                    <input type="checkbox" required className="mt-1 h-5 w-5 shrink-0 accent-forest-600" />
+                    <span>
+                      I consent to Sattvalife Yoga storing the health information I have given, only to keep me safe in class. See our{' '}
+                      <Link to="/privacy" target="_blank" className="link-underline font-semibold">privacy policy</Link>.
+                    </span>
+                  </label>
+                  <label className="flex items-start gap-3 text-forest-900">
+                    <input type="checkbox" name="photoConsent" className="mt-1 h-5 w-5 shrink-0 accent-forest-600" />
+                    <span>
+                      {REGISTRATION_FORM.photoConsent} <span className="text-forest-800/60">(optional)</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <input type="text" name={HONEYPOT} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+
+              {status === 'error' && (
+                <p role="alert" className="rounded-xl bg-red-50 px-4 py-3 text-red-800">
+                  {error} If it keeps happening, email us and we will register you by hand.
+                </p>
               )}
 
-              {/* Personal Details */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-forest-800 mb-1">First Name *</label>
-                  <input
-                    name="firstName"
-                    required
-                    placeholder="Jane"
-                    className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-forest-800 mb-1">Last Name *</label>
-                  <input
-                    name="lastName"
-                    required
-                    placeholder="Doe"
-                    className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-forest-800 mb-1">Date of Birth</label>
-                  <input
-                    name="dob"
-                    type="date"
-                    className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-forest-800 mb-1">Occupation</label>
-                  <input
-                    name="occupation"
-                    placeholder="Occupation"
-                    className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-forest-800 mb-1">Address</label>
-                <input
-                  name="address"
-                  placeholder="Address"
-                  className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-forest-800 mb-1">City</label>
-                  <input
-                    name="city"
-                    placeholder="City"
-                    className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-forest-800 mb-1">Post Code</label>
-                  <input
-                    name="postCode"
-                    placeholder="Post Code"
-                    className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-forest-800 mb-1">Mobile</label>
-                  <input
-                    name="phone"
-                    type="tel"
-                    placeholder="+44 7700 900077"
-                    className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-forest-800 mb-1">Emergency Contact Number</label>
-                  <input
-                    name="emergencyContact"
-                    type="tel"
-                    placeholder="Emergency Contact Number"
-                    className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-forest-800 mb-1">E-mail Address *</label>
-                <input
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="jane@example.com"
-                  className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20"
-                />
-              </div>
-
-              {/* Registration type */}
-              <div>
-                <p className="text-sm font-semibold text-forest-800 mb-3">Registering for:</p>
-                <div className="flex gap-6">
-                  <label className="flex items-center gap-2 text-sm text-forest-700"><input type="radio" name="regType" value="self" defaultChecked className="text-forest-600" /> Self</label>
-                  <label className="flex items-center gap-2 text-sm text-forest-700"><input type="radio" name="regType" value="someone-else" className="text-forest-600" /> Someone else</label>
-                </div>
-              </div>
-
-            {/* Experience */}
-            <div>
-              <p className="text-sm font-semibold text-forest-800 mb-3">Have you practiced yoga before?</p>
-              <div className="flex gap-6">
-                <label className="flex items-center gap-2 text-sm text-forest-700"><input type="radio" name="experience" value="yes" className="text-forest-600" /> Yes</label>
-                <label className="flex items-center gap-2 text-sm text-forest-700"><input type="radio" name="experience" value="no" defaultChecked className="text-forest-600" /> No</label>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-forest-800 mb-1">If yes, specify when and how long for? (years)</label>
-              <input name="experienceDetail" type="number" min="0" placeholder="Years" className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20" />
-            </div>
-
-            {/* Pain areas */}
-            <div>
-              <p className="text-sm font-semibold text-forest-800 mb-1">Limitations / Injuries:</p>
-              <p className="text-sm text-forest-700/80 mb-3">Do you have numbness/pain in (click all that apply):</p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                {REGISTRATION_FORM.painAreas.map((area) => (
-                  <label key={area} className="flex items-center gap-2 text-sm text-forest-700">
-                    <input type="checkbox" name="pain" value={area} className="text-forest-600 rounded" />
-                    {area}
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            <input name="surgeries" placeholder="Any past surgeries or any illness that is not mentioned in our existing options" className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20" />
-
-            <textarea name="notes" rows={3} placeholder="Additional notes / information" className="w-full rounded-xl border border-forest-200 px-4 py-3 text-sm outline-none focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20 resize-none" />
-
-            {/* Waiver */}
-            <div className="rounded-xl bg-forest-50 p-5 text-sm text-forest-700/80 leading-relaxed space-y-3">
-              <p className="font-semibold text-forest-800">Waiver</p>
-              {REGISTRATION_FORM.waiver.map((paragraph) => (
-                <p key={paragraph.slice(0, 24)}>{paragraph}</p>
-              ))}
-              <label className="mt-1 flex items-start gap-3">
-                <input type="checkbox" required className="mt-1 text-forest-600 rounded" />
-                <span>I have read and agree to the <Link to="/terms" className="text-amber-500 underline">Terms & Conditions</Link></span>
-              </label>
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full rounded-xl bg-forest-600 py-3.5 font-semibold text-cream-50 hover:bg-forest-500 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {loading ? 'Submitting Registration...' : 'Submit Registration'}
-            </button>
-            <p className="text-center text-xs text-forest-700/50">You will receive an email with all the details regarding fees, venue and payment details.</p>
-          </form>
-          )}
-        </Reveal>
-      </div>
-    </div>
+              <button type="submit" disabled={status === 'sending'} className="btn-primary btn-lg w-full">
+                {status === 'sending' ? 'Submitting…' : 'Submit registration'}
+              </button>
+            </form>
+          </Reveal>
+        </div>
+      </section>
+    </>
   )
 }

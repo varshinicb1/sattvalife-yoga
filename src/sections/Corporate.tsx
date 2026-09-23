@@ -1,79 +1,46 @@
-import { useRef } from 'react'
 import { Link } from 'react-router'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { Reveal, SectionHeading, TiltCard } from '@/components/motion-primitives'
-import { CORPORATE } from '@/data/content'
+import { ArrowRight } from 'lucide-react'
+import { Reveal } from '@/components/motion-primitives'
+import { CORPORATE, REVIEWS } from '@/data/content'
 
-export default function Corporate() {
-  const stripRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: stripRef, offset: ['start end', 'end start'] })
-  const x = useTransform(scrollYProgress, [0, 1], ['8%', '-28%'])
+/** Home: the one deep-forest band on the page, for Sattvalife@Work. */
+export function CorporateTeaser() {
+  const photo = CORPORATE.images[0]
+  const quote = REVIEWS.find((r) => r.author === 'Sally Cook')
 
   return (
-    <section id="corporate" className="relative py-12 md:py-16 lg:py-20 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-5">
-        <SectionHeading eyebrow="Corporate Programme" title={CORPORATE.title} />
-        <Reveal className="mx-auto max-w-3xl text-center">
-          <p className="font-serif italic text-2xl text-forest-700">“{CORPORATE.tagline}”</p>
-          <p className="mt-5 text-lg leading-relaxed text-forest-800/85">{CORPORATE.body}</p>
-        </Reveal>
-      </div>
-
-      {/* Image gallery — native horizontal scroll on mobile, scroll-driven on desktop */}
-      <div className="mt-10">
-        {/* Desktop: scroll-driven parallax */}
-        <div ref={stripRef} className="hidden md:block overflow-visible" style={{ perspective: 1200 }}>
-          <motion.div style={{ x }} className="flex gap-8 pl-[8vw] w-max">
-            {CORPORATE.images.map((src, i) => (
-              <TiltCard key={src}>
-                <div className="relative h-80 w-80 shrink-0 overflow-hidden rounded-3xl border-4 border-white shadow-2xl shadow-forest-900/20">
-                  <img src={src} alt={`Office yoga session ${i + 1}`} className="h-full w-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-forest-900/50 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
-                    <p className="text-cream-50 font-serif text-lg">Yoga at the workplace</p>
-                  </div>
-                </div>
-              </TiltCard>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Mobile: native horizontal swipe */}
-        <div className="md:hidden overflow-x-auto px-5 pb-4 snap-x snap-mandatory scrollbar-none">
-          <div className="flex gap-4 w-max">
-            {CORPORATE.images.map((src, i) => (
-              <div key={src} className="snap-center shrink-0">
-                <div className="relative h-64 w-64 overflow-hidden rounded-2xl border-4 border-white shadow-xl shadow-forest-900/15">
-                  <img src={src} alt={`Office yoga session ${i + 1}`} className="h-full w-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-forest-900/50 to-transparent flex items-end p-4">
-                    <p className="text-cream-50 font-serif">Yoga at the workplace</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="mx-auto mt-12 max-w-5xl px-5 grid md:grid-cols-2 gap-10 items-start">
+    <section className="relative overflow-hidden bg-forest-900 py-20 text-cream-50 sm:py-28">
+      <div className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <Reveal>
-          <h3 className="font-serif text-3xl text-forest-900">{CORPORATE.offersTitle}</h3>
-          <p className="mt-3 text-forest-800/80">{CORPORATE.offersIntro}</p>
-          <Link
-            to="/courses"
-            className="mt-7 inline-block rounded-full gold-click bg-forest-600 px-7 py-3 font-semibold text-cream-50 shadow-lg shadow-forest-600/30 hover:bg-forest-500 transition-colors"
-          >
-            Bring Sattvalife to your workplace
-          </Link>
+          <img
+            src={photo.small}
+            srcSet={`${photo.small} 800w, ${photo.src} 1600w`}
+            sizes="(min-width: 1024px) 600px, 100vw"
+            width={photo.w}
+            height={photo.h}
+            alt={photo.alt}
+            loading="lazy"
+            className="aspect-[4/3] w-full rounded-3xl object-cover shadow-lift"
+          />
         </Reveal>
-        <Reveal delay={0.15}>
-          <ul className="space-y-3">
-            {CORPORATE.offers.map((o) => (
-              <li key={o} className="flex items-start gap-3 glass rounded-xl px-4 py-3 text-sm text-forest-900 shadow-sm">
-                <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full gold-click bg-lotus-400" />
-                {o}
-              </li>
-            ))}
-          </ul>
+        <Reveal delay={0.1}>
+          <p className="eyebrow !text-amber-300">Sattvalife@Work</p>
+          <h2 className="mt-4 text-4xl leading-[1.08] !text-cream-50 sm:text-5xl">Yoga for busy teams</h2>
+          <p className="mt-6 max-w-[55ch] text-lg leading-relaxed text-cream-100/80">
+            Seated desk yoga, wellbeing mornings and regular on-site sessions that help desk-bound teams ease aches, lower stress and come back focused.
+          </p>
+          {quote && (
+            <figure className="mt-8 border-l-2 border-amber-300/60 pl-5">
+              <blockquote className="font-serif text-xl italic leading-snug text-cream-50">“{quote.text}”</blockquote>
+              <figcaption className="mt-3 text-sm text-cream-100/70">
+                {quote.author}, {quote.context?.toLowerCase()}
+              </figcaption>
+            </figure>
+          )}
+          <Link to="/corporate" className="btn-brass btn-lg mt-10">
+            Explore Sattvalife@Work
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </Reveal>
       </div>
     </section>

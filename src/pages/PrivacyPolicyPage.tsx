@@ -1,26 +1,23 @@
 import { Link } from 'react-router'
 import { Reveal } from '@/components/motion-primitives'
-import { Shield, Lock, Eye, FileText } from 'lucide-react'
+import { Lock, Eye, FileText } from 'lucide-react'
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="relative py-16 md:py-20 lg:py-24">
+    <div className="relative pb-24 pt-[calc(72px+env(safe-area-inset-top)+3.5rem)]">
       <div className="mx-auto max-w-4xl px-5">
         <Reveal>
-          <div className="inline-flex items-center gap-2 rounded-full bg-amber-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-600 mb-4">
-            <Shield className="h-3.5 w-3.5" />
-            <span>UK GDPR & Data Protection Act 2018 Compliant</span>
-          </div>
-          <h1 className="font-serif text-4xl sm:text-5xl text-forest-900 mb-4">Privacy Policy</h1>
+          <p className="eyebrow mb-4">Privacy</p>
+          <h1 className="mb-4 text-5xl sm:text-6xl">Privacy Policy</h1>
           <p className="text-forest-700/75 mb-10 text-sm">Last updated: August 2026 · Sattvalife Yoga, Leicester, United Kingdom</p>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="glass rounded-3xl p-8 sm:p-12 shadow-xl space-y-10 text-forest-800/90 leading-relaxed">
+          <div className="card p-7 sm:p-12 text-lg space-y-10 text-forest-800/90 leading-relaxed">
             
             <section className="space-y-3">
               <h2 className="font-serif text-2xl text-forest-900 flex items-center gap-2">
-                <FileText className="h-5 w-5 text-amber-500" />
+                <FileText className="h-5 w-5 text-amber-700" />
                 1. Introduction & Data Controller
               </h2>
               <p>
@@ -33,7 +30,7 @@ export default function PrivacyPolicyPage() {
 
             <section className="space-y-3">
               <h2 className="font-serif text-2xl text-forest-900 flex items-center gap-2">
-                <Eye className="h-5 w-5 text-amber-500" />
+                <Eye className="h-5 w-5 text-amber-700" />
                 2. Information We Collect
               </h2>
               <p>We may collect and process the following categories of personal data:</p>
@@ -47,7 +44,7 @@ export default function PrivacyPolicyPage() {
 
             <section className="space-y-3">
               <h2 className="font-serif text-2xl text-forest-900 flex items-center gap-2">
-                <Lock className="h-5 w-5 text-amber-500" />
+                <Lock className="h-5 w-5 text-amber-700" />
                 3. Lawful Bases for Processing
               </h2>
               <p>Under the UK GDPR, we rely on the following lawful bases:</p>
@@ -71,7 +68,7 @@ export default function PrivacyPolicyPage() {
                 <li><strong>The right to object:</strong> Object to processing based on legitimate interests or direct marketing.</li>
               </ul>
               <p className="pt-2 text-sm">
-                To exercise any of these rights, please contact us at <a href="mailto:info@sattvalife.yoga" className="text-amber-600 underline font-medium">info@sattvalife.yoga</a>. We respond to all valid requests within 30 days free of charge.
+                To exercise any of these rights, please contact us at <a href="mailto:info@sattvalife.yoga" className="link-underline font-semibold">info@sattvalife.yoga</a>. We respond to all valid requests within 30 days free of charge.
               </p>
             </section>
 
@@ -83,13 +80,13 @@ export default function PrivacyPolicyPage() {
               <div className="rounded-2xl bg-forest-50 p-4 text-sm space-y-1">
                 <p className="font-semibold text-forest-900">Information Commissioner's Office (ICO)</p>
                 <p>Wycliffe House, Water Lane, Wilmslow, Cheshire, SK9 5AF</p>
-                <p>Helpline: 0303 123 1113 · Website: <a href="https://ico.org.uk" target="_blank" rel="noreferrer" className="text-amber-600 underline">ico.org.uk</a></p>
+                <p>Helpline: 0303 123 1113 · Website: <a href="https://ico.org.uk" target="_blank" rel="noreferrer" className="link-underline inline-block py-1">ico.org.uk</a></p>
               </div>
             </section>
 
             <div className="pt-6 border-t border-forest-100 flex items-center justify-between text-sm">
-              <Link to="/" className="text-amber-600 hover:text-amber-700 underline">← Return to Home</Link>
-              <Link to="/terms" className="text-forest-700 hover:text-forest-900 underline">Terms & Conditions →</Link>
+              <Link to="/" className="link-underline inline-block py-1">← Return to Home</Link>
+              <Link to="/terms" className="link-underline inline-block py-1">Terms & Conditions →</Link>
             </div>
           </div>
         </Reveal>

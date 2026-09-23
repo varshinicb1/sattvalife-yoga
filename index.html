@@ -3,52 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Sattvalife Yoga — Wellness Courses in Leicester</title>
-    <meta name="description" content="Personalised yoga classes in Leicester — Vinyasa flow for small groups, individuals and workplaces. Book a class today!" />
+    <title>Sattvalife Yoga | Vinyasa Yoga Classes in Leicester</title>
+    <meta name="description" content="Small-group Vinyasa yoga in Oadby and Thurnby, Leicester. Personal attention for every age and ability, plus workplace wellbeing sessions. Rated 5.0 on Google." />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Sattvalife Yoga" />
     <!-- Open Graph / Social sharing -->
-    <meta property="og:title" content="Sattvalife Yoga — Wellness Courses in Leicester" />
-    <meta property="og:description" content="Personalised yoga classes in Leicester — Vinyasa flow for small groups, individuals and workplaces." />
-    <meta property="og:image" content="https://sattvalife-yoga.web.app/images/hero-yoga.jpeg" />
+    <meta property="og:site_name" content="Sattvalife Yoga" />
+    <meta property="og:title" content="Sattvalife Yoga | Vinyasa Yoga Classes in Leicester" />
+    <meta property="og:description" content="Small-group Vinyasa yoga in Oadby and Thurnby, Leicester. Personal attention for every age and ability." />
+    <meta property="og:image" content="https://sattvalife-yoga.web.app/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:url" content="https://sattvalife-yoga.web.app" />
+    <meta property="og:image:alt" content="Sattvalife Yoga & Wellness: Stop worrying, start living." />
+    <meta property="og:url" content="https://sattvalife-yoga.web.app/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_GB" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sattvalife Yoga — Wellness Courses in Leicester" />
-    <meta name="twitter:description" content="Personalised yoga classes in Leicester — Vinyasa flow for small groups, individuals and workplaces." />
-    <meta name="twitter:image" content="https://sattvalife-yoga.web.app/images/hero-yoga.jpeg" />
-    <link rel="canonical" href="https://sattvalife-yoga.web.app" />
+    <meta name="twitter:title" content="Sattvalife Yoga | Vinyasa Yoga Classes in Leicester" />
+    <meta name="twitter:description" content="Small-group Vinyasa yoga in Oadby and Thurnby, Leicester. Personal attention for every age and ability." />
+    <meta name="twitter:image" content="https://sattvalife-yoga.web.app/og-image.jpg" />
+    <link rel="canonical" href="https://sattvalife-yoga.web.app/" />
     <!-- PWA / App icons -->
     <link rel="manifest" href="/manifest.json" />
-    <link rel="icon" href="/images/logo.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/images/logo.png" />
-    <meta name="theme-color" content="#4B5338" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#FDFBF6" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="Sattvalife" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <!-- Preconnect to Google Fonts to reduce latency on mobile -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Preload hero image for fastest LCP on mobile -->
-    <link rel="preload" href="/images/hero-yoga.jpeg" as="image" fetchpriority="high" />
+    <link rel="alternate" type="application/rss+xml" title="Sattvalife Journal" href="/rss.xml" />
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": "SportsActivityLocation",
       "name": "Sattvalife Yoga",
-      "description": "Personalised yoga classes in Leicester for small groups, individuals and workplaces.",
-      "url": "https://sattvalife-yoga.web.app",
+      "alternateName": "Sattvalife Yoga & Wellness",
+      "description": "Personalised Vinyasa yoga classes in Leicester for small groups, individuals and workplaces.",
+      "url": "https://sattvalife-yoga.web.app/",
+      "logo": "https://sattvalife-yoga.web.app/icon-512.png",
+      "image": "https://sattvalife-yoga.web.app/og-image.jpg",
       "telephone": "+447551100218",
+      "priceRange": "££",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Leicester",
+        "addressRegion": "Leicestershire",
         "addressCountry": "GB"
       },
+      "areaServed": ["Oadby", "Thurnby", "Leicester"],
+      "sameAs": [
+        "https://www.instagram.com/sattvalifeyoga/",
+        "https://www.facebook.com/sattvalifeyoga",
+        "https://sattvalife.yoga/"
+      ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
@@ -71,8 +80,12 @@
     }
     </script>
   </head>
-  <body>
+  <body class="grain">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-toast focus:rounded-full focus:bg-forest-900 focus:px-5 focus:py-3 focus:text-cream-50">Skip to content</a>
     <div id="root"></div>
+    <noscript>
+      <p style="padding:2rem;font-family:Georgia,serif;text-align:center">Sattvalife Yoga: small-group Vinyasa yoga in Oadby (Tuesdays 6:30pm) and Thurnby (Thursdays 7pm), Leicester. Please enable JavaScript to book online.</p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

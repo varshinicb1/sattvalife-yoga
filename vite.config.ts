@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
 export default defineConfig({
-  base: './',
+  base: '/',
   plugins: [react()],
   server: { port: 3000 },
   resolve: {
@@ -19,10 +19,7 @@ export default defineConfig({
         // so the initial JS mobile devices download is minimal
         manualChunks: {
           'vendor-react': ['react', 'react-dom', 'react-router'],
-          'vendor-motion': ['framer-motion'],
-          'vendor-lenis': ['lenis'],
-          'vendor-three': ['three'],
-          'vendor-posthog': ['posthog-js'],
+          'vendor-motion': ['framer-motion', 'lenis'],
         },
       },
     },

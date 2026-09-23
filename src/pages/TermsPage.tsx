@@ -1,22 +1,19 @@
 import { Link } from 'react-router'
 import { Reveal } from '@/components/motion-primitives'
-import { Scale, CheckCircle2, AlertCircle } from 'lucide-react'
+import { CheckCircle2, AlertCircle } from 'lucide-react'
 
 export default function TermsPage() {
   return (
-    <div className="relative py-16 md:py-20 lg:py-24">
+    <div className="relative pb-24 pt-[calc(72px+env(safe-area-inset-top)+3.5rem)]">
       <div className="mx-auto max-w-4xl px-5">
         <Reveal>
-          <div className="inline-flex items-center gap-2 rounded-full bg-amber-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-600 mb-4">
-            <Scale className="h-3.5 w-3.5" />
-            <span>UK Consumer Rights Act 2015 Compliant</span>
-          </div>
-          <h1 className="font-serif text-4xl sm:text-5xl text-forest-900 mb-4">Terms & Conditions</h1>
+          <p className="eyebrow mb-4">Terms</p>
+          <h1 className="mb-4 text-5xl sm:text-6xl">Terms & Conditions</h1>
           <p className="text-forest-700/75 mb-10 text-sm">Last updated: August 2026 · Governed by the Laws of England & Wales</p>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="glass rounded-3xl p-8 sm:p-12 shadow-xl space-y-10 text-forest-800/90 leading-relaxed">
+          <div className="card p-7 sm:p-12 text-lg space-y-10 text-forest-800/90 leading-relaxed">
             
             <section className="space-y-3">
               <h2 className="font-serif text-2xl text-forest-900">1. Agreement to Terms</h2>
@@ -42,7 +39,7 @@ export default function TermsPage() {
               </p>
               <div className="rounded-2xl bg-amber-500/10 border border-amber-500/20 p-5 space-y-2 text-sm text-forest-900">
                 <p className="font-semibold flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-amber-600" />
+                  <CheckCircle2 className="h-4 w-4 text-amber-700" />
                   Class Cancellation Policy:
                 </p>
                 <p>
@@ -75,8 +72,8 @@ export default function TermsPage() {
             </section>
 
             <div className="pt-6 border-t border-forest-100 flex items-center justify-between text-sm">
-              <Link to="/" className="text-amber-600 hover:text-amber-700 underline">← Return to Home</Link>
-              <Link to="/privacy" className="text-forest-700 hover:text-forest-900 underline">Privacy Policy →</Link>
+              <Link to="/" className="link-underline inline-block py-1">← Return to Home</Link>
+              <Link to="/privacy" className="link-underline inline-block py-1">Privacy Policy →</Link>
             </div>
           </div>
         </Reveal>

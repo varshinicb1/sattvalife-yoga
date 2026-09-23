@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sattvalife Yoga — Blog</title>
+    <title>Sattvalife Yoga Journal</title>
     <link>https://sattvalife-yoga.web.app/blog</link>
-    <description>Yoga tips, wellness insights and class updates from Sattvalife Yoga in Leicester.</description>
+    <description>Yoga tips, wellbeing insights and class updates from Sattvalife Yoga in Leicester.</description>
     <language>en-gb</language>
     <atom:link href="https://sattvalife-yoga.web.app/rss.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sat, 19 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2026 00:00:00 +0000</lastBuildDate>
 
     <item>
-      <title>5 Benefits of Vinyasa Flow for Beginners</title>
-      <link>https://sattvalife-yoga.web.app/blog/benefits-of-vinyasa-flow</link>
-      <description>Why flow yoga is the perfect starting point for your wellness journey in Leicester.</description>
-      <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
-      <guid>https://sattvalife-yoga.web.app/blog/benefits-of-vinyasa-flow</guid>
+      <title>3 Quick Yoga Asanas to Get Relief from Back Pain</title>
+      <link>https://sattvalife-yoga.web.app/blog/3-quick-yoga-asanas-for-back-pain</link>
+      <description>Sitting is the new smoking. Learn three powerful yoga poses to counter the effects of prolonged desk work.</description>
+      <pubDate>Thu, 30 Jun 2022 12:00:00 +0000</pubDate>
+      <guid>https://sattvalife-yoga.web.app/blog/3-quick-yoga-asanas-for-back-pain</guid>
     </item>
 
     <item>
-      <title>Why Workplace Yoga is Good for Your Team</title>
-      <link>https://sattvalife-yoga.web.app/blog/workplace-yoga-benefits</link>
-      <description>How regular yoga sessions can boost productivity, morale, and health at your company.</description>
-      <pubDate>Thu, 28 May 2026 00:00:00 GMT</pubDate>
-      <guid>https://sattvalife-yoga.web.app/blog/workplace-yoga-benefits</guid>
+      <title>Yoga and Meditation</title>
+      <link>https://sattvalife-yoga.web.app/blog/yoga-and-meditation</link>
+      <description>Discover how meditation complements your yoga practice and why it matters for mental clarity and wellbeing.</description>
+      <pubDate>Wed, 27 Mar 2024 12:00:00 +0000</pubDate>
+      <guid>https://sattvalife-yoga.web.app/blog/yoga-and-meditation</guid>
     </item>
 
     <item>
-      <title>How to Prepare for Your First Yoga Class</title>
-      <link>https://sattvalife-yoga.web.app/blog/first-yoga-class-guide</link>
-      <description>Everything you need to know before your first session — from what to wear to what to expect.</description>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-      <guid>https://sattvalife-yoga.web.app/blog/first-yoga-class-guide</guid>
+      <title>Empowering Children Through Yoga</title>
+      <link>https://sattvalife-yoga.web.app/blog/empowering-children-through-yoga</link>
+      <description>Children face immense stress too. Yoga gives them tools for self-health, relaxation, and inner fulfilment.</description>
+      <pubDate>Wed, 27 Mar 2024 12:00:00 +0000</pubDate>
+      <guid>https://sattvalife-yoga.web.app/blog/empowering-children-through-yoga</guid>
     </item>
   </channel>
 </rss>

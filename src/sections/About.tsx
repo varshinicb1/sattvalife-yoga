@@ -1,102 +1,66 @@
-import { Reveal, SectionHeading, TiltCard } from '@/components/motion-primitives'
-import { JOURNEY } from '@/data/content'
+import { Link } from 'react-router'
+import { ArrowRight } from 'lucide-react'
+import { Reveal } from '@/components/motion-primitives'
+import { INSTRUCTORS } from '@/data/content'
 import { useCmsContent } from '@/hooks/useCmsContent'
 
 const PILLAR_ICONS = ['/images/icon-mindfulness.png', '/images/icon-discover.png', '/images/icon-meditation.png']
 
-export function About() {
-  const { welcome, aboutVinyasa, images } = useCmsContent()
+/** Home: who we are, the three pillars, and the two teachers. */
+export function Welcome() {
+  const { welcome, aboutVinyasa } = useCmsContent()
 
   return (
-    <section id="about" className="relative py-12 md:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-5">
-        <SectionHeading eyebrow="Sattvalife" title={welcome.title} />
-        <Reveal className="mx-auto max-w-3xl text-center">
-          <p className="text-lg leading-relaxed text-forest-800/85">{welcome.body}</p>
-        </Reveal>
-
-        <div className="mt-24 grid lg:grid-cols-2 gap-14 items-center">
+    <section className="py-20 sm:py-28">
+      <div className="container-page grid gap-14 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-7">
           <Reveal>
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-amber-300/30 to-forest-200/40 blur-2xl" />
-              <img
-                src={images.poseImage}
-                alt="Vinyasa yoga pose"
-                loading="lazy"
-                decoding="async"
-                className="relative rounded-[2rem] shadow-2xl shadow-forest-900/20 w-full object-cover border-4 border-white aspect-[16/10]"
-              />
-              <div className="absolute -bottom-6 -right-4 glass rounded-2xl px-5 py-3 shadow-xl">
-                <p className="font-serif text-forest-800 text-lg leading-tight">Vinyasa = Flow</p>
-                <p className="text-xs text-forest-700/70">poses run smoothly together</p>
-              </div>
-            </div>
+            <h2 className="text-4xl leading-[1.08] sm:text-5xl lg:text-[3.5rem]">{welcome.title}</h2>
+            <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-forest-800/85">{welcome.body}</p>
           </Reveal>
-          <div>
-            <Reveal>
-              <h3 className="font-serif text-4xl text-forest-900 mb-5">{aboutVinyasa.title}</h3>
-              <p className="text-forest-800/85 leading-relaxed">{aboutVinyasa.body}</p>
-            </Reveal>
-            <div className="mt-9 grid gap-4">
-              {aboutVinyasa.pillars.map((p, i) => (
-                <Reveal key={p.title} delay={i * 0.12}>
-                  <TiltCard>
-                    <div className="glass rounded-2xl p-5 flex gap-5 items-start shadow-lg shadow-forest-900/5 hover:shadow-xl transition-shadow">
-                      <div className="shrink-0 rounded-xl gold-click bg-forest-600/10 p-3">
-                        <img src={PILLAR_ICONS[i]} alt="" loading="lazy" decoding="async" className="h-9 w-9" />
-                      </div>
-                      <div>
-                        <h4 className="font-serif text-2xl text-forest-900">{p.title}</h4>
-                        <p className="mt-1 text-sm leading-relaxed text-forest-800/75">{p.text}</p>
-                      </div>
-                    </div>
-                  </TiltCard>
+
+          <ul className="mt-12 grid gap-8 sm:grid-cols-3 sm:gap-6">
+            {aboutVinyasa.pillars.map((p, i) => (
+              <li key={p.title}>
+                <Reveal delay={i * 0.08}>
+                  <img src={PILLAR_ICONS[i % PILLAR_ICONS.length]} alt="" aria-hidden="true" width={48} height={48} loading="lazy" className="h-11 w-auto" />
+                  <h3 className="mt-4 text-2xl">{p.title}</h3>
+                  <p className="mt-2 text-[0.95rem] leading-relaxed text-forest-800/75">{p.text}</p>
                 </Reveal>
-              ))}
-            </div>
-          </div>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
-    </section>
-  )
-}
 
-export function Journey() {
-  const { images } = useCmsContent()
-
-  return (
-    <section className="relative py-12 md:py-16 lg:py-20 overflow-hidden">
-      <div className="absolute inset-0 bg-forest-600" />
-      <div
-        className="absolute inset-0 opacity-15 bg-cover bg-center"
-        style={{ backgroundImage: `url(${images.aboutBgImage})` }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-forest-900/60 via-transparent to-forest-900/60" />
-      <div className="relative mx-auto max-w-6xl px-5 text-center">
-        <Reveal>
-          <p className="font-serif italic text-2xl md:text-3xl text-cream-100/95 max-w-3xl mx-auto leading-snug">
-            “{JOURNEY.quote}”
-          </p>
-        </Reveal>
-        <Reveal delay={0.15}>
-          <h3 className="mt-14 font-serif text-4xl md:text-5xl text-cream-50">{JOURNEY.title}</h3>
-          {JOURNEY.body.map((t) => (
-            <p key={t.slice(0, 20)} className="mt-5 max-w-3xl mx-auto text-cream-100/85 leading-relaxed">
-              {t}
-            </p>
-          ))}
-        </Reveal>
-        <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-5">
-          {JOURNEY.stats.map((s, i) => (
-            <Reveal key={s} delay={i * 0.1}>
-              <TiltCard>
-                <div className="rounded-2xl border border-cream-50/25 bg-cream-50/10 backdrop-blur-md px-4 py-7 hover:bg-cream-50/20 transition-colors">
-                  <div className="mx-auto mb-3 h-1.5 w-10 rounded-full gold-click bg-lotus-400" />
-                  <p className="font-serif text-xl text-cream-50">{s}</p>
-                </div>
-              </TiltCard>
-            </Reveal>
-          ))}
+        <div className="lg:col-span-5">
+          <div className="grid grid-cols-2 gap-5 sm:gap-6 lg:mt-4">
+            {INSTRUCTORS.map((t, i) => (
+              <Reveal key={t.name} delay={i * 0.12} className={i === 1 ? 'mt-12 sm:mt-16' : ''}>
+                <Link to="/teachers" className="group block">
+                  <div className="arch overflow-hidden bg-cream-200 shadow-soft">
+                    <img
+                      src={t.imageSmall}
+                      srcSet={`${t.imageSmall} 480w, ${t.image} 800w`}
+                      sizes="(min-width: 1024px) 220px, 45vw"
+                      width={480}
+                      height={480}
+                      alt={`Portrait of ${t.name}`}
+                      loading="lazy"
+                      className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <p className="mt-4 font-serif text-xl text-forest-900 sm:text-2xl">{t.name}</p>
+                  <p className="text-sm text-forest-800/70">{t.role}</p>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="mt-10">
+            <Link to="/teachers" className="group inline-flex items-center gap-2 font-semibold text-forest-800 hover:text-forest-900">
+              <span className="link-underline">Meet your teachers</span>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Reveal>
         </div>
       </div>
     </section>

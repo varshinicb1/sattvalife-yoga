@@ -34,8 +34,8 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
     desc: 'On-site and online yoga for workplaces: seated desk yoga, wellbeing mornings and tailored programmes for teams across Leicestershire.',
   },
   '/experiences': {
-    title: 'Private Sessions & Events | Sattvalife Yoga Leicester',
-    desc: 'Private yoga classes, workplace wellbeing mornings and pop-up workshops across Leicestershire. Tell us what you have in mind.',
+    title: 'Wellness Celebrations & Experiences | Sattvalife Yoga Leicester',
+    desc: 'Baby showers, birthdays, hen parties and special occasions hosted as a wellness experience: Bollywood yoga and dance, Pilates, soundbath, breathwork, plus healthy nibbles and mocktails.',
   },
   '/reviews': {
     title: 'Reviews | Sattvalife Yoga Leicester',

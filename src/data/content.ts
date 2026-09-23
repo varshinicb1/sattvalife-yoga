@@ -365,18 +365,38 @@ export interface EventOffering {
   image?: string
 }
 
-/** What Sattvalife can host beyond the weekly timetable. Enquiry-based, no fixed dates. */
+/** Occasions we are asked to host. Supplied by the studio. */
+export const CELEBRATION_OCCASIONS = [
+  { title: 'Baby showers', text: 'A gentle, joyful way to gather before the baby arrives, with everything adapted for mums-to-be.' },
+  { title: 'Birthdays', text: 'Mark the year with movement, breath and something nourishing, instead of the usual meal out.' },
+  { title: 'Hen parties', text: 'A calm, memorable start to the celebration, and a session that suits everyone in the group.' },
+  { title: 'Special occasions', text: 'Anniversaries, reunions, team days, or simply an excuse to bring your people together.' },
+]
+
+/** What we can bring to an event, grouped the way the studio describes them. */
+export const CELEBRATION_MENU: { group: string; note: string; items: string[] }[] = [
+  {
+    group: 'Movement & flow',
+    note: 'Choose one, or combine a couple across a longer session.',
+    items: ['Bollywood yoga stretches', 'Bollywood dance workshop', 'Pilates', 'Gentle Vinyasa flow'],
+  },
+  {
+    group: 'Mindfulness & sound',
+    note: 'Slower, restorative practices that work beautifully to close an event.',
+    items: ['Soundbath meditation', 'Breathwork', 'Candle meditation'],
+  },
+  {
+    group: 'Nourishment',
+    note: 'Added on request, so your guests have something to enjoy afterwards.',
+    items: ['Healthy nibbles', 'Detox shots', 'Seasonal mocktails'],
+  },
+]
+
+/** Everything on the events enquiry form, so the studio can reply with a quote. */
+export const CELEBRATION_INTERESTS = CELEBRATION_MENU.flatMap((g) => g.items)
+
+/** Private and pop-up work that is not a celebration. */
 export const EVENT_OFFERINGS: EventOffering[] = [
-  {
-    title: 'Workplace wellbeing mornings',
-    text: 'A relaxed, light-hearted start to the day that brings your team together. Gentle movement, breathwork and relaxation, delivered at your office.',
-    image: '/images/opt/office-session-2-800.webp',
-  },
-  {
-    title: 'Seated & desk yoga',
-    text: 'A lunchtime reset for busy teams. Chair-based stretches that ease desk aches and leave people focused for the afternoon.',
-    image: '/images/opt/office-session-1-640.webp',
-  },
   {
     title: 'Private & small-group classes',
     text: 'One-to-one or with friends and family, planned around your schedule, needs and abilities. At home, in a garden or a venue of your choice.',

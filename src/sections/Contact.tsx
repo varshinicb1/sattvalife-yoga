@@ -26,10 +26,16 @@ export function ContactForm({
   const onSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
     const form = e.currentTarget
-    const data = Object.fromEntries(new FormData(form)) as Record<string, string>
-    const extras = Object.entries(data)
-      .filter(([k]) => k.startsWith('x_') && data[k])
-      .map(([k, v]) => `${k.slice(2).replace(/_/g, ' ')}: ${v}`)
+    const fd = new FormData(form)
+    const data = Object.fromEntries(fd) as Record<string, string>
+    // x_* fields are appended to the message; getAll keeps checkbox groups intact
+    const extras = [...new Set([...fd.keys()])]
+      .filter((k) => k.startsWith('x_'))
+      .map((k) => {
+        const values = fd.getAll(k).map(String).map((v) => v.trim()).filter(Boolean)
+        return values.length ? `${k.slice(2).replace(/_/g, ' ')}: ${values.join(', ')}` : ''
+      })
+      .filter(Boolean)
     setStatus('sending')
     setError('')
     try {

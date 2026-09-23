@@ -25,7 +25,7 @@ export function Welcome() {
                 <Reveal delay={i * 0.08}>
                   <img src={PILLAR_ICONS[i % PILLAR_ICONS.length]} alt="" aria-hidden="true" width={48} height={48} loading="lazy" className="h-11 w-auto" />
                   <h3 className="mt-4 text-2xl">{p.title}</h3>
-                  <p className="mt-2 text-[0.95rem] leading-relaxed text-forest-800/75">{p.text}</p>
+                  <p className="mt-2 text-base leading-relaxed text-forest-800/75">{p.text}</p>
                 </Reveal>
               </li>
             ))}

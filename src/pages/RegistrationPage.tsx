@@ -72,7 +72,7 @@ export default function RegistrationPage() {
 
   if (status === 'sent') {
     return (
-      <section className="container-page flex min-h-[80dvh] items-center justify-center pt-[calc(72px+env(safe-area-inset-top))]">
+      <section className="container-page flex min-h-[80dvh] items-center justify-center pt-[calc(84px+env(safe-area-inset-top))]">
         <div role="status" className="max-w-lg py-16 text-center">
           <CheckCircle2 className="mx-auto h-14 w-14 text-forest-600" strokeWidth={1.4} />
           <h1 className="mt-6 text-5xl">Thank you for registering</h1>
@@ -80,7 +80,7 @@ export default function RegistrationPage() {
             Your details are safely with us. If you have not booked yet, choose your first class below. We look forward to meeting you.
           </p>
           <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link to="/courses" className="btn-primary btn-lg">Book a class</Link>
+            <Link to="/classes" className="btn-primary btn-lg">Book a class</Link>
             <Link to="/" className="btn-outline btn-lg">Back to home</Link>
           </div>
         </div>

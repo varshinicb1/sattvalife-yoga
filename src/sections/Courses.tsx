@@ -36,7 +36,7 @@ export function PlanCards() {
               <p className={`mt-5 leading-relaxed ${featured ? 'text-cream-100/85' : 'text-forest-800/80'}`}>{c.blurb}</p>
               <ul className={`mt-6 flex-1 space-y-3 border-t pt-6 ${featured ? 'border-cream-50/15' : 'border-forest-900/[0.08]'}`}>
                 {c.features.map((f) => (
-                  <li key={f} className="flex gap-3 text-[0.95rem]">
+                  <li key={f} className="flex gap-3 text-base">
                     <Check className={`mt-0.5 h-4 w-4 shrink-0 ${featured ? 'text-amber-300' : 'text-forest-600'}`} strokeWidth={2.2} />
                     <span className={featured ? 'text-cream-100/90' : 'text-forest-800/85'}>{f}</span>
                   </li>

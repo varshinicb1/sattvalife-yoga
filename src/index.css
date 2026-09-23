@@ -24,7 +24,7 @@
     --secondary-foreground: 78 20% 27%;
     --muted: 38 30% 94%;
     --muted-foreground: 78 10% 40%;
-    --accent: 38 45% 55%;             /* amber-400 antique brass */
+    --accent: 42 79% 44%;             /* gold-400 #C89018, the master brand gold */
     --accent-foreground: 78 24% 15%;
     --destructive: 0 72% 45%;
     --destructive-foreground: 38 30% 96%;
@@ -36,7 +36,7 @@
     --sidebar-foreground: 78 24% 15%;
     --sidebar-primary: 78 20% 27%;
     --sidebar-primary-foreground: 38 30% 96%;
-    --sidebar-accent: 38 45% 55%;
+    --sidebar-accent: 42 79% 44%;
     --sidebar-accent-foreground: 78 24% 15%;
     --sidebar-border: 78 15% 80%;
     --sidebar-ring: 78 20% 27%;
@@ -56,8 +56,8 @@
   }
 
   body {
-    @apply bg-cream-50 text-forest-900 font-sans antialiased;
-    /* Raleway ships old-style figures by default; prices & times read better lining */
+    @apply bg-cream-50 text-forest-900 font-sans text-base antialiased;
+    /* Playfair sets old-style figures by default; prices & times read better lining */
     font-variant-numeric: lining-nums proportional-nums;
     font-feature-settings: "lnum" 1;
     text-rendering: optimizeLegibility;
@@ -66,7 +66,7 @@
   h1, h2, h3, h4 {
     @apply font-serif text-forest-900;
     font-weight: 500;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
     text-wrap: balance;
   }
 
@@ -75,12 +75,12 @@
   }
 
   ::selection {
-    background: rgb(215 189 140 / 0.55);
+    background: rgb(224 183 90 / 0.45);
     color: #1e2215;
   }
 
   :focus-visible {
-    outline: 2px solid #8c6b3b;
+    outline: 2px solid #8A6310;
     outline-offset: 3px;
     border-radius: 6px;
   }
@@ -98,11 +98,11 @@
 
 @layer components {
   .container-page {
-    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+    @apply mx-auto w-full max-w-7xl px-4 xs:px-5 sm:px-8;
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.22em] text-amber-700;
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-amber-600;
   }
 
   .lead {
@@ -182,7 +182,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, transparent 30%, #d7bd8c 45%, #e8d9b8 50%, #a9834c 55%, transparent 70%);
+    background: linear-gradient(135deg, transparent 30%, #E0B75A 45%, #F3E0AE 50%, #C89018 55%, transparent 70%);
     background-size: 300% 300%;
     opacity: 0;
     pointer-events: none;

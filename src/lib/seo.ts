@@ -9,13 +9,21 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
     title: 'Sattvalife Yoga | Vinyasa Yoga Classes in Leicester',
     desc: 'Small-group Vinyasa yoga in Oadby and Thurnby, Leicester. Personal attention for every age and ability, plus workplace wellbeing sessions. Rated 5.0 on Google.',
   },
-  '/courses': {
-    title: 'Classes & Prices | Sattvalife Yoga Leicester',
-    desc: 'Drop-in classes from £10, Monthly Flow at £35 a month, or Sattvalife@Work sessions for teams. Book online in under a minute.',
+  '/classes': {
+    title: 'Classes & Timetable | Sattvalife Yoga Leicester',
+    desc: 'Tuesdays 6:30pm in Oadby and Thursdays 7pm in Thurnby. See what each class involves, who it suits and what it costs, then book online from £10.',
   },
-  '/timetable': {
-    title: 'Timetable | Sattvalife Yoga Leicester',
-    desc: 'Tuesdays 6:30pm at Trinity Methodist Church, Oadby and Thursdays 7pm at Thurnby Memorial Hall. See upcoming dates and add classes to your calendar.',
+  '/contact': {
+    title: 'Contact Us | Sattvalife Yoga Leicester',
+    desc: 'Ask us anything about classes, celebrations or workplace wellbeing, or register as a new student before your first class.',
+  },
+  '/cookies': {
+    title: 'Cookies | Sattvalife Yoga Leicester',
+    desc: 'How Sattvalife Yoga uses cookies and local storage. No advertising or tracking cookies.',
+  },
+  '/accessibility': {
+    title: 'Accessibility | Sattvalife Yoga Leicester',
+    desc: 'Our accessibility statement: what we have done, where we fall short, and how to tell us about a problem.',
   },
   '/teachers': {
     title: 'Our Teachers | Sattvalife Yoga Leicester',

@@ -1,11 +1,13 @@
 import { lazy, Suspense, type ReactNode } from 'react'
-import { Routes, Route } from 'react-router'
+import { Routes, Route, Navigate } from 'react-router'
 import Layout from '@/sections/Layout'
 import HomePage from '@/pages/HomePage'
 
 // Home ships in the main bundle; every other page loads on demand
-const CoursesPage = lazy(() => import('@/pages/CoursesPage'))
-const TimetablePage = lazy(() => import('@/pages/TimetablePage'))
+const ClassesPage = lazy(() => import('@/pages/ClassesPage'))
+const ContactPage = lazy(() => import('@/pages/ContactPage'))
+const CookiesPage = lazy(() => import('@/pages/CookiesPage'))
+const AccessibilityPage = lazy(() => import('@/pages/AccessibilityPage'))
 const TeachersPage = lazy(() => import('@/pages/TeachersPage'))
 const CorporatePage = lazy(() => import('@/pages/CorporatePage'))
 const ExperiencesPage = lazy(() => import('@/pages/ExperiencesPage'))
@@ -24,8 +26,13 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="courses" element={page(<CoursesPage />)} />
-        <Route path="timetable" element={page(<TimetablePage />)} />
+        <Route path="classes" element={page(<ClassesPage />)} />
+        {/* Classes and Timetable merged into /classes; keep old links working */}
+        <Route path="courses" element={<Navigate to="/classes" replace />} />
+        <Route path="timetable" element={<Navigate to="/classes" replace />} />
+        <Route path="contact" element={page(<ContactPage />)} />
+        <Route path="cookies" element={page(<CookiesPage />)} />
+        <Route path="accessibility" element={page(<AccessibilityPage />)} />
         <Route path="teachers" element={page(<TeachersPage />)} />
         <Route path="experiences" element={page(<ExperiencesPage />)} />
         <Route path="corporate" element={page(<CorporatePage />)} />

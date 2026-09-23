@@ -160,7 +160,7 @@ export default function BookingSheet({ request }: { request: BookingRequest }) {
             <p className="text-sm font-semibold text-forest-900">Included</p>
             <ul className="mt-3 space-y-2">
               {course.features.map((f) => (
-                <li key={f} className="flex gap-3 text-[0.95rem] text-forest-800/85">
+                <li key={f} className="flex gap-3 text-base text-forest-800/85">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-forest-600" strokeWidth={2.2} />
                   {f}
                 </li>

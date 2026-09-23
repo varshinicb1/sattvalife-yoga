@@ -43,7 +43,7 @@ export default function BlogPostPage() {
   const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2)
 
   return (
-    <article className="pt-[calc(72px+env(safe-area-inset-top))]">
+    <article className="pt-[calc(84px+env(safe-area-inset-top))]">
       <header className="container-page pt-12 sm:pt-16">
         <div className="mx-auto max-w-3xl">
           <Link to="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-forest-800/80 hover:text-forest-900">
@@ -74,7 +74,7 @@ export default function BlogPostPage() {
         <aside className="mx-auto mt-16 max-w-3xl rounded-3xl bg-forest-800 p-8 text-center sm:p-12">
           <h2 className="text-3xl !text-cream-50 sm:text-4xl">Practise it with us</h2>
           <p className="mx-auto mt-3 max-w-md text-cream-100/80">Small classes in Oadby and Thurnby with guidance tailored to your body.</p>
-          <Link to="/courses" className="btn-brass btn-lg mt-8">
+          <Link to="/classes" className="btn-brass btn-lg mt-8">
             Book a class
           </Link>
         </aside>

@@ -29,11 +29,11 @@ export default function Hero() {
       : { initial: { opacity: 0, y: 22 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.9, delay, ease: EASE } }
 
   return (
-    <section ref={ref} className="relative overflow-hidden pt-[calc(72px+env(safe-area-inset-top))]">
+    <section ref={ref} className="relative overflow-hidden pt-[calc(84px+env(safe-area-inset-top))]">
       {/* Soft sage & brass light */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(60rem_40rem_at_85%_10%,rgb(203_208_173/0.45),transparent_60%),radial-gradient(40rem_30rem_at_0%_100%,rgb(237_224_196/0.6),transparent_60%)]" />
 
-      <div className="container-page relative grid items-center gap-12 pb-16 pt-10 sm:pt-14 lg:min-h-[min(calc(100dvh-72px),860px)] lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 lg:py-16">
+      <div className="container-page relative grid items-center gap-12 pb-16 pt-10 sm:pt-14 lg:min-h-[min(calc(100dvh-84px),860px)] lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 lg:py-16">
         <div className="max-w-2xl">
           <motion.p {...enter(0.05)} className="eyebrow">
             Vinyasa yoga in Oadby &amp; Thurnby, Leicester
@@ -54,11 +54,11 @@ export default function Hero() {
             Small-group classes with personal attention for every body, whatever your age or ability.
           </motion.p>
           <motion.div {...enter(0.4)} className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link to="/courses" className="btn-primary btn-lg">
+            <Link to="/classes" className="btn-primary btn-lg">
               Book a class
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/timetable" className="btn-outline btn-lg">
+            <Link to="/classes" className="btn-outline btn-lg">
               See the timetable
             </Link>
           </motion.div>

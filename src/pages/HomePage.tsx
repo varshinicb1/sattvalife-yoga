@@ -36,7 +36,7 @@ export default function HomePage() {
         <div className="container-page">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading title="Weekly classes" intro="Two friendly community halls, one small group, the same warm welcome." />
-            <Link to="/timetable" className="link-underline shrink-0 font-semibold text-forest-800">
+            <Link to="/classes" className="link-underline shrink-0 font-semibold text-forest-800">
               Full timetable
             </Link>
           </div>

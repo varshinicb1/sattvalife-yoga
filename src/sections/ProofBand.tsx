@@ -27,7 +27,7 @@ export default function ProofBand() {
     {
       key: 'tue',
       content: (
-        <Link to="/timetable" className="block hover:text-forest-900">
+        <Link to="/classes" className="block hover:text-forest-900">
           <span className="block font-semibold text-forest-900">{tue.day}s, {formatTime(tue.start)}</span>
           <span className="mt-1 block text-sm text-forest-800/75">{tue.hall}, {tue.area}</span>
         </Link>
@@ -36,7 +36,7 @@ export default function ProofBand() {
     {
       key: 'thu',
       content: (
-        <Link to="/timetable" className="block hover:text-forest-900">
+        <Link to="/classes" className="block hover:text-forest-900">
           <span className="block font-semibold text-forest-900">{thu.day}s, {formatTime(thu.start)}</span>
           <span className="mt-1 block text-sm text-forest-800/75">{thu.hall}</span>
         </Link>
@@ -45,7 +45,7 @@ export default function ProofBand() {
     {
       key: 'price',
       content: (
-        <Link to="/courses" className="block">
+        <Link to="/classes" className="block">
           <span className="block font-semibold text-forest-900">Classes from £{from}</span>
           <span className="mt-1 block text-sm text-forest-800/75">Mats and props provided</span>
         </Link>

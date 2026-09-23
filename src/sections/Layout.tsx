@@ -2,6 +2,7 @@ import { Outlet } from 'react-router'
 import { AnimatePresence } from 'framer-motion'
 import Navbar from '@/sections/Navbar'
 import Footer from '@/sections/Footer'
+import Community from '@/sections/Community'
 import CookieConsent from '@/components/CookieConsent'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import ScrollToTop from '@/components/ScrollToTop'
@@ -24,6 +25,7 @@ export default function Layout() {
       <main id="main" tabIndex={-1} className="outline-none">
         <Outlet />
       </main>
+      <Community />
       <Footer />
       <WhatsAppButton />
       <CheckoutNotice />

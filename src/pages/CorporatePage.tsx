@@ -94,7 +94,7 @@ export default function CorporatePage() {
             <p className="mt-3 text-forest-800/80">{CORPORATE.offersIntro}</p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {CORPORATE.offers.map((o) => (
-                <li key={o} className="flex gap-3 rounded-2xl bg-white/80 p-4 text-[0.95rem] text-forest-900 shadow-soft">
+                <li key={o} className="flex gap-3 rounded-2xl bg-white/80 p-4 text-base text-forest-900 shadow-soft">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-forest-600" strokeWidth={2.2} />
                   {o}
                 </li>

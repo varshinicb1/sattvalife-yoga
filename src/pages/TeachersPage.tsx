@@ -23,7 +23,7 @@ export default function TeachersPage() {
         <div className="container-page">
           <Reveal>
             <blockquote className="mx-auto max-w-3xl font-serif text-3xl italic leading-snug text-cream-50 sm:text-4xl">“{JOURNEY.quote}”</blockquote>
-            <Link to="/courses" className="btn-brass btn-lg mt-10">
+            <Link to="/classes" className="btn-brass btn-lg mt-10">
               Book a class
             </Link>
           </Reveal>

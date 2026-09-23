@@ -1,6 +1,6 @@
-import { siFacebook, siInstagram, siWhatsapp, type SimpleIcon } from 'simple-icons'
+import { siFacebook, siInstagram, siTiktok, siWhatsapp, siYoutube, type SimpleIcon } from 'simple-icons'
 
-const ICONS = { instagram: siInstagram, facebook: siFacebook, whatsapp: siWhatsapp } satisfies Record<string, SimpleIcon>
+const ICONS = { instagram: siInstagram, facebook: siFacebook, tiktok: siTiktok, youtube: siYoutube, whatsapp: siWhatsapp } satisfies Record<string, SimpleIcon>
 
 /** Official brand marks from Simple Icons, rendered in currentColor. */
 export function BrandIcon({ name, className = 'h-5 w-5' }: { name: keyof typeof ICONS; className?: string }) {

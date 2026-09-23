@@ -32,7 +32,7 @@ export default function CheckoutNotice() {
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -16 }}
-          className="fixed inset-x-3 top-[calc(84px+env(safe-area-inset-top))] z-toast mx-auto max-w-lg"
+          className="fixed inset-x-3 top-[calc(96px+env(safe-area-inset-top))] z-toast mx-auto max-w-lg"
         >
           <div className="flex items-start gap-4 rounded-3xl border border-forest-900/10 bg-white p-5 shadow-lift">
             <CheckCircle2 className={`mt-0.5 h-6 w-6 shrink-0 ${status === 'success' ? 'text-forest-600' : 'text-amber-600'}`} />

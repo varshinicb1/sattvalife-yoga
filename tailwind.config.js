@@ -4,10 +4,14 @@ module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      screens: {
+        /* Small phones (iPhone SE 1st gen is 320px wide) */
+        xs: '400px',
+      },
       fontFamily: {
         /* Self-hosted variable fonts (@fontsource-variable), imported in main.tsx */
-        serif: ['"Cormorant Garamond Variable"', '"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans: ['"Raleway Variable"', 'Raleway', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display Variable"', '"Playfair Display"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans Variable"', '"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       /* z-index scale: nav 40 · floating buttons 30 · cookie banner 50 · sheets/modals 60 · toasts 70 · grain overlay 80 */
       zIndex: {
@@ -20,11 +24,11 @@ module.exports = {
       },
       fontSize: {
         /* Bumped up from Tailwind defaults — body copy read too small */
-        xs: ['0.8125rem', { lineHeight: '1.25rem' }],   /* 13px, was 12px */
-        sm: ['0.9375rem', { lineHeight: '1.5rem' }],     /* 15px, was 14px */
-        base: ['1.0625rem', { lineHeight: '1.75rem' }],  /* 17px, was 16px */
-        lg: ['1.1875rem', { lineHeight: '1.875rem' }],   /* 19px, was 18px */
-        xl: ['1.3125rem', { lineHeight: '1.875rem' }],   /* 21px, was 20px */
+        xs: ['0.8125rem', { lineHeight: '1.25rem' }],    /* 13px, small labels */
+        sm: ['0.9375rem', { lineHeight: '1.55rem' }],    /* 15px, small print */
+        base: ['1.125rem', { lineHeight: '1.85rem' }],   /* 18px body */
+        lg: ['1.25rem', { lineHeight: '1.95rem' }],      /* 20px */
+        xl: ['1.375rem', { lineHeight: '2rem' }],        /* 22px lead */
       },
       colors: {
         /* Sage & Brass palette */
@@ -50,30 +54,43 @@ module.exports = {
           500: '#B09B72',
         },
         amber: {
-          200: '#EDE0C4',
-          300: '#D7BD8C',
-          400: '#C2A066',
-          500: '#A9834C',
-          600: '#8C6B3B',
-          700: '#705530',
+          /* One master gold, sampled from the lotus artwork (#C89018).
+             400 is the mark; 600/700 are the legible text tints on cream
+             (5.2:1 / 7.4:1); 200/300 are the tints that read on dark sections. */
+          50: '#FDF7E8',
+          100: '#F8EDD2',
+          200: '#F0DCA8',
+          300: '#E0B75A',
+          400: '#C89018',
+          500: '#A8760F',
+          600: '#8A6310',
+          700: '#6E4E0C',
         },
         gold: {
-          200: '#EDE0C4',
-          300: '#D7BD8C',
-          400: '#C2A066',
-          500: '#A9834C',
-          600: '#8C6B3B',
-          700: '#705530',
+          /* One master gold, sampled from the lotus artwork (#C89018).
+             400 is the mark; 600/700 are the legible text tints on cream
+             (5.2:1 / 7.4:1); 200/300 are the tints that read on dark sections. */
+          50: '#FDF7E8',
+          100: '#F8EDD2',
+          200: '#F0DCA8',
+          300: '#E0B75A',
+          400: '#C89018',
+          500: '#A8760F',
+          600: '#8A6310',
+          700: '#6E4E0C',
         },
         lotus: {
-          50: '#F7F1E1',
-          100: '#EDE0BE',
-          200: '#DCC183',
-          300: '#C7A050',
-          400: '#B08A3E',
-          500: '#94702F',
-          600: '#785A26',
-          700: '#5F461D',
+          /* One master gold, sampled from the lotus artwork (#C89018).
+             400 is the mark; 600/700 are the legible text tints on cream
+             (5.2:1 / 7.4:1); 200/300 are the tints that read on dark sections. */
+          50: '#FDF7E8',
+          100: '#F8EDD2',
+          200: '#F0DCA8',
+          300: '#E0B75A',
+          400: '#C89018',
+          500: '#A8760F',
+          600: '#8A6310',
+          700: '#6E4E0C',
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

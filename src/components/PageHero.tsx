@@ -16,7 +16,7 @@ export default function PageHero({
   aside?: ReactNode
 }) {
   return (
-    <section className="relative overflow-hidden pt-[calc(72px+env(safe-area-inset-top))]">
+    <section className="relative overflow-hidden pt-[calc(84px+env(safe-area-inset-top))]">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(50rem_30rem_at_90%_0%,rgb(203_208_173/0.35),transparent_60%)]" />
       <div className={`container-page relative grid gap-10 pb-12 pt-12 sm:pb-16 sm:pt-16 ${aside ? 'lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-16' : ''}`}>
         <Reveal className="max-w-3xl">

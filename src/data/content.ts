@@ -20,6 +20,23 @@ export const CONTACT = {
   whatsappMessage: "Hi! I'd like to know more about Sattvalife Yoga classes in Leicester.",
 }
 
+/**
+ * Social accounts. Only entries with a url are rendered, so TikTok and YouTube
+ * appear across the site the moment their links are filled in here.
+ */
+export const SOCIALS: { id: 'instagram' | 'facebook' | 'tiktok' | 'youtube'; label: string; url: string | null }[] = [
+  { id: 'instagram', label: 'Instagram', url: 'https://www.instagram.com/sattvalifeyoga/' },
+  { id: 'facebook', label: 'Facebook', url: 'https://www.facebook.com/sattvalifeyoga' },
+  { id: 'tiktok', label: 'TikTok', url: null },
+  { id: 'youtube', label: 'YouTube', url: null },
+]
+
+/**
+ * Instagram posts for the community grid. Supply 4 images plus their post links
+ * and the grid renders; until then the section shows the follow links alone.
+ */
+export const COMMUNITY_POSTS: { image: string; url: string; alt: string }[] = []
+
 export const RATING = {
   value: 5.0,
   total: 62,
@@ -164,6 +181,38 @@ export const TIMETABLE: { title: string; subtitle: string; venues: Venue[] } = {
     },
   ],
 }
+
+export interface ClassEntry {
+  id: 'tue' | 'thu'
+  name: string
+  blurb: string
+  audience: string
+  venueId: Venue['id']
+  price: number
+  priceNote: string
+}
+
+/** One row per weekly class on the merged Classes & Timetable page. */
+export const CLASSES: ClassEntry[] = [
+  {
+    id: 'tue',
+    name: 'Tuesday Evening Flow',
+    blurb: 'A steady Vinyasa flow to unwind midweek, working through back, belly and breath and closing in guided stillness.',
+    audience: 'All levels, beginners welcome',
+    venueId: 'tue',
+    price: 10,
+    priceNote: 'drop in, or included in Monthly Flow',
+  },
+  {
+    id: 'thu',
+    name: 'Thursday Evening Flow',
+    blurb: 'The same personal approach in a slightly shorter hour. Poses are adapted for every body, whatever your age or ability.',
+    audience: 'All levels, beginners welcome',
+    venueId: 'thu',
+    price: 10,
+    priceNote: 'drop in, or included in Monthly Flow',
+  },
+]
 
 export interface Instructor {
   name: string

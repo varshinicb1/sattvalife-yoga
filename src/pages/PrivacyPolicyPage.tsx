@@ -4,7 +4,7 @@ import { Lock, Eye, FileText } from 'lucide-react'
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="relative pb-24 pt-[calc(72px+env(safe-area-inset-top)+3.5rem)]">
+    <div className="relative pb-24 pt-[calc(84px+env(safe-area-inset-top)+3.5rem)]">
       <div className="mx-auto max-w-4xl px-5">
         <Reveal>
           <p className="eyebrow mb-4">Privacy</p>

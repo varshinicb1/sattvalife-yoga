@@ -15,7 +15,7 @@ export default function ReviewsPage() {
         <div className="container-page">
           <ReviewWall />
           <div className="mt-16 text-center">
-            <Link to="/courses" className="btn-primary btn-lg">
+            <Link to="/classes" className="btn-primary btn-lg">
               Book a class
             </Link>
           </div>

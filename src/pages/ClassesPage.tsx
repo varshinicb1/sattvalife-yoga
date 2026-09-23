@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero'
 import { Reveal, SectionHeading } from '@/components/motion-primitives'
 import { PlanCards, PaymentNote } from '@/sections/Courses'
 import { CLASSES, FAQS, TIMETABLE, type ClassEntry } from '@/data/content'
+import Photo from '@/components/Photo'
 import { openBooking } from '@/lib/bookingStore'
 import { downloadIcs, formatRange, formatSessionDate, nextSessions, relativeDay } from '@/lib/schedule'
 
@@ -17,8 +18,9 @@ function ClassRow({ entry, index }: { entry: ClassEntry; index: number }) {
 
   return (
     <Reveal delay={index * 0.06}>
-      <article className="grid gap-7 rounded-3xl border border-forest-900/[0.08] bg-white/85 p-6 shadow-soft sm:p-8 lg:grid-cols-[1.35fr_1fr] lg:gap-10">
-        <div>
+      <article className="grid gap-7 overflow-hidden rounded-3xl border border-forest-900/[0.08] bg-white/85 shadow-soft lg:grid-cols-[0.8fr_1.4fr_1fr] lg:gap-0">
+        <Photo slot={entry.id === 'tue' ? 'classTue' : 'classThu'} className="w-full lg:h-full" />
+        <div className="px-6 pt-6 sm:px-8 lg:py-8">
           <h2 className="text-3xl sm:text-[2.1rem]">{entry.name}</h2>
           <p className="mt-3 max-w-[52ch] text-base leading-relaxed text-forest-800/85">{entry.blurb}</p>
           <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-forest-600/[0.07] px-3.5 py-1.5 text-sm font-medium text-forest-800">
@@ -27,7 +29,7 @@ function ClassRow({ entry, index }: { entry: ClassEntry; index: number }) {
           </p>
         </div>
 
-        <div className="grid gap-5 border-t border-forest-900/[0.07] pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+        <div className="grid gap-5 border-t border-forest-900/[0.07] px-6 pb-6 pt-6 sm:px-8 lg:border-l lg:border-t-0 lg:px-8 lg:py-8">
           <div className="grid gap-3 text-base">
             <p className="flex items-baseline justify-between gap-4">
               <span className="text-forest-800/70">When</span>

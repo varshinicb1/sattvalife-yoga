@@ -2,6 +2,7 @@ import { Link } from 'react-router'
 import PageHero from '@/components/PageHero'
 import { Reveal } from '@/components/motion-primitives'
 import { TeacherProfiles } from '@/sections/Instructors'
+import { WelcomeFull } from '@/sections/About'
 import { JOURNEY } from '@/data/content'
 
 export default function TeachersPage() {
@@ -18,6 +19,8 @@ export default function TeachersPage() {
           <TeacherProfiles />
         </div>
       </section>
+
+      <WelcomeFull />
 
       <section className="bg-forest-800 py-20 text-center sm:py-28">
         <div className="container-page">

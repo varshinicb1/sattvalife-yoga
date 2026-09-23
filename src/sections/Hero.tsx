@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { Link } from 'react-router'
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import Photo from '@/components/Photo'
 import { useCmsContent } from '@/hooks/useCmsContent'
 
 const EASE = [0.22, 1, 0.36, 1] as const
@@ -51,15 +52,15 @@ export default function Hero() {
             )}
           </motion.h1>
           <motion.p {...enter(0.28)} className="lead mt-6 max-w-xl">
-            Small-group classes with personal attention for every body, whatever your age or ability.
+            You don’t have to fit yoga. We help yoga fit into your life.
           </motion.p>
           <motion.div {...enter(0.4)} className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link to="/classes" className="btn-primary btn-lg">
-              Book a class
+            <Link to="/classes" className="btn-primary btn-lg !tracking-[0.08em]">
+              BOOK NOW
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/classes" className="btn-outline btn-lg">
-              See the timetable
+            <Link to="/contact" className="btn-outline btn-lg">
+              Ask us a question
             </Link>
           </motion.div>
         </div>
@@ -79,23 +80,10 @@ export default function Hero() {
             className="pointer-events-none absolute -left-[18%] top-[6%] -z-0 w-[136%] max-w-none opacity-[0.12]"
           />
           <motion.div style={{ y: imageY }} className="relative">
-            <img
-              src="/images/opt/studio-triangle-portrait-900.webp"
-              srcSet="/images/opt/studio-triangle-portrait-560.webp 560w, /images/opt/studio-triangle-portrait-900.webp 614w"
-              sizes="(min-width: 1024px) 460px, 80vw"
-              width={614}
-              height={768}
-              alt="A student holding triangle pose in a calm, sunlit studio"
-              fetchPriority="high"
-              className="arch aspect-[4/5] w-full object-cover shadow-lift"
-            />
-            <img
-              src="/images/opt/garden-3-500.webp"
-              alt="Seated meditation during an outdoor Sattvalife class"
-              width={500}
-              height={500}
-              loading="lazy"
-              className="absolute -bottom-8 -left-6 h-32 w-32 rounded-full border-[6px] border-cream-50 object-cover shadow-lift sm:-left-10 sm:h-40 sm:w-40"
+            <Photo slot="heroPortrait" priority className="arch w-full shadow-lift" />
+            <Photo
+              slot="heroInset"
+              className="absolute -bottom-8 -left-6 h-32 w-32 rounded-full border-[6px] border-cream-50 shadow-lift sm:-left-10 sm:h-40 sm:w-40"
             />
           </motion.div>
         </motion.div>

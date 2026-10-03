@@ -17,7 +17,7 @@ export function Logo({ light = false, compact = false }: { light?: boolean; comp
         <span
           className={`font-serif font-semibold tracking-[-0.01em] transition-all duration-300 ${
             compact ? 'text-[1.3rem] xs:text-[1.4rem] sm:text-[1.6rem]' : 'text-[1.3rem] xs:text-[1.75rem] sm:text-[2.1rem]'
-          } ${light ? 'text-cream-50' : 'text-forest-900'}`}
+          } ${light ? 'text-cream-50' : 'text-ink-900'}`}
         >
           Sattvalife
         </span>
@@ -104,10 +104,11 @@ export default function Navbar() {
                 key={l.to}
                 to={l.to}
                 className={({ isActive }) =>
-                  `rounded-full border px-4 py-2 text-[0.92rem] font-medium transition-colors ${
+                  /* Solid ink at rest; the capsule lights up gold on hover and for the current page. */
+                  `rounded-full border px-4 py-2 text-[0.92rem] font-medium transition-colors duration-200 ${
                     isActive
-                      ? 'border-forest-600/30 bg-forest-600/[0.08] text-forest-900'
-                      : 'border-transparent text-forest-800/80 hover:border-forest-600/25 hover:bg-forest-600/[0.05] hover:text-forest-900'
+                      ? 'border-amber-400/50 bg-amber-100 font-semibold text-amber-700'
+                      : 'border-transparent text-ink-800 hover:border-amber-300/70 hover:bg-amber-50 hover:text-amber-700'
                   }`
                 }
               >
@@ -131,7 +132,7 @@ export default function Navbar() {
               aria-expanded={open}
               aria-controls="mobile-menu"
               onClick={() => setOpen((o) => !o)}
-              className="-mr-1.5 flex h-11 w-10 items-center justify-center rounded-full text-forest-900 transition-colors hover:bg-forest-900/5 sm:-mr-2 sm:w-11 lg:hidden"
+              className="-mr-1.5 flex h-11 w-10 items-center justify-center rounded-full text-ink-900 transition-colors hover:bg-forest-900/5 sm:-mr-2 sm:w-11 lg:hidden"
             >
               {open ? <X className="h-6 w-6" strokeWidth={1.6} /> : <Menu className="h-6 w-6" strokeWidth={1.6} />}
             </button>
@@ -168,7 +169,7 @@ export default function Navbar() {
                       to={l.to}
                       end={l.to === '/'}
                       className={({ isActive }) =>
-                        `flex items-center justify-between py-3.5 font-serif text-[1.8rem] leading-tight ${isActive ? 'text-amber-600' : 'text-forest-900'}`
+                        `flex items-center justify-between py-3.5 font-serif text-[1.8rem] leading-tight ${isActive ? 'text-amber-600' : 'text-ink-900'}`
                       }
                     >
                       {l.label}
@@ -186,7 +187,7 @@ export default function Navbar() {
               </div>
               <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-10">
                 <SocialLinks />
-                <a href={`mailto:${settings.contactEmail}`} className="text-sm text-forest-800/80 underline-offset-4 hover:underline">
+                <a href={`mailto:${settings.contactEmail}`} className="text-sm text-ink-700/80 underline-offset-4 hover:underline">
                   {settings.contactEmail}
                 </a>
               </div>

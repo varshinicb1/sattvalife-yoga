@@ -28,7 +28,7 @@ export default function AccessibilityPage() {
         title="Accessibility statement"
         intro="Yoga here is for every body, and the website should be too. This is where we are, honestly, and how to tell us when we fall short."
       />
-      <section className="pb-24 pt-2">
+      <section className="section-pb pt-2">
         <div className="container-page">
           <Reveal className="card mx-auto max-w-3xl space-y-8 p-7 text-lg leading-relaxed text-ink-700/90 sm:p-12">
             <div className="space-y-3">

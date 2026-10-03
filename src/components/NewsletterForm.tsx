@@ -49,7 +49,7 @@ export default function NewsletterForm({ source = 'website-footer' }: { source?:
           className="field-dark sm:flex-1"
         />
         <input type="text" name={HONEYPOT} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
-        <button type="submit" disabled={status === 'sending'} className="btn-brass">
+        <button type="submit" disabled={status === 'sending'} className="btn-primary">
           {status === 'sending' ? 'Joining…' : 'Subscribe'}
           <ArrowRight className="h-4 w-4" />
         </button>

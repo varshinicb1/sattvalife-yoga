@@ -182,7 +182,7 @@ export default function Navbar() {
                   BOOK NOW
                 </Link>
                 <a href={whatsappHref(settings.whatsappNumber)} target="_blank" rel="noreferrer" className="btn-outline btn-lg w-full">
-                  <BrandIcon name="whatsapp" className="h-5 w-5" /> Message us on WhatsApp
+                  <BrandIcon name="whatsapp" className="h-5 w-5" colored /> Message us on WhatsApp
                 </a>
               </div>
               <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-10">

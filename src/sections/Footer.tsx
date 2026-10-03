@@ -83,7 +83,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href={whatsappHref(settings.whatsappNumber)} target="_blank" rel="noreferrer" className="flex items-center gap-2 py-1 text-cream-100/80 transition-colors hover:text-cream-50">
-                  <BrandIcon name="whatsapp" className="h-4 w-4 text-amber-300" />
+                  <BrandIcon name="whatsapp" className="h-4 w-4" colored onDark />
                   WhatsApp
                 </a>
               </li>
@@ -99,7 +99,7 @@ export default function Footer() {
           {/* 4. Socials + where we teach */}
           <div>
             <h2 className="font-sans text-xs font-semibold uppercase tracking-[0.2em] !text-amber-300">Follow</h2>
-            <SocialLinks tone="dark" className="mt-5" withGoogle />
+            <SocialLinks tone="dark" className="mt-5" />
             <h2 className="mt-8 font-sans text-xs font-semibold uppercase tracking-[0.2em] !text-amber-300">Weekly classes</h2>
             <ul className="mt-4 space-y-3 text-base">
               {TIMETABLE.venues.map((v) => (

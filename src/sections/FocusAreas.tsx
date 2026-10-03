@@ -9,7 +9,7 @@ export default function FocusAreas() {
   const [backText, bellyText, breathText] = FOCUS_AREAS.benefits
 
   return (
-    <section className="bg-cream-100 py-20 sm:py-28">
+    <section className="section-y bg-cream-100">
       <div className="container-page">
         <SectionHeading
           title={

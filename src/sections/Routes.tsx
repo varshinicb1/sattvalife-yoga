@@ -53,7 +53,7 @@ export default function Routes() {
   const routes = buildRoutes()
 
   return (
-    <section className="py-16 sm:py-20" aria-label="Where to start">
+    <section className="section-y" aria-label="Where to start">
       <div className="container-page grid gap-5 md:grid-cols-3 md:gap-6">
         {routes.map((r, i) => (
           <Reveal key={r.to} delay={i * 0.07} className="h-full">
@@ -69,7 +69,7 @@ export default function Routes() {
               {/* flex-1 parks the facts under the blurb and keeps "Take a look" on the bottom edge of every card */}
               <ul className="mt-5 flex flex-1 flex-wrap content-start gap-2">
                 {r.meta.map((m) => (
-                  <li key={m} className="rounded-full bg-cream-100 px-3 py-1 text-xs font-medium text-ink-700">
+                  <li key={m} className="rounded-full bg-cream-100 px-3 py-1 text-sm font-medium text-ink-700">
                     {m}
                   </li>
                 ))}

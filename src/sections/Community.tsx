@@ -12,18 +12,18 @@ export default function Community() {
     .join(' and ')
 
   return (
-    <section className="border-t border-forest-900/[0.07] bg-cream-100/70 py-16 sm:py-20" aria-labelledby="community-title">
+    <section className="band-y border-t border-forest-900/[0.07] bg-cream-100/70" aria-labelledby="community-title">
       <div className="container-page">
-        <Reveal className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+        <Reveal className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
           <div>
             <h2 id="community-title" className="text-4xl leading-[1.1] sm:text-5xl">
               Join the Sattvalife community
             </h2>
-            <p className="mt-4 max-w-[46ch] text-lg leading-relaxed text-ink-700/85">
+            <p className="mt-4 text-lg leading-relaxed text-ink-700/85">
               Class news, workshops and moments from the mat. Come and say hello on {handles}.
             </p>
           </div>
-          <SocialLinks withGoogle className="shrink-0" />
+          <SocialLinks />
         </Reveal>
 
         {COMMUNITY_POSTS.length > 0 && (

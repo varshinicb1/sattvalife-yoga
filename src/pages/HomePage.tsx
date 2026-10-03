@@ -24,7 +24,7 @@ export default function HomePage() {
       <Welcome />
       <FocusAreas />
 
-      <section className="border-t border-forest-900/[0.07] bg-cream-100/60 py-16 sm:py-20">
+      <section className="section-y border-t border-forest-900/[0.07] bg-cream-100/60">
         <div className="container-page">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading title="This week" intro="Two friendly community halls, one small group, the same warm welcome." />

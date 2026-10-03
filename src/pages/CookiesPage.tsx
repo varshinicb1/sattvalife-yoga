@@ -14,7 +14,7 @@ export default function CookiesPage() {
         title="Cookies on this site"
         intro="The short version: we do not use advertising or tracking cookies, and nothing non-essential is stored without your say so."
       />
-      <section className="pb-24 pt-2">
+      <section className="section-pb pt-2">
         <div className="container-page">
           <Reveal className="card mx-auto max-w-3xl space-y-8 p-7 text-lg leading-relaxed text-ink-700/90 sm:p-12">
             <div className="space-y-3">

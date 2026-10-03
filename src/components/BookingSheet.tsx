@@ -130,12 +130,12 @@ export default function BookingSheet({ request }: { request: BookingRequest }) {
                     <label
                       key={s.id}
                       className={`flex cursor-pointer items-center gap-4 rounded-2xl border px-4 py-3 transition-colors ${
-                        active ? 'border-forest-600 bg-white shadow-soft' : 'border-forest-900/10 hover:border-forest-600/40'
+                        active ? 'border-amber-400 bg-amber-50 shadow-soft' : 'border-forest-900/10 hover:border-amber-300/70 hover:bg-amber-50/60'
                       }`}
                     >
                       <input type="radio" name="session" value={s.id} checked={active} onChange={() => setSelected(s.id)} className="sr-only" />
-                      <span className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${active ? 'border-forest-600 bg-forest-600' : 'border-forest-900/25'}`}>
-                        {active && <span className="h-2 w-2 rounded-full bg-cream-50" />}
+                      <span className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${active ? 'border-amber-400 bg-amber-300' : 'border-forest-900/25'}`}>
+                        {active && <span className="h-2 w-2 rounded-full bg-ink-950" />}
                       </span>
                       <span className="flex-1">
                         <span className="block font-semibold text-ink-900">

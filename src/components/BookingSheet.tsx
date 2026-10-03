@@ -107,11 +107,11 @@ export default function BookingSheet({ request }: { request: BookingRequest }) {
             <h2 id="booking-title" className="mt-2 text-3xl">
               {course.name}
             </h2>
-            <p className="mt-1 text-forest-800/80">
-              <span className="font-semibold text-forest-900">£{course.price}</span> {course.unit}
+            <p className="mt-1 text-ink-700/80">
+              <span className="font-semibold text-ink-900">£{course.price}</span> {course.unit}
             </p>
           </div>
-          <button ref={closeRef} type="button" onClick={closeBooking} aria-label="Close booking" className="-mr-2 -mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-forest-800 hover:bg-forest-900/5">
+          <button ref={closeRef} type="button" onClick={closeBooking} aria-label="Close booking" className="-mr-2 -mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-ink-700 hover:bg-forest-900/5">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -120,7 +120,7 @@ export default function BookingSheet({ request }: { request: BookingRequest }) {
         <div className="flex-1 overflow-y-auto px-6 py-6 sm:px-8" data-lenis-prevent>
           {needsSession ? (
             <fieldset>
-              <legend className="text-sm font-semibold text-forest-900">
+              <legend className="text-sm font-semibold text-ink-900">
                 {course.id === 'monthly' ? 'When would you like to start?' : 'Which class would you like to join?'}
               </legend>
               <div className="mt-3 grid gap-2">
@@ -138,10 +138,10 @@ export default function BookingSheet({ request }: { request: BookingRequest }) {
                         {active && <span className="h-2 w-2 rounded-full bg-cream-50" />}
                       </span>
                       <span className="flex-1">
-                        <span className="block font-semibold text-forest-900">
+                        <span className="block font-semibold text-ink-900">
                           {relativeDay(s.date)}, {formatTime(s.venue.start)}
                         </span>
-                        <span className="block text-sm text-forest-800/75">
+                        <span className="block text-sm text-ink-700/75">
                           {s.venue.hall}, {s.venue.area}
                         </span>
                       </span>
@@ -151,16 +151,16 @@ export default function BookingSheet({ request }: { request: BookingRequest }) {
               </div>
             </fieldset>
           ) : (
-            <p className="text-forest-800/85">
+            <p className="text-ink-700/85">
               Most teams start with a short chat so we can shape the session around your people and space. You can also pay for a session now and we will contact you to arrange the date.
             </p>
           )}
 
           <div className="mt-6">
-            <p className="text-sm font-semibold text-forest-900">Included</p>
+            <p className="text-sm font-semibold text-ink-900">Included</p>
             <ul className="mt-3 space-y-2">
               {course.features.map((f) => (
-                <li key={f} className="flex gap-3 text-base text-forest-800/85">
+                <li key={f} className="flex gap-3 text-base text-ink-700/85">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-forest-600" strokeWidth={2.2} />
                   {f}
                 </li>
@@ -169,7 +169,7 @@ export default function BookingSheet({ request }: { request: BookingRequest }) {
           </div>
 
           {needsSession && (
-            <p className="mt-6 rounded-2xl bg-forest-600/[0.06] px-4 py-3 text-sm leading-relaxed text-forest-800">
+            <p className="mt-6 rounded-2xl bg-forest-600/[0.06] px-4 py-3 text-sm leading-relaxed text-ink-700">
               First time with us? After booking, please fill in the{' '}
               <Link to="/registration" onClick={closeBooking} className="link-underline font-semibold">
                 short health form
@@ -191,7 +191,7 @@ export default function BookingSheet({ request }: { request: BookingRequest }) {
                   </>
                 )}
               </button>
-              <p className="mt-3 flex items-center justify-center gap-2 text-center text-sm text-forest-800/70">
+              <p className="mt-3 flex items-center justify-center gap-2 text-center text-sm text-ink-700/70">
                 <Lock className="h-3.5 w-3.5" />
                 Secure checkout by Stripe. Card, Apple Pay or Google Pay.
               </p>
@@ -203,7 +203,7 @@ export default function BookingSheet({ request }: { request: BookingRequest }) {
             </>
           ) : (
             <>
-              <p className="text-[0.95rem] text-forest-800/85">Online booking is paused at the moment. Message us and we will reserve your place.</p>
+              <p className="text-[0.95rem] text-ink-700/85">Online booking is paused at the moment. Message us and we will reserve your place.</p>
               <a href={whatsappHref(settings.whatsappNumber, `Hi! I'd like to book: ${course.name}.`)} target="_blank" rel="noreferrer" className="btn-primary btn-lg mt-4 w-full">
                 Book on WhatsApp
               </a>

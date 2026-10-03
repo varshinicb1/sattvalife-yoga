@@ -21,10 +21,10 @@ function TeacherProfile({ teacher, flip }: { teacher: Instructor; flip: boolean 
       <Reveal delay={0.1}>
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-amber-700">{teacher.role}</p>
         <h2 className="mt-3 text-4xl sm:text-5xl">{teacher.name}</h2>
-        <blockquote className="mt-6 border-l-2 border-amber-400 pl-5 font-serif text-2xl italic leading-snug text-forest-700">
+        <blockquote className="mt-6 border-l-2 border-amber-400 pl-5 font-serif text-2xl italic leading-snug text-ink-600">
           “{teacher.quote}”
         </blockquote>
-        <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-forest-800/85">{teacher.bio}</p>
+        <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-ink-700/85">{teacher.bio}</p>
       </Reveal>
     </article>
   )

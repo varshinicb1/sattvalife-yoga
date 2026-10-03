@@ -71,7 +71,7 @@ export default function FocusAreas() {
               />
               <div className="relative">
                 <h3 className="text-4xl sm:text-5xl">{breath}</h3>
-                <p className="mt-2 text-lg text-forest-900/80">{breathText}.</p>
+                <p className="mt-2 text-lg text-ink-900/80">{breathText}.</p>
               </div>
             </article>
           </Reveal>

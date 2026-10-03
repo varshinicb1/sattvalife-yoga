@@ -30,7 +30,7 @@ function EventFields() {
       </div>
       <div>
         <label htmlFor={`${id}-date`} className="field-label">
-          Preferred date <span className="font-normal text-forest-800/60">(optional)</span>
+          Preferred date <span className="font-normal text-ink-700/60">(optional)</span>
         </label>
         <input id={`${id}-date`} name="x_Preferred_date" type="date" className="field" />
       </div>
@@ -55,7 +55,7 @@ function EventFields() {
           {CELEBRATION_INTERESTS.map((item) => (
             <label key={item} className="cursor-pointer">
               <input type="checkbox" name="x_Interested_in" value={item} className="peer sr-only" />
-              <span className="inline-flex rounded-full border border-forest-900/15 px-4 py-2 text-[0.95rem] text-forest-800 transition-colors peer-checked:border-forest-600 peer-checked:bg-forest-600 peer-checked:text-cream-50 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-amber-600">
+              <span className="inline-flex rounded-full border border-forest-900/15 px-4 py-2 text-[0.95rem] text-ink-700 transition-colors peer-checked:border-forest-600 peer-checked:bg-forest-600 peer-checked:text-cream-50 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-amber-600">
                 {item}
               </span>
             </label>
@@ -91,7 +91,7 @@ export default function ExperiencesPage() {
             <Reveal key={o.title} delay={i * 0.06}>
               <article className="flex h-full flex-col rounded-3xl border border-forest-900/[0.08] bg-white/85 p-6 shadow-soft">
                 <h2 className="text-2xl sm:text-[1.7rem]">{o.title}</h2>
-                <p className="mt-2.5 text-base leading-relaxed text-forest-800/85">{o.text}</p>
+                <p className="mt-2.5 text-base leading-relaxed text-ink-700/85">{o.text}</p>
               </article>
             </Reveal>
           ))}
@@ -110,10 +110,10 @@ export default function ExperiencesPage() {
               <Reveal key={group.group} delay={i * 0.08}>
                 <article className="flex h-full flex-col rounded-3xl border border-forest-900/[0.08] bg-white/90 p-7 shadow-soft sm:p-8">
                   <h3 className="text-3xl">{group.group}</h3>
-                  <p className="mt-2 text-base text-forest-800/75">{group.note}</p>
+                  <p className="mt-2 text-base text-ink-700/75">{group.note}</p>
                   <ul className="mt-6 space-y-3 border-t border-forest-900/[0.08] pt-6">
                     {group.items.map((item) => (
-                      <li key={item} className="flex gap-3 text-base text-forest-900">
+                      <li key={item} className="flex gap-3 text-base text-ink-900">
                         <Check className="mt-1 h-4 w-4 shrink-0 text-amber-600" strokeWidth={2.2} />
                         {item}
                       </li>
@@ -124,7 +124,7 @@ export default function ExperiencesPage() {
             ))}
           </div>
           <Reveal className="mt-8">
-            <p className="text-base text-forest-800/75">
+            <p className="text-base text-ink-700/75">
               Tell us the occasion and roughly how long you have, and we will suggest a shape for the session, then send a quote.
             </p>
           </Reveal>
@@ -146,7 +146,7 @@ export default function ExperiencesPage() {
                   )}
                   <div className="flex flex-1 flex-col p-7">
                     <h3 className="text-2xl sm:text-3xl">{o.title}</h3>
-                    <p className="mt-3 flex-1 text-base leading-relaxed text-forest-800/80">{o.text}</p>
+                    <p className="mt-3 flex-1 text-base leading-relaxed text-ink-700/80">{o.text}</p>
                   </div>
                 </article>
               </Reveal>
@@ -174,10 +174,10 @@ export default function ExperiencesPage() {
         <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <Reveal>
             <h2 className="text-4xl leading-[1.08] sm:text-5xl">Tell us about your event</h2>
-            <p className="mt-5 max-w-md text-lg leading-relaxed text-forest-800/80">
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-ink-700/80">
               Every celebration is quoted individually, because they are all different. Share a few details and we will come back with ideas, availability and a price. No obligation.
             </p>
-            <ul className="mt-8 space-y-3 text-base text-forest-800/85">
+            <ul className="mt-8 space-y-3 text-base text-ink-700/85">
               {['We come to you, at home or a venue of your choice', 'Adapted for every guest, including complete beginners', 'We confirm what we bring and what the venue needs'].map((t) => (
                 <li key={t} className="flex gap-3">
                   <Check className="mt-1 h-4 w-4 shrink-0 text-forest-600" strokeWidth={2.2} />

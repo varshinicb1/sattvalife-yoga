@@ -25,7 +25,7 @@ export default function SocialLinks({
   const skin =
     tone === 'dark'
       ? 'border-cream-50/15 text-cream-100 hover:border-amber-300 hover:text-amber-300'
-      : 'border-forest-900/10 text-forest-800 hover:border-amber-500 hover:text-amber-600'
+      : 'border-forest-900/10 text-ink-700 hover:border-amber-500 hover:text-amber-600'
 
   return (
     <ul className={`flex items-center gap-2 ${className}`}>

@@ -61,7 +61,7 @@ export function SectionHeading({
         {title}
       </Tag>
       {intro && (
-        <p className={`mt-5 max-w-[60ch] text-lg leading-relaxed ${centered ? 'mx-auto' : ''} ${dark ? 'text-cream-100/80' : 'text-forest-800/80'}`}>
+        <p className={`mt-5 max-w-[60ch] text-lg leading-relaxed ${centered ? 'mx-auto' : ''} ${dark ? 'text-cream-100/80' : 'text-ink-700/80'}`}>
           {intro}
         </p>
       )}

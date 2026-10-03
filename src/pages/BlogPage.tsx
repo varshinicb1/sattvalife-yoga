@@ -11,7 +11,7 @@ export default function BlogPage() {
         title="Yoga tips & wellbeing insights"
         intro="Simple practices you can use at home and at your desk, from the Sattvalife teachers."
       >
-        <a href="/rss.xml" className="link-underline inline-block py-1 text-sm font-semibold text-forest-800">
+        <a href="/rss.xml" className="link-underline inline-block py-1 text-sm font-semibold text-ink-700">
           Subscribe via RSS
         </a>
       </PageHero>

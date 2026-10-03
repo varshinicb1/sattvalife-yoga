@@ -32,6 +32,19 @@ module.exports = {
       },
       colors: {
         /* Sage & Brass palette */
+        /* Ink: the warm dark brown all body copy and headings are set in.
+           Replaces the near-black forest greens for text only — the greens
+           remain for backgrounds, borders and the sage accents.
+           700 = 12.2:1 on cream, 900 = 14:1, 500 = 5.0:1 (small print). */
+        ink: {
+          400: '#9A8470',
+          500: '#7A6451',
+          600: '#5C4733',
+          700: '#43301F',
+          800: '#36261A',
+          900: '#2C1E13',
+          950: '#1F1510',
+        },
         forest: {
           50: '#F4F5EE',
           100: '#E5E8D6',

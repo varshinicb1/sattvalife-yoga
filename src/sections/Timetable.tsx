@@ -15,23 +15,23 @@ function VenueRow({ venue, detailed, index }: { venue: Venue; detailed: boolean;
         <div className="grid gap-5 sm:grid-cols-[14rem_1fr] sm:gap-8">
           <div>
             <h3 className="text-4xl sm:text-5xl">{venue.day}s</h3>
-            <p className="mt-1 text-lg font-semibold text-forest-800">{formatRange(venue)}</p>
+            <p className="mt-1 text-lg font-semibold text-ink-700">{formatRange(venue)}</p>
           </div>
           <div className="space-y-2">
-            <a href={venue.mapsUrl} target="_blank" rel="noreferrer" className="group flex items-start gap-2.5 text-forest-900">
+            <a href={venue.mapsUrl} target="_blank" rel="noreferrer" className="group flex items-start gap-2.5 text-ink-900">
               <MapPin className="mt-1 h-4 w-4 shrink-0 text-amber-600" strokeWidth={1.8} />
               <span>
                 <span className="block font-semibold group-hover:underline">{venue.hall}</span>
-                <span className="block text-forest-800/75">
+                <span className="block text-ink-700/75">
                   {venue.area}, {venue.postcode} · Directions
                 </span>
               </span>
             </a>
-            <p className="text-forest-800/80">
-              Next class: <span className="font-semibold text-forest-900">{relativeDay(next)}</span>
+            <p className="text-ink-700/80">
+              Next class: <span className="font-semibold text-ink-900">{relativeDay(next)}</span>
             </p>
             {detailed && sessions.length > 1 && (
-              <p className="text-sm text-forest-800/70">
+              <p className="text-sm text-ink-700/70">
                 Then {sessions.slice(1).map((d) => formatSessionDate(d, { day: 'numeric', month: 'short' })).join(', ')}
               </p>
             )}

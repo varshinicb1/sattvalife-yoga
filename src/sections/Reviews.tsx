@@ -11,15 +11,15 @@ export function RatingSummary({ dark = false }: { dark?: boolean }) {
   return (
     <div>
       <div className="flex items-end gap-4">
-        <span className={`font-serif text-7xl font-medium leading-none sm:text-8xl ${dark ? 'text-cream-50' : 'text-forest-900'}`}>{RATING.value.toFixed(1)}</span>
+        <span className={`font-serif text-7xl font-medium leading-none sm:text-8xl ${dark ? 'text-cream-50' : 'text-ink-900'}`}>{RATING.value.toFixed(1)}</span>
         <div className="pb-2">
           <Stars className="h-5 w-5" label={`Rated ${RATING.value} out of 5`} />
-          <p className={`mt-1.5 flex items-center gap-2 text-sm ${dark ? 'text-cream-100/75' : 'text-forest-800/75'}`}>
+          <p className={`mt-1.5 flex items-center gap-2 text-sm ${dark ? 'text-cream-100/75' : 'text-ink-700/75'}`}>
             <GoogleG className="h-4 w-4" /> {RATING.total} Google reviews
           </p>
         </div>
       </div>
-      <a href={RATING.googleUrl} target="_blank" rel="noreferrer" className={`mt-6 inline-flex items-center gap-2 font-semibold ${dark ? 'text-cream-50' : 'text-forest-800'}`}>
+      <a href={RATING.googleUrl} target="_blank" rel="noreferrer" className={`mt-6 inline-flex items-center gap-2 font-semibold ${dark ? 'text-cream-50' : 'text-ink-700'}`}>
         <span className="link-underline">Read every review on Google</span>
         <ArrowRight className="h-4 w-4" />
       </a>
@@ -55,24 +55,24 @@ export function ReviewsShowcase() {
                 exit={reduce ? undefined : { opacity: 0, y: -12 }}
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               >
-                <blockquote className="font-serif text-[1.75rem] italic leading-snug text-forest-900 sm:text-[2.1rem]">
+                <blockquote className="font-serif text-[1.75rem] italic leading-snug text-ink-900 sm:text-[2.1rem]">
                   “{r.text}”
                 </blockquote>
                 <figcaption className="mt-6">
-                  <span className="block font-semibold text-forest-900">{r.author}</span>
-                  {r.context && <span className="text-forest-800/70">{r.context}</span>}
+                  <span className="block font-semibold text-ink-900">{r.author}</span>
+                  {r.context && <span className="text-ink-700/70">{r.context}</span>}
                 </figcaption>
               </motion.figure>
             </AnimatePresence>
           </div>
           <div className="mt-10 flex items-center gap-3">
-            <button type="button" onClick={() => go(-1)} aria-label="Previous review" className="flex h-12 w-12 items-center justify-center rounded-full border border-forest-900/15 text-forest-800 transition-colors hover:border-forest-600 hover:bg-forest-600 hover:text-cream-50">
+            <button type="button" onClick={() => go(-1)} aria-label="Previous review" className="flex h-12 w-12 items-center justify-center rounded-full border border-forest-900/15 text-ink-700 transition-colors hover:border-forest-600 hover:bg-forest-600 hover:text-cream-50">
               <ArrowLeft className="h-5 w-5" />
             </button>
-            <button type="button" onClick={() => go(1)} aria-label="Next review" className="flex h-12 w-12 items-center justify-center rounded-full border border-forest-900/15 text-forest-800 transition-colors hover:border-forest-600 hover:bg-forest-600 hover:text-cream-50">
+            <button type="button" onClick={() => go(1)} aria-label="Next review" className="flex h-12 w-12 items-center justify-center rounded-full border border-forest-900/15 text-ink-700 transition-colors hover:border-forest-600 hover:bg-forest-600 hover:text-cream-50">
               <ArrowRight className="h-5 w-5" />
             </button>
-            <p className="ml-3 text-sm text-forest-800/70">
+            <p className="ml-3 text-sm text-ink-700/70">
               {i + 1} of {FEATURED.length}
             </p>
           </div>
@@ -86,11 +86,11 @@ function ReviewCard({ review }: { review: Review }) {
   return (
     <figure className="break-inside-avoid rounded-3xl border border-forest-900/[0.07] bg-white/85 p-7 shadow-soft">
       <Stars className="h-4 w-4" label={`${review.rating} out of 5 stars`} n={review.rating} />
-      <blockquote className="mt-4 text-[1.05rem] leading-relaxed text-forest-900">“{review.text}”</blockquote>
+      <blockquote className="mt-4 text-[1.05rem] leading-relaxed text-ink-900">“{review.text}”</blockquote>
       <figcaption className="mt-5 flex items-center justify-between gap-3 border-t border-forest-900/[0.07] pt-4">
         <span>
-          <span className="block font-semibold text-forest-900">{review.author}</span>
-          {review.context && <span className="text-sm text-forest-800/70">{review.context}</span>}
+          <span className="block font-semibold text-ink-900">{review.author}</span>
+          {review.context && <span className="text-sm text-ink-700/70">{review.context}</span>}
         </span>
         <GoogleG className="h-5 w-5 shrink-0" />
       </figcaption>

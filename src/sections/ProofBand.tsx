@@ -16,10 +16,10 @@ export default function ProofBand() {
           <GoogleG className="h-6 w-6 shrink-0" />
           <span>
             <span className="flex items-center gap-2">
-              <span className="font-serif text-2xl font-semibold leading-none text-forest-900">{RATING.value.toFixed(1)}</span>
+              <span className="font-serif text-2xl font-semibold leading-none text-ink-900">{RATING.value.toFixed(1)}</span>
               <Stars className="h-3.5 w-3.5" label={`Rated ${RATING.value} out of 5 on Google`} />
             </span>
-            <span className="mt-1 block text-sm text-forest-800/75 group-hover:text-forest-900">{RATING.total} Google reviews</span>
+            <span className="mt-1 block text-sm text-ink-700/75 group-hover:text-ink-900">{RATING.total} Google reviews</span>
           </span>
         </a>
       ),
@@ -27,18 +27,18 @@ export default function ProofBand() {
     {
       key: 'tue',
       content: (
-        <Link to="/classes" className="block hover:text-forest-900">
-          <span className="block font-semibold text-forest-900">{tue.day}s, {formatTime(tue.start)}</span>
-          <span className="mt-1 block text-sm text-forest-800/75">{tue.hall}, {tue.area}</span>
+        <Link to="/classes" className="block hover:text-ink-900">
+          <span className="block font-semibold text-ink-900">{tue.day}s, {formatTime(tue.start)}</span>
+          <span className="mt-1 block text-sm text-ink-700/75">{tue.hall}, {tue.area}</span>
         </Link>
       ),
     },
     {
       key: 'thu',
       content: (
-        <Link to="/classes" className="block hover:text-forest-900">
-          <span className="block font-semibold text-forest-900">{thu.day}s, {formatTime(thu.start)}</span>
-          <span className="mt-1 block text-sm text-forest-800/75">{thu.hall}</span>
+        <Link to="/classes" className="block hover:text-ink-900">
+          <span className="block font-semibold text-ink-900">{thu.day}s, {formatTime(thu.start)}</span>
+          <span className="mt-1 block text-sm text-ink-700/75">{thu.hall}</span>
         </Link>
       ),
     },
@@ -46,8 +46,8 @@ export default function ProofBand() {
       key: 'price',
       content: (
         <Link to="/classes" className="block">
-          <span className="block font-semibold text-forest-900">Classes from £{from}</span>
-          <span className="mt-1 block text-sm text-forest-800/75">Mats and props provided</span>
+          <span className="block font-semibold text-ink-900">Classes from £{from}</span>
+          <span className="mt-1 block text-sm text-ink-700/75">Mats and props provided</span>
         </Link>
       ),
     },

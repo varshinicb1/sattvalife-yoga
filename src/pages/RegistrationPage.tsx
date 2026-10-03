@@ -10,7 +10,7 @@ function Field({ label, id, optional, children }: { label: string; id: string; o
   return (
     <div>
       <label htmlFor={id} className="field-label">
-        {label} {optional && <span className="font-normal text-forest-800/60">(optional)</span>}
+        {label} {optional && <span className="font-normal text-ink-700/60">(optional)</span>}
       </label>
       {children}
     </div>
@@ -20,7 +20,7 @@ function Field({ label, id, optional, children }: { label: string; id: string; o
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <fieldset className="border-t border-forest-900/[0.08] pt-8 first:border-t-0 first:pt-0">
-      <legend className="float-left mb-6 w-full font-serif text-2xl text-forest-900">{title}</legend>
+      <legend className="float-left mb-6 w-full font-serif text-2xl text-ink-900">{title}</legend>
       <div className="clear-left grid gap-5 sm:grid-cols-2">{children}</div>
     </fieldset>
   )
@@ -142,7 +142,7 @@ export default function RegistrationPage() {
                   <legend className="field-label">Registering for</legend>
                   <div className="flex gap-6 pt-2">
                     {[['self', 'Myself'], ['someone-else', 'Someone else']].map(([v, l]) => (
-                      <label key={v} className="flex items-center gap-2.5 text-forest-900">
+                      <label key={v} className="flex items-center gap-2.5 text-ink-900">
                         <input type="radio" name="regType" value={v} defaultChecked={v === 'self'} className="h-5 w-5 accent-forest-600" />
                         {l}
                       </label>
@@ -156,7 +156,7 @@ export default function RegistrationPage() {
                   <legend className="field-label">Have you practised yoga before?</legend>
                   <div className="flex gap-6 pt-2">
                     {[['yes', 'Yes'], ['no', 'No']].map(([v, l]) => (
-                      <label key={v} className="flex items-center gap-2.5 text-forest-900">
+                      <label key={v} className="flex items-center gap-2.5 text-ink-900">
                         <input
                           type="radio"
                           name="experience"
@@ -184,7 +184,7 @@ export default function RegistrationPage() {
                     {REGISTRATION_FORM.painAreas.map((area) => (
                       <label key={area} className="cursor-pointer">
                         <input type="checkbox" name="pain" value={area} className="peer sr-only" />
-                        <span className="inline-flex rounded-full border border-forest-900/15 px-4 py-2 text-[0.95rem] text-forest-800 transition-colors peer-checked:border-forest-600 peer-checked:bg-forest-600 peer-checked:text-cream-50 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-amber-600">
+                        <span className="inline-flex rounded-full border border-forest-900/15 px-4 py-2 text-[0.95rem] text-ink-700 transition-colors peer-checked:border-forest-600 peer-checked:bg-forest-600 peer-checked:text-cream-50 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-amber-600">
                           {area}
                         </span>
                       </label>
@@ -204,31 +204,31 @@ export default function RegistrationPage() {
               </Section>
 
               <fieldset className="border-t border-forest-900/[0.08] pt-8">
-                <legend className="float-left mb-4 w-full font-serif text-2xl text-forest-900">Waiver & consent</legend>
-                <div className="clear-left max-h-64 space-y-3 overflow-y-auto rounded-2xl bg-cream-100 p-5 text-[0.95rem] leading-relaxed text-forest-800" data-lenis-prevent tabIndex={0} aria-label="Waiver text">
+                <legend className="float-left mb-4 w-full font-serif text-2xl text-ink-900">Waiver & consent</legend>
+                <div className="clear-left max-h-64 space-y-3 overflow-y-auto rounded-2xl bg-cream-100 p-5 text-[0.95rem] leading-relaxed text-ink-700" data-lenis-prevent tabIndex={0} aria-label="Waiver text">
                   {REGISTRATION_FORM.waiver.map((p) => (
                     <p key={p.slice(0, 24)}>{p}</p>
                   ))}
                 </div>
                 <div className="mt-5 space-y-4">
-                  <label className="flex items-start gap-3 text-forest-900">
+                  <label className="flex items-start gap-3 text-ink-900">
                     <input type="checkbox" required className="mt-1 h-5 w-5 shrink-0 accent-forest-600" />
                     <span>
                       I have read and agree to the waiver above and the{' '}
                       <Link to="/terms" target="_blank" className="link-underline font-semibold">terms & conditions</Link>.
                     </span>
                   </label>
-                  <label className="flex items-start gap-3 text-forest-900">
+                  <label className="flex items-start gap-3 text-ink-900">
                     <input type="checkbox" required className="mt-1 h-5 w-5 shrink-0 accent-forest-600" />
                     <span>
                       I consent to Sattvalife Yoga storing the health information I have given, only to keep me safe in class. See our{' '}
                       <Link to="/privacy" target="_blank" className="link-underline font-semibold">privacy policy</Link>.
                     </span>
                   </label>
-                  <label className="flex items-start gap-3 text-forest-900">
+                  <label className="flex items-start gap-3 text-ink-900">
                     <input type="checkbox" name="photoConsent" className="mt-1 h-5 w-5 shrink-0 accent-forest-600" />
                     <span>
-                      {REGISTRATION_FORM.photoConsent} <span className="text-forest-800/60">(optional)</span>
+                      {REGISTRATION_FORM.photoConsent} <span className="text-ink-700/60">(optional)</span>
                     </span>
                   </label>
                 </div>

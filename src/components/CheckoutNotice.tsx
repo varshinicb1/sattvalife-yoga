@@ -39,8 +39,8 @@ export default function CheckoutNotice() {
             <div className="flex-1">
               {status === 'success' ? (
                 <>
-                  <p className="font-serif text-xl text-forest-900">Payment received. See you on the mat!</p>
-                  <p className="mt-1 text-[0.95rem] text-forest-800/80">
+                  <p className="font-serif text-xl text-ink-900">Payment received. See you on the mat!</p>
+                  <p className="mt-1 text-[0.95rem] text-ink-700/80">
                     Stripe has emailed your receipt. New to Sattvalife? Please complete the{' '}
                     <Link to="/registration" onClick={() => setOpen(false)} className="link-underline font-semibold">
                       registration form
@@ -50,12 +50,12 @@ export default function CheckoutNotice() {
                 </>
               ) : (
                 <>
-                  <p className="font-serif text-xl text-forest-900">Checkout cancelled</p>
-                  <p className="mt-1 text-[0.95rem] text-forest-800/80">No payment was taken. You can book again whenever you are ready.</p>
+                  <p className="font-serif text-xl text-ink-900">Checkout cancelled</p>
+                  <p className="mt-1 text-[0.95rem] text-ink-700/80">No payment was taken. You can book again whenever you are ready.</p>
                 </>
               )}
             </div>
-            <button type="button" onClick={() => setOpen(false)} aria-label="Dismiss" className="-m-1 rounded-full p-1 text-forest-700 hover:bg-forest-900/5">
+            <button type="button" onClick={() => setOpen(false)} aria-label="Dismiss" className="-m-1 rounded-full p-1 text-ink-600 hover:bg-forest-900/5">
               <X className="h-5 w-5" />
             </button>
           </div>

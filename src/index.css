@@ -13,11 +13,11 @@
   :root {
     /* ───── Brand theme (sage / brass / cream) ───── */
     --background: 38 30% 96%;         /* cream-100 */
-    --foreground: 78 24% 15%;         /* forest-900 */
+    --foreground: 26 40% 12%;         /* ink-900, warm dark brown */
     --card: 0 0% 100%;
-    --card-foreground: 78 24% 15%;
+    --card-foreground: 26 40% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 78 24% 15%;
+    --popover-foreground: 26 40% 12%;
     --primary: 78 20% 27%;            /* forest-600 */
     --primary-foreground: 38 30% 96%;
     --secondary: 38 30% 94%;
@@ -25,7 +25,7 @@
     --muted: 38 30% 94%;
     --muted-foreground: 78 10% 40%;
     --accent: 42 79% 44%;             /* gold-400 #C89018, the master brand gold */
-    --accent-foreground: 78 24% 15%;
+    --accent-foreground: 26 40% 12%;
     --destructive: 0 72% 45%;
     --destructive-foreground: 38 30% 96%;
     --border: 78 15% 80%;
@@ -33,11 +33,11 @@
     --ring: 78 20% 27%;
     --radius: 0.75rem;
     --sidebar-background: 38 30% 96%;
-    --sidebar-foreground: 78 24% 15%;
+    --sidebar-foreground: 26 40% 12%;
     --sidebar-primary: 78 20% 27%;
     --sidebar-primary-foreground: 38 30% 96%;
     --sidebar-accent: 42 79% 44%;
-    --sidebar-accent-foreground: 78 24% 15%;
+    --sidebar-accent-foreground: 26 40% 12%;
     --sidebar-border: 78 15% 80%;
     --sidebar-ring: 78 20% 27%;
     color-scheme: light;
@@ -56,7 +56,7 @@
   }
 
   body {
-    @apply bg-cream-50 text-forest-900 font-sans text-base antialiased;
+    @apply bg-cream-50 text-ink-800 font-sans text-base antialiased;
     /* Playfair sets old-style figures by default; prices & times read better lining */
     font-variant-numeric: lining-nums proportional-nums;
     font-feature-settings: "lnum" 1;
@@ -64,7 +64,7 @@
   }
 
   h1, h2, h3, h4 {
-    @apply font-serif text-forest-900;
+    @apply font-serif text-ink-900;
     font-weight: 500;
     letter-spacing: -0.015em;
     text-wrap: balance;
@@ -76,7 +76,7 @@
 
   ::selection {
     background: rgb(224 183 90 / 0.45);
-    color: #1e2215;
+    color: #2C1E13;
   }
 
   :focus-visible {
@@ -106,7 +106,7 @@
   }
 
   .lead {
-    @apply text-lg leading-relaxed text-forest-800/85 sm:text-xl sm:leading-relaxed;
+    @apply text-lg leading-relaxed text-ink-700/85 sm:text-xl sm:leading-relaxed;
   }
 
   /* ───── Buttons ───── */
@@ -120,13 +120,13 @@
     @apply btn bg-forest-600 text-cream-50 shadow-soft hover:bg-forest-700 hover:shadow-lift;
   }
   .btn-outline {
-    @apply btn border border-forest-600/35 text-forest-800 hover:border-forest-600 hover:bg-forest-600 hover:text-cream-50;
+    @apply btn border border-forest-600/35 text-ink-700 hover:border-forest-600 hover:bg-forest-600 hover:text-cream-50;
   }
   .btn-brass {
-    @apply btn bg-amber-300 text-forest-950 hover:bg-amber-200;
+    @apply btn bg-amber-300 text-ink-950 hover:bg-amber-200;
   }
   .btn-ghost-light {
-    @apply btn border border-cream-50/35 text-cream-50 hover:border-cream-50 hover:bg-cream-50 hover:text-forest-900;
+    @apply btn border border-cream-50/35 text-cream-50 hover:border-cream-50 hover:bg-cream-50 hover:text-ink-900;
   }
 
   .link-underline {
@@ -135,16 +135,16 @@
 
   /* ───── Forms ───── */
   .field-label {
-    @apply mb-1.5 block text-sm font-semibold text-forest-800;
+    @apply mb-1.5 block text-sm font-semibold text-ink-700;
   }
   .field {
-    @apply w-full rounded-xl border border-forest-300/70 bg-white px-4 py-3 text-base text-forest-900 shadow-xs outline-none transition placeholder:text-forest-500/80 focus:border-forest-600 focus:ring-4 focus:ring-forest-600/15;
+    @apply w-full rounded-xl border border-forest-300/70 bg-white px-4 py-3 text-base text-ink-900 shadow-xs outline-none transition placeholder:text-ink-500/80 focus:border-forest-600 focus:ring-4 focus:ring-forest-600/15;
   }
   .field-dark {
     @apply w-full rounded-xl border border-cream-50/25 bg-cream-50/10 px-4 py-3 text-base text-cream-50 outline-none transition placeholder:text-cream-100/60 focus:border-amber-300 focus:ring-4 focus:ring-amber-300/20;
   }
   .field-help {
-    @apply mt-1.5 text-sm text-forest-700/80;
+    @apply mt-1.5 text-sm text-ink-600/80;
   }
 
   .card {

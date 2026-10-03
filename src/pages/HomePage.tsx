@@ -29,7 +29,7 @@ export default function HomePage() {
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading title="This week" intro="Two friendly community halls, one small group, the same warm welcome." />
             <Reveal>
-              <Link to="/classes" className="link-underline shrink-0 font-semibold text-forest-800">
+              <Link to="/classes" className="link-underline shrink-0 font-semibold text-ink-700">
                 Classes &amp; timetable
               </Link>
             </Reveal>
@@ -38,7 +38,7 @@ export default function HomePage() {
             <WeeklyClasses />
           </div>
           <Reveal className="mt-8">
-            <p className="text-base text-forest-800/80">
+            <p className="text-base text-ink-700/80">
               New to Sattvalife?{' '}
               <Link to="/registration" className="link-underline font-semibold">
                 Register before your first class

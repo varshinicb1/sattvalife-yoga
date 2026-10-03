@@ -34,14 +34,16 @@ export default function Hero() {
       {/* Soft sage & brass light */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(60rem_40rem_at_85%_10%,rgb(203_208_173/0.45),transparent_60%),radial-gradient(40rem_30rem_at_0%_100%,rgb(237_224_196/0.6),transparent_60%)]" />
 
-      <div className="container-page relative grid items-center gap-12 pb-16 pt-10 sm:pt-14 lg:min-h-[min(calc(100dvh-84px),860px)] lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 lg:py-16">
+      {/* No forced min-height: the portrait sets the height, so the text column is
+          centred against it instead of floating in a tall empty box. */}
+      <div className="container-page relative grid items-center gap-10 pb-12 pt-8 sm:gap-12 sm:pb-14 sm:pt-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:pb-16 lg:pt-6">
         <div className="max-w-2xl">
           <motion.p {...enter(0.05)} className="eyebrow">
             Vinyasa yoga in Oadby &amp; Thurnby, Leicester
           </motion.p>
           <motion.h1
             {...enter(0.15)}
-            className="mt-5 pb-2 text-[3.1rem] font-medium leading-[1.04] tracking-[-0.02em] sm:text-7xl lg:text-[5.25rem] lg:leading-[1.02]"
+            className="mt-5 pb-2 text-[3.1rem] font-medium leading-[1.04] tracking-[-0.02em] sm:text-7xl lg:text-[5.5rem] lg:leading-[1.02]"
           >
             {sentenceCase(lead)}
             {rest && (
@@ -51,7 +53,7 @@ export default function Hero() {
               </>
             )}
           </motion.h1>
-          <motion.p {...enter(0.28)} className="lead mt-6 max-w-xl">
+          <motion.p {...enter(0.28)} className="lead mt-6 max-w-md">
             You don’t have to fit yoga. We help yoga fit into your life.
           </motion.p>
           <motion.div {...enter(0.4)} className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -63,13 +65,19 @@ export default function Hero() {
               Ask us a question
             </Link>
           </motion.div>
+          <motion.p {...enter(0.5)} className="mt-6 text-base text-ink-700/85">
+            New to yoga, or new to us?{' '}
+            <Link to="/registration" className="link-underline font-semibold text-ink-800">
+              Register before your first class
+            </Link>
+          </motion.p>
         </div>
 
         <motion.div
           initial={reduce ? false : { opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, delay: 0.1, ease: EASE }}
-          className="relative mx-auto w-full max-w-[440px] lg:max-w-[460px]"
+          className="relative mx-auto w-full max-w-[400px] sm:max-w-[430px] lg:max-w-[420px]"
         >
           <img
             src="/images/opt/lotus-mark-900.webp"

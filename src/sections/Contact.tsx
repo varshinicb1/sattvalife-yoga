@@ -61,7 +61,7 @@ export function ContactForm({
       <div role="status" className="rounded-3xl border border-forest-900/[0.08] bg-white p-8 text-center shadow-soft sm:p-10">
         <CheckCircle2 className="mx-auto h-12 w-12 text-forest-600" strokeWidth={1.5} />
         <h3 className="mt-4 text-3xl">Thank you</h3>
-        <p className="mx-auto mt-2 max-w-sm text-forest-800/80">Your message is with us. Amisha or Nish will reply as soon as they can, usually within a day or two.</p>
+        <p className="mx-auto mt-2 max-w-sm text-ink-700/80">Your message is with us. Amisha or Nish will reply as soon as they can, usually within a day or two.</p>
         <button type="button" onClick={() => setStatus('idle')} className="btn-outline mt-6">
           Send another message
         </button>
@@ -86,7 +86,7 @@ export function ContactForm({
         </div>
         <div>
           <label htmlFor={`${id}-phone`} className="field-label">
-            Phone <span className="font-normal text-forest-800/60">(optional)</span>
+            Phone <span className="font-normal text-ink-700/60">(optional)</span>
           </label>
           <input id={`${id}-phone`} name="phone" type="tel" autoComplete="tel" inputMode="tel" className="field" />
         </div>
@@ -117,7 +117,7 @@ export function ContactSection() {
       <div className="container-page grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
         <Reveal>
           <h2 className="text-4xl leading-[1.08] sm:text-5xl">We would love to hear from you</h2>
-          <p className="mt-5 max-w-md text-lg leading-relaxed text-forest-800/80">
+          <p className="mt-5 max-w-md text-lg leading-relaxed text-ink-700/80">
             Not sure which class suits you, or have an injury to mention? Ask us anything. We reply personally.
           </p>
           <div className="mt-8 grid gap-3 sm:max-w-sm">

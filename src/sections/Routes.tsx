@@ -20,7 +20,7 @@ interface Route {
   Icon: LucideIcon
 }
 
-function useRoutes(): Route[] {
+function buildRoutes(): Route[] {
   const [tue, thu] = TIMETABLE.venues
   const from = Math.min(...COURSES.filter((c) => c.id !== 'corporate').map((c) => c.price))
 
@@ -50,7 +50,7 @@ function useRoutes(): Route[] {
 }
 
 export default function Routes() {
-  const routes = useRoutes()
+  const routes = buildRoutes()
 
   return (
     <section className="py-16 sm:py-20" aria-label="Where to start">

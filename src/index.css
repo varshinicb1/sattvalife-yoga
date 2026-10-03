@@ -98,7 +98,18 @@
 
 @layer components {
   .container-page {
-    @apply mx-auto w-full max-w-7xl px-4 xs:px-5 sm:px-8;
+    @apply mx-auto w-full max-w-[90rem] px-4 xs:px-5 sm:px-8 xl:px-12;
+  }
+
+  /* Vertical rhythm: one padding for every full section, one tighter one for slim bands */
+  .section-y {
+    @apply py-14 sm:py-16 lg:py-20;
+  }
+  .section-pb {
+    @apply pb-14 sm:pb-16 lg:pb-20;
+  }
+  .band-y {
+    @apply py-10 sm:py-12;
   }
 
   .eyebrow {
@@ -116,17 +127,28 @@
   .btn-lg {
     @apply px-8 py-4 text-base;
   }
+  /* One gold capsule everywhere: gold fill for actions, a gold tint for hover,
+     current page and selected chips. Forest stays as the resting outline colour. */
   .btn-primary {
-    @apply btn bg-forest-600 text-cream-50 shadow-soft hover:bg-forest-700 hover:shadow-lift;
+    @apply btn border border-amber-400/40 bg-amber-300 text-ink-950 shadow-soft hover:border-amber-300 hover:bg-amber-200 hover:shadow-lift;
   }
   .btn-outline {
-    @apply btn border border-forest-600/35 text-ink-700 hover:border-forest-600 hover:bg-forest-600 hover:text-cream-50;
-  }
-  .btn-brass {
-    @apply btn bg-amber-300 text-ink-950 hover:bg-amber-200;
+    @apply btn border border-forest-600/35 text-ink-800 hover:border-amber-400 hover:bg-amber-300 hover:text-ink-950;
   }
   .btn-ghost-light {
-    @apply btn border border-cream-50/35 text-cream-50 hover:border-cream-50 hover:bg-cream-50 hover:text-ink-900;
+    @apply btn border border-cream-50/35 text-cream-50 hover:border-amber-300 hover:bg-amber-300 hover:text-ink-950;
+  }
+
+  /* Pill used for filters and checkbox/radio options. Hover = gold tint, selected = gold capsule. */
+  .chip {
+    @apply inline-flex cursor-pointer items-center rounded-full border border-forest-900/15 px-5 py-2 text-[0.95rem] font-medium text-ink-700 transition-colors duration-200 hover:border-amber-300/70 hover:bg-amber-50 hover:text-amber-700;
+  }
+  .chip[aria-pressed='true'],
+  .peer:checked + .chip {
+    @apply border-amber-400/60 bg-amber-100 font-semibold text-amber-700;
+  }
+  .peer:focus-visible + .chip {
+    @apply outline outline-2 outline-offset-2 outline-amber-600;
   }
 
   .link-underline {

@@ -35,7 +35,7 @@ export function ReviewsShowcase() {
   const go = (d: number) => setI((p) => (p + d + FEATURED.length) % FEATURED.length)
 
   return (
-    <section className="bg-cream-100 py-20 sm:py-28" aria-label="Reviews">
+    <section className="section-y bg-cream-100" aria-label="Reviews">
       <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <Reveal>
           <p className="eyebrow">Loved in Leicester</p>
@@ -66,10 +66,10 @@ export function ReviewsShowcase() {
             </AnimatePresence>
           </div>
           <div className="mt-10 flex items-center gap-3">
-            <button type="button" onClick={() => go(-1)} aria-label="Previous review" className="flex h-12 w-12 items-center justify-center rounded-full border border-forest-900/15 text-ink-700 transition-colors hover:border-forest-600 hover:bg-forest-600 hover:text-cream-50">
+            <button type="button" onClick={() => go(-1)} aria-label="Previous review" className="flex h-12 w-12 items-center justify-center rounded-full border border-forest-900/15 text-ink-700 transition-colors hover:border-amber-400 hover:bg-amber-300 hover:text-ink-950">
               <ArrowLeft className="h-5 w-5" />
             </button>
-            <button type="button" onClick={() => go(1)} aria-label="Next review" className="flex h-12 w-12 items-center justify-center rounded-full border border-forest-900/15 text-ink-700 transition-colors hover:border-forest-600 hover:bg-forest-600 hover:text-cream-50">
+            <button type="button" onClick={() => go(1)} aria-label="Next review" className="flex h-12 w-12 items-center justify-center rounded-full border border-forest-900/15 text-ink-700 transition-colors hover:border-amber-400 hover:bg-amber-300 hover:text-ink-950">
               <ArrowRight className="h-5 w-5" />
             </button>
             <p className="ml-3 text-sm text-ink-700/70">

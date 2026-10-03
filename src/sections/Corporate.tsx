@@ -9,7 +9,7 @@ export function CorporateTeaser() {
   const quote = REVIEWS.find((r) => r.author === 'Sally Cook')
 
   return (
-    <section className="relative overflow-hidden bg-forest-900 py-20 text-cream-50 sm:py-28">
+    <section className="section-y relative overflow-hidden bg-forest-900 text-cream-50">
       <div className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <Reveal>
           <img
@@ -37,7 +37,7 @@ export function CorporateTeaser() {
               </figcaption>
             </figure>
           )}
-          <Link to="/corporate" className="btn-brass btn-lg mt-10">
+          <Link to="/corporate" className="btn-primary btn-lg mt-10">
             Explore Sattvalife@Work
             <ArrowRight className="h-4 w-4" />
           </Link>

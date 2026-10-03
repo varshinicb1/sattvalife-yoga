@@ -45,7 +45,7 @@ export function PlanCards() {
               <button
                 type="button"
                 onClick={() => openBooking({ courseId: c.id })}
-                className={`mt-8 w-full ${featured ? 'btn-brass' : 'btn-primary'}`}
+                className="btn-primary mt-8 w-full"
               >
                 {CTA[c.id]}
               </button>

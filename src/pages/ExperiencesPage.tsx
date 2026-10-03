@@ -55,7 +55,7 @@ function EventFields() {
           {CELEBRATION_INTERESTS.map((item) => (
             <label key={item} className="cursor-pointer">
               <input type="checkbox" name="x_Interested_in" value={item} className="peer sr-only" />
-              <span className="inline-flex rounded-full border border-forest-900/15 px-4 py-2 text-[0.95rem] text-ink-700 transition-colors peer-checked:border-forest-600 peer-checked:bg-forest-600 peer-checked:text-cream-50 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-amber-600">
+              <span className="chip !px-4">
                 {item}
               </span>
             </label>
@@ -85,7 +85,7 @@ export default function ExperiencesPage() {
       </PageHero>
 
       {/* Occasions */}
-      <section className="pb-16 sm:pb-20">
+      <section className="section-pb">
         <div className="container-page grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {CELEBRATION_OCCASIONS.map((o, i) => (
             <Reveal key={o.title} delay={i * 0.06}>
@@ -99,7 +99,7 @@ export default function ExperiencesPage() {
       </section>
 
       {/* What we bring */}
-      <section className="border-y border-forest-900/[0.07] bg-cream-100/60 py-20 sm:py-24">
+      <section className="section-y border-y border-forest-900/[0.07] bg-cream-100/60">
         <div className="container-page">
           <SectionHeading
             title="Build your session"
@@ -132,7 +132,7 @@ export default function ExperiencesPage() {
       </section>
 
       {/* Not a celebration */}
-      <section className="py-20 sm:py-24">
+      <section className="section-y">
         <div className="container-page">
           <SectionHeading title="Also available" intro="Not every booking is a celebration. These are the other ways people bring us in." />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -159,7 +159,7 @@ export default function ExperiencesPage() {
                     Wellbeing mornings, seated desk yoga and regular on-site sessions for teams. That has a page of its own.
                   </p>
                 </div>
-                <Link to="/corporate" className="btn-brass mt-8 self-start">
+                <Link to="/corporate" className="btn-primary mt-8 self-start">
                   Sattvalife@Work
                   <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -170,7 +170,7 @@ export default function ExperiencesPage() {
       </section>
 
       {/* Enquiry */}
-      <section id="enquire" className="scroll-mt-28 border-t border-forest-900/[0.07] bg-cream-100/60 py-20 sm:py-24">
+      <section id="enquire" className="section-y scroll-mt-28 border-t border-forest-900/[0.07] bg-cream-100/60">
         <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <Reveal>
             <h2 className="text-4xl leading-[1.08] sm:text-5xl">Tell us about your event</h2>

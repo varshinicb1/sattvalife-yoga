@@ -98,7 +98,7 @@ export default function RegistrationPage() {
         intro="Please complete this once before your first class. It helps us understand your body and keep you safe. It takes about three minutes."
       />
 
-      <section className="pb-24 pt-2">
+      <section className="section-pb pt-2">
         <div className="container-page">
           <Reveal className="mx-auto max-w-3xl">
             <form onSubmit={handleSubmit} className="space-y-10 rounded-3xl border border-forest-900/[0.08] bg-white p-6 shadow-soft sm:p-10">
@@ -184,7 +184,7 @@ export default function RegistrationPage() {
                     {REGISTRATION_FORM.painAreas.map((area) => (
                       <label key={area} className="cursor-pointer">
                         <input type="checkbox" name="pain" value={area} className="peer sr-only" />
-                        <span className="inline-flex rounded-full border border-forest-900/15 px-4 py-2 text-[0.95rem] text-ink-700 transition-colors peer-checked:border-forest-600 peer-checked:bg-forest-600 peer-checked:text-cream-50 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-amber-600">
+                        <span className="chip !px-4">
                           {area}
                         </span>
                       </label>

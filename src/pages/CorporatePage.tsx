@@ -55,7 +55,7 @@ export default function CorporatePage() {
         </div>
       </PageHero>
 
-      <section className="pb-20 sm:pb-28">
+      <section className="section-pb">
         <div className="container-page grid gap-5 md:grid-cols-[1.4fr_1fr]">
           <Reveal>
             <img
@@ -83,7 +83,7 @@ export default function CorporatePage() {
         </div>
       </section>
 
-      <section className="border-t border-forest-900/[0.07] py-20 sm:py-28">
+      <section className="section-y border-t border-forest-900/[0.07]">
         <div className="container-page grid gap-14 lg:grid-cols-2 lg:gap-20">
           <Reveal>
             <h2 className="text-4xl leading-[1.08] sm:text-5xl">Healthier, happier teams</h2>
@@ -104,7 +104,7 @@ export default function CorporatePage() {
         </div>
       </section>
 
-      <section className="bg-forest-900 py-20 sm:py-24">
+      <section className="section-y bg-forest-900">
         <div className="container-page grid gap-10 md:grid-cols-2 md:gap-14">
           {quotes.map((q, i) => (
             <Reveal key={q.author} delay={i * 0.1}>
@@ -119,7 +119,7 @@ export default function CorporatePage() {
         </div>
       </section>
 
-      <section id="enquire" className="scroll-mt-24 py-20 sm:py-28">
+      <section id="enquire" className="section-y scroll-mt-24">
         <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <Reveal>
             <h2 className="text-4xl leading-[1.08] sm:text-5xl">Plan a session for your team</h2>

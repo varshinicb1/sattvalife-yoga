@@ -15,7 +15,7 @@ export default function BlogPage() {
           Subscribe via RSS
         </a>
       </PageHero>
-      <section className="pb-20 pt-4 sm:pb-28">
+      <section className="section-pb pt-2">
         <div className="container-page">
           <JournalList posts={blogPosts} />
         </div>

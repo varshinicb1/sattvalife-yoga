@@ -11,7 +11,7 @@ export default function ReviewsPage() {
         intro="From first-timers to busy office teams, here is what people say after class. Every review below was left on Google."
         aside={<RatingSummary />}
       />
-      <section className="pb-20 pt-4 sm:pb-28">
+      <section className="section-pb pt-2">
         <div className="container-page">
           <ReviewWall />
           <div className="mt-16 text-center">

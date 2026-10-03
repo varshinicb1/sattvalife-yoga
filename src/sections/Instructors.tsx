@@ -32,7 +32,7 @@ function TeacherProfile({ teacher, flip }: { teacher: Instructor; flip: boolean 
 
 export function TeacherProfiles() {
   return (
-    <div className="space-y-24 sm:space-y-32">
+    <div className="space-y-14 sm:space-y-20">
       {INSTRUCTORS.map((t, i) => (
         <TeacherProfile key={t.name} teacher={t} flip={i % 2 === 1} />
       ))}

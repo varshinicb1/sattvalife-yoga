@@ -14,7 +14,7 @@ export default function TeachersPage() {
         intro="Sattvalife was founded to share yoga as it changed our own lives: gently, personally, and with room for every body."
       />
 
-      <section className="pb-24 pt-8 sm:pb-32">
+      <section className="section-pb pt-2">
         <div className="container-page">
           <TeacherProfiles />
         </div>
@@ -22,11 +22,11 @@ export default function TeachersPage() {
 
       <WelcomeFull />
 
-      <section className="bg-forest-800 py-20 text-center sm:py-28">
+      <section className="section-y bg-forest-800 text-center">
         <div className="container-page">
           <Reveal>
             <blockquote className="mx-auto max-w-3xl font-serif text-3xl italic leading-snug text-cream-50 sm:text-4xl">“{JOURNEY.quote}”</blockquote>
-            <Link to="/classes" className="btn-brass btn-lg mt-10">
+            <Link to="/classes" className="btn-primary btn-lg mt-10">
               Book a class
             </Link>
           </Reveal>

@@ -14,7 +14,7 @@ const TEACHER_PHOTOS = ['teacherAmisha', 'teacherNish'] as const
  */
 export function Welcome() {
   return (
-    <section className="py-16 sm:py-20">
+    <section className="section-y">
       <div className="container-page grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
         <Reveal className="lg:col-span-6">
           <h2 className="text-4xl leading-[1.08] sm:text-5xl">Taught by two people, not a timetable</h2>
@@ -50,7 +50,7 @@ export function WelcomeFull() {
   const { welcome, aboutVinyasa } = useCmsContent()
 
   return (
-    <section className="border-t border-forest-900/[0.07] bg-cream-100/50 py-20 sm:py-24">
+    <section className="section-y border-t border-forest-900/[0.07] bg-cream-100/50">
       <div className="container-page grid gap-12 lg:grid-cols-12 lg:gap-16">
         <Reveal className="lg:col-span-7">
           <h2 className="text-4xl leading-[1.08] sm:text-5xl">{welcome.title}</h2>

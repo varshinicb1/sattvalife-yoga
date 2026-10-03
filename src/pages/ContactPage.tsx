@@ -51,7 +51,7 @@ export default function ContactPage() {
       </section>
 
       {/* Direct channels */}
-      <section className="py-16 sm:py-20">
+      <section className="section-y">
         <div className="container-page grid gap-10 md:grid-cols-3">
           <Reveal>
             <h2 className="text-2xl">Message us</h2>
@@ -61,7 +61,7 @@ export default function ContactPage() {
               rel="noreferrer"
               className="mt-3 flex items-center gap-2.5 text-base font-semibold text-ink-900 hover:text-ink-600"
             >
-              <BrandIcon name="whatsapp" className="h-5 w-5 text-[#1f9e4f]" />
+              <BrandIcon name="whatsapp" className="h-5 w-5" colored />
               {settings.whatsappNumber}
             </a>
             <p className="mt-2 text-sm text-ink-700/75">WhatsApp is usually the quickest way to reach Amisha.</p>
@@ -76,14 +76,14 @@ export default function ContactPage() {
           </Reveal>
           <Reveal delay={0.12}>
             <h2 className="text-2xl">Follow along</h2>
-            <SocialLinks className="mt-3" withGoogle />
+            <SocialLinks className="mt-3" />
             <p className="mt-2 text-sm text-ink-700/75">Class news, workshops and the occasional pose breakdown.</p>
           </Reveal>
         </div>
       </section>
 
       {/* Where to find us */}
-      <section className="border-y border-forest-900/[0.07] bg-cream-100/60 py-16 sm:py-20">
+      <section className="section-y border-y border-forest-900/[0.07] bg-cream-100/60">
         <div className="container-page">
           <SectionHeading title="Where to find us" intro="We teach in two community halls in Leicester. Tap either one for directions." />
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
@@ -93,17 +93,19 @@ export default function ContactPage() {
                   href={v.mapsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="group block h-full rounded-3xl border border-forest-900/[0.08] bg-white/85 p-7 shadow-soft transition-colors hover:border-forest-600/40"
+                  className="group flex h-full flex-col gap-5 rounded-3xl border border-forest-900/[0.08] bg-white/85 p-7 shadow-soft transition-colors hover:border-amber-400/70 sm:flex-row sm:items-center sm:justify-between"
                 >
-                  <h3 className="text-2xl group-hover:text-ink-600">{v.hall}</h3>
-                  <p className="mt-2 flex items-start gap-2 text-base text-ink-700/85">
-                    <MapPin className="mt-1 h-4 w-4 shrink-0 text-amber-600" strokeWidth={1.8} />
-                    {v.area}, {v.postcode}
-                  </p>
-                  <p className="mt-3 text-base font-semibold text-ink-900">
-                    {v.day}s, {formatRange(v)}
-                  </p>
-                  <span className="link-underline mt-4 inline-block text-sm font-semibold text-ink-700">Get directions</span>
+                  <div>
+                    <h3 className="text-2xl">{v.hall}</h3>
+                    <p className="mt-2 flex items-start gap-2 text-base text-ink-700/85">
+                      <MapPin className="mt-1 h-4 w-4 shrink-0 text-amber-600" strokeWidth={1.8} />
+                      {v.area}, {v.postcode}
+                    </p>
+                    <p className="mt-3 text-base font-semibold text-ink-900">
+                      {v.day}s, {formatRange(v)}
+                    </p>
+                  </div>
+                  <span className="btn-outline shrink-0 group-hover:border-amber-400 group-hover:bg-amber-300 group-hover:text-ink-950">Get directions</span>
                 </a>
               </Reveal>
             ))}
@@ -112,7 +114,7 @@ export default function ContactPage() {
       </section>
 
       {/* The enquiry form itself */}
-      <section id="enquiry" className="scroll-mt-28 py-20 sm:py-24">
+      <section id="enquiry" className="section-y scroll-mt-28">
         <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <Reveal>
             <h2 className="text-4xl leading-[1.08] sm:text-5xl">Send us a message</h2>

@@ -113,7 +113,7 @@ export function ContactForm({
 export function ContactSection() {
   const { settings } = useCmsContent()
   return (
-    <section id="get-in-touch" className="py-20 sm:py-28">
+    <section id="get-in-touch" className="section-y">
       <div className="container-page grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
         <Reveal>
           <h2 className="text-4xl leading-[1.08] sm:text-5xl">We would love to hear from you</h2>
@@ -122,7 +122,7 @@ export function ContactSection() {
           </p>
           <div className="mt-8 grid gap-3 sm:max-w-sm">
             <a href={whatsappHref(settings.whatsappNumber)} target="_blank" rel="noreferrer" className="btn-outline justify-start">
-              <BrandIcon name="whatsapp" className="h-5 w-5 text-[#1f9e4f]" />
+              <BrandIcon name="whatsapp" className="h-5 w-5" colored />
               WhatsApp {settings.whatsappNumber}
             </a>
             <a href={`mailto:${settings.contactEmail}`} className="btn-outline justify-start">

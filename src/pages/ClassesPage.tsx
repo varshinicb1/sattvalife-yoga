@@ -22,8 +22,8 @@ function ClassRow({ entry, index }: { entry: ClassEntry; index: number }) {
         <Photo slot={entry.id === 'tue' ? 'classTue' : 'classThu'} className="w-full lg:h-full" />
         <div className="px-6 pt-6 sm:px-8 lg:py-8">
           <h2 className="text-3xl sm:text-[2.1rem]">{entry.name}</h2>
-          <p className="mt-3 max-w-[52ch] text-base leading-relaxed text-forest-800/85">{entry.blurb}</p>
-          <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-forest-600/[0.07] px-3.5 py-1.5 text-sm font-medium text-forest-800">
+          <p className="mt-3 max-w-[52ch] text-base leading-relaxed text-ink-700/85">{entry.blurb}</p>
+          <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-forest-600/[0.07] px-3.5 py-1.5 text-sm font-medium text-ink-700">
             <Users className="h-4 w-4 text-forest-600" strokeWidth={1.8} />
             {entry.audience}
           </p>
@@ -32,33 +32,33 @@ function ClassRow({ entry, index }: { entry: ClassEntry; index: number }) {
         <div className="grid gap-5 border-t border-forest-900/[0.07] px-6 pb-6 pt-6 sm:px-8 lg:border-l lg:border-t-0 lg:px-8 lg:py-8">
           <div className="grid gap-3 text-base">
             <p className="flex items-baseline justify-between gap-4">
-              <span className="text-forest-800/70">When</span>
-              <span className="text-right font-semibold text-forest-900">
+              <span className="text-ink-700/70">When</span>
+              <span className="text-right font-semibold text-ink-900">
                 {venue.day}s, {formatRange(venue)}
               </span>
             </p>
             <p className="flex items-baseline justify-between gap-4">
-              <span className="text-forest-800/70">Where</span>
-              <a href={venue.mapsUrl} target="_blank" rel="noreferrer" className="group text-right font-semibold text-forest-900">
+              <span className="text-ink-700/70">Where</span>
+              <a href={venue.mapsUrl} target="_blank" rel="noreferrer" className="group text-right font-semibold text-ink-900">
                 <span className="group-hover:underline">{venue.hall}</span>
-                <span className="block text-sm font-normal text-forest-800/75">
+                <span className="block text-sm font-normal text-ink-700/75">
                   <MapPin className="mr-1 inline h-3.5 w-3.5 text-amber-600" strokeWidth={1.8} />
                   {venue.area}, {venue.postcode}
                 </span>
               </a>
             </p>
             <p className="flex items-baseline justify-between gap-4">
-              <span className="text-forest-800/70">Price</span>
+              <span className="text-ink-700/70">Price</span>
               <span className="text-right">
-                <span className="font-serif text-3xl font-semibold text-forest-900">£{entry.price}</span>
-                <span className="block text-sm text-forest-800/75">{entry.priceNote}</span>
+                <span className="font-serif text-3xl font-semibold text-ink-900">£{entry.price}</span>
+                <span className="block text-sm text-ink-700/75">{entry.priceNote}</span>
               </span>
             </p>
           </div>
 
-          <p className="rounded-2xl bg-cream-100/80 px-4 py-3 text-sm text-forest-800">
-            Next class <span className="font-semibold text-forest-900">{relativeDay(sessions[0])}</span>
-            <span className="block text-forest-800/70">
+          <p className="rounded-2xl bg-cream-100/80 px-4 py-3 text-sm text-ink-700">
+            Next class <span className="font-semibold text-ink-900">{relativeDay(sessions[0])}</span>
+            <span className="block text-ink-700/70">
               Then {sessions.slice(1).map((d) => formatSessionDate(d, { day: 'numeric', month: 'short' })).join(', ')}
             </span>
           </p>
@@ -101,7 +101,7 @@ export default function ClassesPage() {
         <div className="container-page">
           {/* Filter */}
           <div className="flex flex-wrap items-center gap-2.5 pb-8">
-            <span className="mr-1 text-sm font-semibold text-forest-800/70">Where:</span>
+            <span className="mr-1 text-sm font-semibold text-ink-700/70">Where:</span>
             {FILTERS.map((f) => {
               const active = filter === f.id
               return (
@@ -113,7 +113,7 @@ export default function ClassesPage() {
                   className={`rounded-full border px-5 py-2 text-[0.95rem] font-medium transition-colors ${
                     active
                       ? 'border-forest-600 bg-forest-600 text-cream-50'
-                      : 'border-forest-900/15 text-forest-800 hover:border-forest-600 hover:text-forest-900'
+                      : 'border-forest-900/15 text-ink-700 hover:border-forest-600 hover:text-ink-900'
                   }`}
                 >
                   {f.label}
@@ -133,7 +133,7 @@ export default function ClassesPage() {
           </div>
 
           <Reveal className="mt-10">
-            <p className="rounded-3xl border border-forest-900/[0.08] bg-cream-100/70 px-6 py-5 text-base text-forest-800">
+            <p className="rounded-3xl border border-forest-900/[0.08] bg-cream-100/70 px-6 py-5 text-base text-ink-700">
               New to Sattvalife? Please fill in the{' '}
               <Link to="/registration" className="link-underline font-semibold">
                 short registration and health form
@@ -172,11 +172,11 @@ export default function ClassesPage() {
             <div className="divide-y divide-forest-900/[0.08] border-y border-forest-900/[0.08]">
               {FAQS.map((f) => (
                 <details key={f.q} className="group py-5 [&_summary::-webkit-details-marker]:hidden">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-2xl text-forest-900">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-2xl text-ink-900">
                     {f.q}
                     <Plus className="h-5 w-5 shrink-0 text-amber-600 transition-transform duration-300 group-open:rotate-45" />
                   </summary>
-                  <p className="mt-3 max-w-[60ch] text-base leading-relaxed text-forest-800/85">{f.a}</p>
+                  <p className="mt-3 max-w-[60ch] text-base leading-relaxed text-ink-700/85">{f.a}</p>
                 </details>
               ))}
             </div>
@@ -186,7 +186,7 @@ export default function ClassesPage() {
 
       <section className="border-t border-forest-900/[0.07] py-16">
         <div className="container-page flex flex-wrap items-center justify-between gap-6">
-          <p className="max-w-md text-lg text-forest-800/85">
+          <p className="max-w-md text-lg text-ink-700/85">
             <Check className="mr-2 inline h-5 w-5 text-forest-600" strokeWidth={2.2} />
             Mats and props provided. Just bring water and clothes you can move in.
           </p>

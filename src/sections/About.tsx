@@ -18,10 +18,10 @@ export function Welcome() {
       <div className="container-page grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
         <Reveal className="lg:col-span-6">
           <h2 className="text-4xl leading-[1.08] sm:text-5xl">Taught by two people, not a timetable</h2>
-          <p className="mt-6 max-w-[46ch] text-lg leading-relaxed text-forest-800/85">
+          <p className="mt-6 max-w-[46ch] text-lg leading-relaxed text-ink-700/85">
             Amisha and Nish teach every class themselves. Groups stay small, so each pose is adapted to the body in front of them, whatever your age or experience.
           </p>
-          <Link to="/teachers" className="group mt-8 inline-flex items-center gap-2 font-semibold text-forest-800 hover:text-forest-900">
+          <Link to="/teachers" className="group mt-8 inline-flex items-center gap-2 font-semibold text-ink-700 hover:text-ink-900">
             <span className="link-underline">Meet your teachers</span>
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
@@ -34,8 +34,8 @@ export function Welcome() {
                 <div className="arch overflow-hidden bg-cream-200 shadow-soft">
                   <Photo slot={TEACHER_PHOTOS[i]} className="w-full transition-transform duration-700 group-hover:scale-[1.03]" />
                 </div>
-                <p className="mt-4 font-serif text-xl text-forest-900 sm:text-2xl">{t.name}</p>
-                <p className="text-sm text-forest-800/70">{t.role}</p>
+                <p className="mt-4 font-serif text-xl text-ink-900 sm:text-2xl">{t.name}</p>
+                <p className="text-sm text-ink-700/70">{t.role}</p>
               </Link>
             </Reveal>
           ))}
@@ -54,7 +54,7 @@ export function WelcomeFull() {
       <div className="container-page grid gap-12 lg:grid-cols-12 lg:gap-16">
         <Reveal className="lg:col-span-7">
           <h2 className="text-4xl leading-[1.08] sm:text-5xl">{welcome.title}</h2>
-          <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-forest-800/85">{welcome.body}</p>
+          <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-ink-700/85">{welcome.body}</p>
         </Reveal>
         <ul className="grid gap-8 sm:grid-cols-3 lg:col-span-5 lg:grid-cols-1 lg:gap-7">
           {aboutVinyasa.pillars.map((p, i) => (
@@ -62,7 +62,7 @@ export function WelcomeFull() {
               <Reveal delay={i * 0.08}>
                 <img src={PILLAR_ICONS[i % PILLAR_ICONS.length]} alt="" aria-hidden="true" width={48} height={48} loading="lazy" className="h-11 w-auto" />
                 <h3 className="mt-3 text-2xl">{p.title}</h3>
-                <p className="mt-2 text-base leading-relaxed text-forest-800/75">{p.text}</p>
+                <p className="mt-2 text-base leading-relaxed text-ink-700/75">{p.text}</p>
               </Reveal>
             </li>
           ))}

@@ -19,7 +19,7 @@ export default function Community() {
             <h2 id="community-title" className="text-4xl leading-[1.1] sm:text-5xl">
               Join the Sattvalife community
             </h2>
-            <p className="mt-4 max-w-[46ch] text-lg leading-relaxed text-forest-800/85">
+            <p className="mt-4 max-w-[46ch] text-lg leading-relaxed text-ink-700/85">
               Class news, workshops and moments from the mat. Come and say hello on {handles}.
             </p>
           </div>

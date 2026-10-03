@@ -9,14 +9,14 @@ export default function PrivacyPolicyPage() {
         <Reveal>
           <p className="eyebrow mb-4">Privacy</p>
           <h1 className="mb-4 text-5xl sm:text-6xl">Privacy Policy</h1>
-          <p className="text-forest-700/75 mb-10 text-sm">Last updated: August 2026 · Sattvalife Yoga, Leicester, United Kingdom</p>
+          <p className="text-ink-600/75 mb-10 text-sm">Last updated: August 2026 · Sattvalife Yoga, Leicester, United Kingdom</p>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="card p-7 sm:p-12 text-lg space-y-10 text-forest-800/90 leading-relaxed">
+          <div className="card p-7 sm:p-12 text-lg space-y-10 text-ink-700/90 leading-relaxed">
             
             <section className="space-y-3">
-              <h2 className="font-serif text-2xl text-forest-900 flex items-center gap-2">
+              <h2 className="font-serif text-2xl text-ink-900 flex items-center gap-2">
                 <FileText className="h-5 w-5 text-amber-700" />
                 1. Introduction & Data Controller
               </h2>
@@ -29,12 +29,12 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section className="space-y-3">
-              <h2 className="font-serif text-2xl text-forest-900 flex items-center gap-2">
+              <h2 className="font-serif text-2xl text-ink-900 flex items-center gap-2">
                 <Eye className="h-5 w-5 text-amber-700" />
                 2. Information We Collect
               </h2>
               <p>We may collect and process the following categories of personal data:</p>
-              <ul className="list-disc list-inside space-y-1.5 pl-2 text-forest-800/80">
+              <ul className="list-disc list-inside space-y-1.5 pl-2 text-ink-700/80">
                 <li><strong>Identity & Contact Information:</strong> Name, email address, telephone number, and emergency contact details.</li>
                 <li><strong>Health & Fitness Declarations (Special Category Data):</strong> Relevant medical history, past injuries, surgeries, or pregnancy status provided voluntarily via our registration form to ensure safe practice. (Processed strictly under Explicit Consent, Article 9(2)(a) UK GDPR).</li>
                 <li><strong>Transaction Data:</strong> Details of payments for classes, workshops, and memberships. Payment card details are tokenised and processed securely by <strong>Stripe Payments UK</strong>; we do not store full card numbers on our servers.</li>
@@ -43,12 +43,12 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section className="space-y-3">
-              <h2 className="font-serif text-2xl text-forest-900 flex items-center gap-2">
+              <h2 className="font-serif text-2xl text-ink-900 flex items-center gap-2">
                 <Lock className="h-5 w-5 text-amber-700" />
                 3. Lawful Bases for Processing
               </h2>
               <p>Under the UK GDPR, we rely on the following lawful bases:</p>
-              <ul className="list-disc list-inside space-y-1.5 pl-2 text-forest-800/80">
+              <ul className="list-disc list-inside space-y-1.5 pl-2 text-ink-700/80">
                 <li><strong>Performance of a Contract:</strong> To register you for classes, fulfill course bookings, and manage your membership.</li>
                 <li><strong>Explicit Consent:</strong> For health assessment questionnaires (PAR-Q) and marketing newsletters. You may withdraw consent at any time.</li>
                 <li><strong>Legal Obligation:</strong> For maintaining accounting, tax, and insurance records required under UK law.</li>
@@ -57,9 +57,9 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section className="space-y-3">
-              <h2 className="font-serif text-2xl text-forest-900">4. Your Statutory Rights</h2>
+              <h2 className="font-serif text-2xl text-ink-900">4. Your Statutory Rights</h2>
               <p>Under UK data protection law, you have enforceable rights, including:</p>
-              <ul className="list-disc list-inside space-y-1 pl-2 text-forest-800/80">
+              <ul className="list-disc list-inside space-y-1 pl-2 text-ink-700/80">
                 <li><strong>The right of access:</strong> Request a copy of the personal data we hold about you (Subject Access Request).</li>
                 <li><strong>The right to rectification:</strong> Request correction of inaccurate or incomplete information.</li>
                 <li><strong>The right to erasure:</strong> Request deletion of your personal data ("right to be forgotten").</li>
@@ -73,12 +73,12 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section className="space-y-3">
-              <h2 className="font-serif text-2xl text-forest-900">5. Supervisory Authority (ICO)</h2>
+              <h2 className="font-serif text-2xl text-ink-900">5. Supervisory Authority (ICO)</h2>
               <p>
                 If you have concerns about our information handling practices, you have the right to lodge a complaint with the UK supervisory authority:
               </p>
               <div className="rounded-2xl bg-forest-50 p-4 text-sm space-y-1">
-                <p className="font-semibold text-forest-900">Information Commissioner's Office (ICO)</p>
+                <p className="font-semibold text-ink-900">Information Commissioner's Office (ICO)</p>
                 <p>Wycliffe House, Water Lane, Wilmslow, Cheshire, SK9 5AF</p>
                 <p>Helpline: 0303 123 1113 · Website: <a href="https://ico.org.uk" target="_blank" rel="noreferrer" className="link-underline inline-block py-1">ico.org.uk</a></p>
               </div>

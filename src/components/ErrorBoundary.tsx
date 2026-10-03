@@ -22,7 +22,7 @@ export class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-cream-50 px-6 text-center gap-6">
           <img src="/images/logo.png" alt="Sattvalife Yoga" width={800} height={439} className="h-20 w-auto" />
-          <h1 className="text-4xl text-forest-900">Something went wrong</h1>
+          <h1 className="text-4xl text-ink-900">Something went wrong</h1>
           <p className="text-forest-600 max-w-xs text-sm">
             This page could not load. Please refresh, or head back to the home page.
           </p>

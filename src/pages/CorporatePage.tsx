@@ -87,14 +87,14 @@ export default function CorporatePage() {
         <div className="container-page grid gap-14 lg:grid-cols-2 lg:gap-20">
           <Reveal>
             <h2 className="text-4xl leading-[1.08] sm:text-5xl">Healthier, happier teams</h2>
-            <p className="mt-6 text-lg leading-relaxed text-forest-800/85">{CORPORATE.body}</p>
+            <p className="mt-6 text-lg leading-relaxed text-ink-700/85">{CORPORATE.body}</p>
           </Reveal>
           <Reveal delay={0.1}>
             <h3 className="text-3xl">{CORPORATE.offersTitle}</h3>
-            <p className="mt-3 text-forest-800/80">{CORPORATE.offersIntro}</p>
+            <p className="mt-3 text-ink-700/80">{CORPORATE.offersIntro}</p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {CORPORATE.offers.map((o) => (
-                <li key={o} className="flex gap-3 rounded-2xl bg-white/80 p-4 text-base text-forest-900 shadow-soft">
+                <li key={o} className="flex gap-3 rounded-2xl bg-white/80 p-4 text-base text-ink-900 shadow-soft">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-forest-600" strokeWidth={2.2} />
                   {o}
                 </li>
@@ -123,10 +123,10 @@ export default function CorporatePage() {
         <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <Reveal>
             <h2 className="text-4xl leading-[1.08] sm:text-5xl">Plan a session for your team</h2>
-            <p className="mt-5 max-w-md text-lg leading-relaxed text-forest-800/80">
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-ink-700/80">
               Tell us about your team, your space and what you would like to achieve. We will reply with ideas, dates and a quote.
             </p>
-            <ul className="mt-8 space-y-3 text-forest-800/85">
+            <ul className="mt-8 space-y-3 text-ink-700/85">
               {plan.features.map((f) => (
                 <li key={f} className="flex gap-3">
                   <Check className="mt-1 h-4 w-4 shrink-0 text-forest-600" strokeWidth={2.2} />

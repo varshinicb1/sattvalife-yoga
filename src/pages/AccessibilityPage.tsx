@@ -30,7 +30,7 @@ export default function AccessibilityPage() {
       />
       <section className="pb-24 pt-2">
         <div className="container-page">
-          <Reveal className="card mx-auto max-w-3xl space-y-8 p-7 text-lg leading-relaxed text-forest-800/90 sm:p-12">
+          <Reveal className="card mx-auto max-w-3xl space-y-8 p-7 text-lg leading-relaxed text-ink-700/90 sm:p-12">
             <div className="space-y-3">
               <h2 className="text-3xl">What we have done</h2>
               <ul className="space-y-2">

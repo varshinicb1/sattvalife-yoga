@@ -27,8 +27,8 @@ export default function CookieConsent() {
           data-print-hide
         >
           <div className="rounded-3xl border border-forest-900/10 bg-cream-50/95 p-5 shadow-lift backdrop-blur-xl sm:p-6">
-            <p className="font-serif text-xl text-forest-900">Cookies</p>
-            <p className="mt-2 text-[0.95rem] leading-relaxed text-forest-800/85">
+            <p className="font-serif text-xl text-ink-900">Cookies</p>
+            <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-700/85">
               We would like to use analytics cookies to understand how visitors use this site so we can improve it. They are only set if you accept.{' '}
               <Link to="/privacy" className="link-underline">
                 Privacy policy

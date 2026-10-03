@@ -46,16 +46,16 @@ export default function BlogPostPage() {
     <article className="pt-[calc(84px+env(safe-area-inset-top))]">
       <header className="container-page pt-12 sm:pt-16">
         <div className="mx-auto max-w-3xl">
-          <Link to="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-forest-800/80 hover:text-forest-900">
+          <Link to="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-ink-700/80 hover:text-ink-900">
             <ArrowLeft className="h-4 w-4" /> Journal
           </Link>
           <Reveal>
-            <p className="mt-8 text-sm text-forest-800/70">
+            <p className="mt-8 text-sm text-ink-700/70">
               {post.tags.join(', ')} · {readingMinutes(post)} min read
             </p>
             <h1 className="mt-3 text-[2.6rem] leading-[1.08] sm:text-6xl">{post.title}</h1>
-            <p className="mt-5 text-forest-800/75">
-              By <span className="font-semibold text-forest-900">{post.author}</span> · {formatPostDate(post.date)}
+            <p className="mt-5 text-ink-700/75">
+              By <span className="font-semibold text-ink-900">{post.author}</span> · {formatPostDate(post.date)}
             </p>
           </Reveal>
         </div>
@@ -65,7 +65,7 @@ export default function BlogPostPage() {
       </header>
 
       <div className="container-page py-14 sm:py-20">
-        <div className="mx-auto max-w-[68ch] space-y-7 text-lg leading-[1.8] text-forest-900/85 sm:text-[1.2rem]">
+        <div className="mx-auto max-w-[68ch] space-y-7 text-lg leading-[1.8] text-ink-900/85 sm:text-[1.2rem]">
           {post.content.map((p, i) => (
             <Paragraph key={i} text={p} />
           ))}
@@ -88,7 +88,7 @@ export default function BlogPostPage() {
                   <div className="overflow-hidden rounded-3xl bg-cream-200">
                     <img src={r.image} alt="" loading="lazy" className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                   </div>
-                  <h3 className="mt-4 text-2xl leading-snug group-hover:text-forest-700">{r.title}</h3>
+                  <h3 className="mt-4 text-2xl leading-snug group-hover:text-ink-600">{r.title}</h3>
                 </Link>
               ))}
             </div>

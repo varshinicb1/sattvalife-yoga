@@ -229,58 +229,58 @@ export interface Practice {
   text: string
   to: string
   cta: string
-  /** Card tint, rotated through the brand palette to keep the row calm. */
-  tint: string
+  /** Key into PHOTOS. Every practice slot is 4/5, so the row cannot drift. */
+  photo: string
 }
 
 export const PRACTICES: Practice[] = [
   {
     id: 'yoga',
     name: 'Yoga',
-    text: 'Our weekly Vinyasa class in Oadby. Small groups, personal attention, every age and ability welcome.',
+    text: 'Our weekly Vinyasa class in Oadby. Small groups, every ability welcome.',
     to: '/classes',
     cta: 'See the timetable',
-    tint: 'bg-forest-100/70',
+    photo: 'practiceYoga',
   },
   {
     id: 'pilates',
     name: 'Pilates',
-    text: 'Core strength, posture and controlled movement. Available for groups, events and private sessions.',
+    text: 'Core strength, posture and controlled movement, for groups or one to one.',
     to: '/contact#enquiry',
     cta: 'Enquire',
-    tint: 'bg-cream-200/70',
+    photo: 'practicePilates',
   },
   {
     id: 'breathwork',
     name: 'Breathwork & Meditation',
-    text: 'Guided breathing and candle meditation to settle a busy mind, on its own or inside a longer session.',
+    text: 'Guided breathing and candle meditation to settle a busy mind.',
     to: '/contact#enquiry',
     cta: 'Enquire',
-    tint: 'bg-amber-100/60',
+    photo: 'practiceBreathwork',
   },
   {
     id: 'soundbath',
     name: 'Sound Baths',
-    text: 'Deep rest with singing bowls, usually booked as part of a celebration or a wellbeing morning.',
+    text: 'Deep rest with singing bowls, as part of a celebration or a wellbeing morning.',
     to: '/contact#enquiry',
     cta: 'Enquire',
-    tint: 'bg-forest-100/55',
+    photo: 'practiceSound',
   },
   {
     id: 'private',
     name: 'Private Sessions',
-    text: 'One to one or a small group, in your space or ours, shaped entirely around what you need.',
+    text: 'One to one or a small group, in your space or ours, shaped around you.',
     to: '/contact#enquiry',
     cta: 'Enquire',
-    tint: 'bg-cream-200/60',
+    photo: 'practicePrivate',
   },
   {
     id: 'corporate',
     name: 'Corporate Wellness',
-    text: 'Desk yoga, wellbeing mornings and regular on-site or online sessions for teams across Leicestershire.',
+    text: 'Desk yoga and wellbeing mornings for teams across Leicestershire.',
     to: '/corporate',
     cta: 'Request a proposal',
-    tint: 'bg-amber-100/50',
+    photo: 'practiceCorporate',
   },
 ]
 

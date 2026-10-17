@@ -103,9 +103,10 @@ export default function Navbar() {
               <NavLink
                 key={l.to}
                 to={l.to}
+                end={l.to === '/'}
                 className={({ isActive }) =>
                   /* Solid ink at rest; the capsule lights up gold on hover and for the current page. */
-                  `rounded-full border px-4 py-2 text-[0.92rem] font-medium transition-colors duration-200 ${
+                  `rounded-full border px-3.5 py-2 text-[0.9rem] font-medium transition-colors duration-200 ${
                     isActive
                       ? 'border-amber-400/50 bg-amber-100 font-semibold text-amber-700'
                       : 'border-transparent text-ink-800 hover:border-amber-300/70 hover:bg-amber-50 hover:text-amber-700'
@@ -158,7 +159,7 @@ export default function Navbar() {
           >
             <nav aria-label="Mobile" className="container-page flex min-h-full flex-col pb-10 pt-4">
               <ul className="divide-y divide-forest-900/[0.07] border-y border-forest-900/[0.07]">
-                {[{ label: 'Home', to: '/' }, ...NAV_LINKS].map((l, i) => (
+                {NAV_LINKS.map((l, i) => (
                   <motion.li
                     key={l.to}
                     initial={reduce ? false : { opacity: 0, y: 12 }}

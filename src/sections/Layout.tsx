@@ -5,6 +5,8 @@ import Footer from '@/sections/Footer'
 import Community from '@/sections/Community'
 import CookieConsent from '@/components/CookieConsent'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import StickyBook from '@/components/StickyBook'
+import NewsletterPopup from '@/components/NewsletterPopup'
 import ScrollToTop from '@/components/ScrollToTop'
 import CheckoutNotice from '@/components/CheckoutNotice'
 import BookingSheet from '@/components/BookingSheet'
@@ -28,6 +30,8 @@ export default function Layout() {
       <Community />
       <Footer />
       <WhatsAppButton />
+      <StickyBook />
+      <NewsletterPopup />
       <CheckoutNotice />
       <CookieConsent />
       <AnimatePresence>{booking && <BookingSheet key={booking.courseId + (booking.venueId ?? '')} request={booking} />}</AnimatePresence>

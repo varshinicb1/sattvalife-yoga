@@ -2,7 +2,12 @@ import { Reveal, SectionHeading } from '@/components/motion-primitives'
 import { FOCUS_AREAS } from '@/data/content'
 import { useCmsContent } from '@/hooks/useCmsContent'
 
-/** Back · Belly · Breath: three cells, three different surfaces (photo, sage, brass). */
+/**
+ * Back · Belly · Breath: three cells, three different surfaces (photo, sage, brass).
+ * The photo is a genuine Sattvalife class shot. It is lower resolution than the
+ * cell really wants; the gradient and the grass hide most of that, and
+ * photos.ts records the high-resolution shot it is waiting for.
+ */
 export default function FocusAreas() {
   const { images } = useCmsContent()
   const [back, belly, breath] = FOCUS_AREAS.areas
@@ -25,11 +30,10 @@ export default function FocusAreas() {
             <article className="relative flex h-full min-h-[22rem] flex-col justify-end overflow-hidden rounded-3xl bg-forest-800 p-7 sm:min-h-[28rem] sm:p-10">
               <img
                 src={images.poseImage}
-                srcSet={images.poseImage.includes('/opt/studio-triangle') ? '/images/opt/studio-triangle-800.webp 800w, /images/opt/studio-triangle-1376.webp 1376w' : undefined}
                 sizes="(min-width: 1024px) 700px, 100vw"
-                width={1376}
-                height={768}
-                alt="Triangle pose, lengthening the spine and side body"
+                width={500}
+                height={500}
+                alt="A deep backbend during a Sattvalife class"
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover object-[60%_center]"
               />

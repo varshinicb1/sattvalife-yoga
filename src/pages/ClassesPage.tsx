@@ -1,6 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { Link } from 'react-router'
-import { CalendarPlus, Check, MapPin, Plus, Users } from 'lucide-react'
+import { CalendarPlus, Check, Clock, MapPin, Plus, Ticket, Users } from 'lucide-react'
 import PageHero from '@/components/PageHero'
 import { Reveal, SectionHeading } from '@/components/motion-primitives'
 import { PlanCards, PaymentNote } from '@/sections/Courses'
@@ -8,15 +8,13 @@ import { CLASSES, FAQS, TIMETABLE, type ClassEntry } from '@/data/content'
 import Photo from '@/components/Photo'
 import { PHOTOS } from '@/data/photos'
 import { openBooking } from '@/lib/bookingStore'
-import { downloadIcs, formatRange, formatSessionDate, nextSessions, relativeDay } from '@/lib/schedule'
-
-/** Venue areas double as the filter. Online is deliberately absent: there are no online classes yet. */
-const FILTERS = [{ id: 'all', label: 'All classes' }, ...TIMETABLE.venues.map((v) => ({ id: v.area, label: v.area }))]
+import UpcomingClasses from '@/components/UpcomingClasses'
+import { downloadIcs, formatDuration, formatRange, formatSessionDate, nextSessions, relativeDay } from '@/lib/schedule'
 
 function ClassRow({ entry, index }: { entry: ClassEntry; index: number }) {
   const venue = TIMETABLE.venues.find((v) => v.id === entry.venueId)!
   const sessions = useMemo(() => nextSessions(venue, 3), [venue])
-  const slot = entry.id === 'tue' ? 'classTue' : 'classThu'
+  const slot = entry.photo
   /* No empty placeholder panel: the photo column only exists once a real photo does. */
   const hasPhoto = Boolean(PHOTOS[slot].src)
 
@@ -33,7 +31,7 @@ function ClassRow({ entry, index }: { entry: ClassEntry; index: number }) {
           <p className="mt-3 max-w-[56ch] text-base leading-relaxed text-ink-700/85">{entry.blurb}</p>
           <p className="mt-4 inline-flex items-center gap-2 self-start rounded-full bg-cream-100 px-3.5 py-1.5 text-sm font-medium text-ink-700">
             <Users className="h-4 w-4 text-amber-600" strokeWidth={1.8} />
-            {entry.audience}
+            Small group, personal attention
           </p>
           <p className="mt-6 rounded-2xl bg-cream-100/80 px-4 py-3 text-sm text-ink-700 lg:mt-auto">
             Next class <span className="font-semibold text-ink-900">{relativeDay(sessions[0])}</span>
@@ -62,6 +60,24 @@ function ClassRow({ entry, index }: { entry: ClassEntry; index: number }) {
               </a>
             </p>
             <p className="flex items-baseline justify-between gap-4">
+              <span className="text-ink-700/70">Level</span>
+              <span className="text-right font-semibold text-ink-900">{entry.audience}</span>
+            </p>
+            <p className="flex items-baseline justify-between gap-4">
+              <span className="text-ink-700/70">Duration</span>
+              <span className="text-right font-semibold text-ink-900">
+                <Clock className="mr-1 inline h-3.5 w-3.5 text-amber-600" strokeWidth={1.8} />
+                {formatDuration(venue)}
+              </span>
+            </p>
+            <p className="flex items-baseline justify-between gap-4">
+              <span className="text-ink-700/70">Availability</span>
+              <span className="text-right font-medium text-ink-900">
+                <Ticket className="mr-1 inline h-3.5 w-3.5 text-amber-600" strokeWidth={1.8} />
+                {entry.availability}
+              </span>
+            </p>
+            <p className="flex items-baseline justify-between gap-4">
               <span className="text-ink-700/70">Price</span>
               <span className="text-right">
                 <span className="font-serif text-3xl font-semibold text-ink-900">£{entry.price}</span>
@@ -86,12 +102,6 @@ function ClassRow({ entry, index }: { entry: ClassEntry; index: number }) {
 }
 
 export default function ClassesPage() {
-  const [filter, setFilter] = useState('all')
-  const visible = CLASSES.filter((c) => {
-    if (filter === 'all') return true
-    return TIMETABLE.venues.find((v) => v.id === c.venueId)?.area === filter
-  })
-
   return (
     <>
       <PageHero
@@ -101,39 +111,23 @@ export default function ClassesPage() {
             Yoga that fits <em className="font-normal text-forest-600">your</em> week
           </>
         }
-        intro="Two small evening classes near you, with personal attention for every body. Pick a class, see the next date and book in under a minute."
+        intro="A small evening class in Oadby, with personal attention for every body. See the next date and book in under a minute."
       />
 
       <section className="section-pb pt-2">
         <div className="container-page">
-          {/* Filter */}
-          <div className="flex flex-wrap items-center gap-2.5 pb-8">
-            <span className="mr-1 text-sm font-semibold text-ink-700/70">Where:</span>
-            {FILTERS.map((f) => {
-              const active = filter === f.id
-              return (
-                <button
-                  key={f.id}
-                  type="button"
-                  onClick={() => setFilter(f.id)}
-                  aria-pressed={active}
-                  className="chip"
-                >
-                  {f.label}
-                </button>
-              )
-            })}
-          </div>
-
-          <p className="sr-only" aria-live="polite">
-            {visible.length} {visible.length === 1 ? 'class' : 'classes'} shown
-          </p>
-
           <div className="grid gap-5">
-            {visible.map((c, i) => (
+            {CLASSES.map((c, i) => (
               <ClassRow key={c.id} entry={c} index={i} />
             ))}
           </div>
+
+          {/* Replaces the Thursday row the client asked us to retire. */}
+          <Reveal className="mt-5">
+            <div id="upcoming" className="scroll-mt-28">
+              <UpcomingClasses />
+            </div>
+          </Reveal>
 
           <Reveal className="mt-10">
             <p className="rounded-3xl border border-forest-900/[0.08] bg-cream-100/70 px-6 py-5 text-base text-ink-700">

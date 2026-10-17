@@ -47,7 +47,7 @@ export default function CorporatePage() {
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <Link to="/corporate#enquire" className="btn-primary btn-lg">
-            Plan a session
+            Request a proposal
           </Link>
           <button type="button" onClick={() => openBooking({ courseId: 'corporate' })} className="btn-outline btn-lg">
             Book at £{plan.price} a session

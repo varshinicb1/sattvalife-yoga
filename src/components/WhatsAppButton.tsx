@@ -9,8 +9,9 @@ export default function WhatsAppButton() {
   const consent = useConsent()
   const [atFooter, setAtFooter] = useState(false)
 
-  // Step aside once the footer is on screen, so the button never sits on top of
-  // the newsletter field, footer links or a form's submit button.
+  // Desktop only: below lg the sticky booking bar carries WhatsApp, so the two
+  // never stack in the same corner. Step aside once the footer is on screen, so
+  // the button never sits on top of the newsletter field or a submit button.
   useEffect(() => {
     const footer = document.querySelector('footer')
     if (!footer || typeof IntersectionObserver === 'undefined') return
@@ -30,7 +31,7 @@ export default function WhatsAppButton() {
       data-print-hide
       aria-hidden={atFooter}
       tabIndex={atFooter ? -1 : undefined}
-      className={`fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom))] right-5 z-float flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_12px_28px_-8px_rgb(37_211_102/0.55)] transition-all duration-300 hover:scale-105 active:scale-95 sm:right-6 ${
+      className={`fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom))] right-5 z-float hidden h-14 w-14 items-center justify-center lg:flex rounded-full bg-[#25D366] text-white shadow-[0_12px_28px_-8px_rgb(37_211_102/0.55)] transition-all duration-300 hover:scale-105 active:scale-95 sm:right-6 ${
         atFooter ? 'pointer-events-none translate-y-24 opacity-0' : 'translate-y-0 opacity-100'
       }`}
       aria-label="Chat with Sattvalife on WhatsApp"

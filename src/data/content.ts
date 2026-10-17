@@ -1,3 +1,5 @@
+import type { PhotoKey } from '@/data/photos'
+
 /**
  * Static site content: the defaults that ship in the bundle.
  * Copy is sourced from the original sattvalife.yoga site; useCmsContent overlays
@@ -96,7 +98,7 @@ export const COURSES: Course[] = [
     name: 'Drop-In Class',
     price: 10,
     unit: 'per class',
-    blurb: 'Try a class, or come when it suits you. Join any group session in Oadby or Thurnby.',
+    blurb: 'Try a class, or come when it suits you. Join our Tuesday evening group class in Oadby.',
     features: [
       'Any scheduled group class',
       'Small groups, individual attention',
@@ -115,7 +117,7 @@ export const COURSES: Course[] = [
     features: [
       'All weekly group classes',
       'Personalised to your needs and abilities',
-      'Priority booking at both venues',
+      'Priority booking on every class',
       'Wellness tips and habit-building support',
     ],
     focus: ['Back', 'Belly', 'Breath'],
@@ -140,7 +142,7 @@ export const COURSES: Course[] = [
 ]
 
 export interface Venue {
-  id: 'tue' | 'thu'
+  id: string
   day: string
   /** 0 = Sunday … 6 = Saturday */
   dayIndex: number
@@ -168,28 +170,22 @@ export const TIMETABLE: { title: string; subtitle: string; venues: Venue[] } = {
       end: '19:30',
       mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Trinity+Methodist+Church+Oadby+LE2+5AB',
     },
-    {
-      id: 'thu',
-      day: 'Thursday',
-      dayIndex: 4,
-      hall: 'Thurnby Memorial Hall',
-      area: 'Thurnby',
-      postcode: 'LE7 9PN',
-      start: '19:00',
-      end: '20:00',
-      mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Thurnby+Memorial+Hall+LE7+9PN',
-    },
   ],
 }
 
 export interface ClassEntry {
-  id: 'tue' | 'thu'
+  id: string
   name: string
   blurb: string
+  /** Who the class suits, shown as the "Level" row when booking. */
   audience: string
   venueId: Venue['id']
   price: number
   priceNote: string
+  /** How a place is held. No live seat count: bookings go through Stripe, not a seat map. */
+  availability: string
+  /** Named, not derived from the id: a new class without a slot would otherwise 404 the lookup. */
+  photo: PhotoKey
 }
 
 /** One row per weekly class on the merged Classes & Timetable page. */
@@ -202,15 +198,94 @@ export const CLASSES: ClassEntry[] = [
     venueId: 'tue',
     price: 10,
     priceNote: 'drop in, or included in Monthly Flow',
+    availability: 'Small group, drop-in. Book ahead to reserve your mat.',
+    photo: 'classTue',
+  },
+]
+
+/**
+ * Thursday evenings at Thurnby ended in October 2026. Rather than leave a dead
+ * row in the timetable, the site asks people to register interest, so the studio
+ * knows where the demand is before committing to a second night. Posts to the
+ * Worker's /api/newsletter with its own source, so these sign-ups are
+ * distinguishable from footer subscribers in the admin app.
+ */
+export const UPCOMING = {
+  eyebrow: 'Upcoming classes',
+  title: 'Looking for another day?',
+  text: 'Right now we teach on Tuesday evenings in Oadby. More classes are being planned. Leave your email and we will tell you first when a new day, time or venue opens.',
+  cta: 'Keep me posted',
+  note: 'Class news only, a few times a year. Unsubscribe any time.',
+  source: 'upcoming-classes',
+}
+
+/**
+ * "Find your practice" — the six services the client's brief names.
+ *
+ * Only Yoga and Corporate Wellness have a published price and a schedule, so
+ * only those two carry a booking route. The other four are things Sattvalife
+ * genuinely offers (they already appear in the celebrations menu and as private
+ * sessions) but has not priced as standing classes, so they route to the
+ * enquiry form. Nothing here states a price we cannot stand behind.
+ */
+export interface Practice {
+  id: string
+  name: string
+  text: string
+  to: string
+  cta: string
+  /** Every practice slot is 4/5, so the row cannot drift. */
+  photo: PhotoKey
+}
+
+export const PRACTICES: Practice[] = [
+  {
+    id: 'yoga',
+    name: 'Yoga',
+    text: 'Our weekly Vinyasa class in Oadby. Small groups, every ability welcome.',
+    to: '/classes',
+    cta: 'See the timetable',
+    photo: 'practiceYoga',
   },
   {
-    id: 'thu',
-    name: 'Thursday Evening Flow',
-    blurb: 'The same personal approach in a slightly shorter hour. Poses are adapted for every body, whatever your age or ability.',
-    audience: 'All levels, beginners welcome',
-    venueId: 'thu',
-    price: 10,
-    priceNote: 'drop in, or included in Monthly Flow',
+    id: 'pilates',
+    name: 'Pilates',
+    text: 'Core strength, posture and controlled movement, for groups or one to one.',
+    to: '/contact#enquiry',
+    cta: 'Enquire',
+    photo: 'practicePilates',
+  },
+  {
+    id: 'breathwork',
+    name: 'Breathwork & Meditation',
+    text: 'Guided breathing and candle meditation to settle a busy mind.',
+    to: '/contact#enquiry',
+    cta: 'Enquire',
+    photo: 'practiceBreathwork',
+  },
+  {
+    id: 'soundbath',
+    name: 'Sound Baths',
+    text: 'Deep rest with singing bowls, as part of a celebration or a wellbeing morning.',
+    to: '/contact#enquiry',
+    cta: 'Enquire',
+    photo: 'practiceSound',
+  },
+  {
+    id: 'private',
+    name: 'Private Sessions',
+    text: 'One to one or a small group, in your space or ours, shaped around you.',
+    to: '/contact#enquiry',
+    cta: 'Enquire',
+    photo: 'practicePrivate',
+  },
+  {
+    id: 'corporate',
+    name: 'Corporate Wellness',
+    text: 'Desk yoga and wellbeing mornings for teams across Leicestershire.',
+    to: '/corporate',
+    cta: 'Request a proposal',
+    photo: 'practiceCorporate',
   },
 ]
 
@@ -433,7 +508,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Sitting is the new smoking. Learn three powerful yoga poses to counter the effects of prolonged desk work.',
     date: '2022-06-30',
     author: 'Amisha Soni',
-    image: '/images/opt/studio-triangle-1376.webp',
+    image: '/images/opt/garden-1-500.webp',
     tags: ['Back Pain', 'Asanas'],
     content: [
       '"Sitting is the new smoking." The phrase captures the hidden cost of our desk-bound lives. Prolonged sitting affects more than your eyesight; it impacts posture, metabolism, and mental health, increasing risks of anxiety, depression, and obesity.',

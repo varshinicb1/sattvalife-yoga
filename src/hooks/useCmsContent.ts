@@ -64,7 +64,7 @@ const defaultState: CmsContentState = {
     pillars: DEFAULT_VINYASA.pillars,
   },
   images: {
-    poseImage: '/images/opt/studio-triangle-1376.webp',
+    poseImage: '/images/opt/garden-1-500.webp',
     aboutBgImage: '/images/opt/daisies-1200.webp',
     heroBgImage: '/images/opt/lotus-mark-900.webp',
     logoImage: '/images/logo.png',
@@ -121,7 +121,7 @@ function mapPost(p: RawPost): BlogPost {
     excerpt: p.excerpt || (contentLines[0] ? contentLines[0].slice(0, 140).trimEnd() + '…' : ''),
     date: p.createdAt ? p.createdAt.split('T')[0] : p.date || new Date().toISOString().split('T')[0],
     author: p.author || 'Amisha Soni',
-    image: p.image || '/images/opt/studio-triangle-1376.webp',
+    image: p.image || '/images/opt/garden-2-500.webp',
     tags,
     content: contentLines,
   }

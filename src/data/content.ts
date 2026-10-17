@@ -214,6 +214,76 @@ export const UPCOMING = {
   source: 'upcoming-classes',
 }
 
+/**
+ * "Find your practice" — the six services the client's brief names.
+ *
+ * Only Yoga and Corporate Wellness have a published price and a schedule, so
+ * only those two carry a booking route. The other four are things Sattvalife
+ * genuinely offers (they already appear in the celebrations menu and as private
+ * sessions) but has not priced as standing classes, so they route to the
+ * enquiry form. Nothing here states a price we cannot stand behind.
+ */
+export interface Practice {
+  id: string
+  name: string
+  text: string
+  to: string
+  cta: string
+  /** Card tint, rotated through the brand palette to keep the row calm. */
+  tint: string
+}
+
+export const PRACTICES: Practice[] = [
+  {
+    id: 'yoga',
+    name: 'Yoga',
+    text: 'Our weekly Vinyasa class in Oadby. Small groups, personal attention, every age and ability welcome.',
+    to: '/classes',
+    cta: 'See the timetable',
+    tint: 'bg-forest-100/70',
+  },
+  {
+    id: 'pilates',
+    name: 'Pilates',
+    text: 'Core strength, posture and controlled movement. Available for groups, events and private sessions.',
+    to: '/contact#enquiry',
+    cta: 'Enquire',
+    tint: 'bg-cream-200/70',
+  },
+  {
+    id: 'breathwork',
+    name: 'Breathwork & Meditation',
+    text: 'Guided breathing and candle meditation to settle a busy mind, on its own or inside a longer session.',
+    to: '/contact#enquiry',
+    cta: 'Enquire',
+    tint: 'bg-amber-100/60',
+  },
+  {
+    id: 'soundbath',
+    name: 'Sound Baths',
+    text: 'Deep rest with singing bowls, usually booked as part of a celebration or a wellbeing morning.',
+    to: '/contact#enquiry',
+    cta: 'Enquire',
+    tint: 'bg-forest-100/55',
+  },
+  {
+    id: 'private',
+    name: 'Private Sessions',
+    text: 'One to one or a small group, in your space or ours, shaped entirely around what you need.',
+    to: '/contact#enquiry',
+    cta: 'Enquire',
+    tint: 'bg-cream-200/60',
+  },
+  {
+    id: 'corporate',
+    name: 'Corporate Wellness',
+    text: 'Desk yoga, wellbeing mornings and regular on-site or online sessions for teams across Leicestershire.',
+    to: '/corporate',
+    cta: 'Request a proposal',
+    tint: 'bg-amber-100/50',
+  },
+]
+
 export interface Instructor {
   name: string
   role: string
@@ -433,7 +503,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Sitting is the new smoking. Learn three powerful yoga poses to counter the effects of prolonged desk work.',
     date: '2022-06-30',
     author: 'Amisha Soni',
-    image: '/images/opt/studio-triangle-1376.webp',
+    image: '/images/opt/garden-1-500.webp',
     tags: ['Back Pain', 'Asanas'],
     content: [
       '"Sitting is the new smoking." The phrase captures the hidden cost of our desk-bound lives. Prolonged sitting affects more than your eyesight; it impacts posture, metabolism, and mental health, increasing risks of anxiety, depression, and obesity.',

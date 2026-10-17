@@ -23,14 +23,21 @@ export interface PhotoSlot {
 
 const slots = {
   heroPortrait: {
-    where: 'Homepage hero, the large arched photo',
-    brief: 'Amisha or Nish mid-pose in a bright hall, full body, upright crop with space above the head',
+    where: 'Homepage hero — the motif column, once a real photograph exists',
+    brief:
+      'Amisha or Nish mid-pose at Trinity Methodist Church, full body, upright crop with space above the head. The stock image that used to sit here was removed: the client asked for genuine Sattvalife photography only.',
     ratio: '4/5',
     supply: '1230 x 1536px',
-    src: '/images/opt/studio-triangle-portrait-900.webp',
-    srcSet: '/images/opt/studio-triangle-portrait-560.webp 560w, /images/opt/studio-triangle-portrait-900.webp 614w',
-    sizes: '(min-width: 1024px) 460px, 80vw',
-    alt: 'A student holding triangle pose in a calm, sunlit studio',
+    src: null,
+    alt: 'Amisha teaching at the Tuesday evening class in Oadby',
+  },
+  focusBack: {
+    where: 'Homepage, the large "Back" panel in Back · Belly · Breath',
+    brief: 'A backbend or spine-lengthening pose, landscape, shot wide enough to crop. Currently filled by a 500px garden photo that is softer than the panel deserves.',
+    ratio: '16/10',
+    supply: '1600 x 1000px',
+    src: '/images/opt/garden-1-500.webp',
+    alt: 'A deep backbend during a Sattvalife class',
   },
   heroInset: {
     where: 'Homepage hero, the small circle overlapping the photo',

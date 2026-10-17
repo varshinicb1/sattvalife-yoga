@@ -3,7 +3,6 @@ import { ArrowRight } from 'lucide-react'
 import { Reveal, SectionHeading } from '@/components/motion-primitives'
 import Photo from '@/components/Photo'
 import { PRACTICES } from '@/data/content'
-import type { PhotoKey } from '@/data/photos'
 
 /**
  * "Find your practice" — image-led cards, the way the client's homepage concept
@@ -32,7 +31,7 @@ export default function Practices() {
               >
                 <div className="overflow-hidden">
                   <Photo
-                    slot={p.photo as PhotoKey}
+                    slot={p.photo}
                     className="w-full transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                 </div>

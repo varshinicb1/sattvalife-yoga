@@ -14,7 +14,7 @@ import { downloadIcs, formatDuration, formatRange, formatSessionDate, nextSessio
 function ClassRow({ entry, index }: { entry: ClassEntry; index: number }) {
   const venue = TIMETABLE.venues.find((v) => v.id === entry.venueId)!
   const sessions = useMemo(() => nextSessions(venue, 3), [venue])
-  const slot = `class${entry.id.charAt(0).toUpperCase()}${entry.id.slice(1)}` as 'classTue'
+  const slot = entry.photo
   /* No empty placeholder panel: the photo column only exists once a real photo does. */
   const hasPhoto = Boolean(PHOTOS[slot].src)
 

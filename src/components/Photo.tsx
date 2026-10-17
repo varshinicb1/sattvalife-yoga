@@ -16,7 +16,16 @@ export default function Photo({
   imgClassName?: string
   priority?: boolean
 }) {
+  /*
+   * A slot that is not in the registry would otherwise blow up on `.ratio` and
+   * take the whole page with it. Fall back to the waiting frame instead: a
+   * missing picture should never be worse than a missing page.
+   */
   const photo = PHOTOS[slot]
+  if (!photo) {
+    if (import.meta.env.DEV) console.warn(`Photo: no slot named "${slot}" in PHOTOS`)
+    return <div className={className} style={{ aspectRatio: '4/5' }} aria-hidden="true" />
+  }
   const style = { aspectRatio: photo.ratio }
 
   if (!photo.src) {

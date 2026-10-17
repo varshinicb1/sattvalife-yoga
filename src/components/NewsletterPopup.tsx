@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router'
 import { ArrowRight, Check, X } from 'lucide-react'
 import { HONEYPOT, submitForm } from '@/lib/api'
@@ -67,6 +67,12 @@ export default function NewsletterPopup() {
     }
   }, [quiet, blockedByBanner])
 
+  /* Declared above the Escape handler so that handler cannot close over a stale copy. */
+  const dismiss = useCallback(() => {
+    remember('dismissed')
+    setOpen(false)
+  }, [])
+
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
@@ -74,12 +80,7 @@ export default function NewsletterPopup() {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [open])
-
-  const dismiss = () => {
-    remember('dismissed')
-    setOpen(false)
-  }
+  }, [open, dismiss])
 
   const onSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()

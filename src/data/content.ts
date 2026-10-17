@@ -1,3 +1,5 @@
+import type { PhotoKey } from '@/data/photos'
+
 /**
  * Static site content: the defaults that ship in the bundle.
  * Copy is sourced from the original sattvalife.yoga site; useCmsContent overlays
@@ -182,6 +184,8 @@ export interface ClassEntry {
   priceNote: string
   /** How a place is held. No live seat count: bookings go through Stripe, not a seat map. */
   availability: string
+  /** Named, not derived from the id: a new class without a slot would otherwise 404 the lookup. */
+  photo: PhotoKey
 }
 
 /** One row per weekly class on the merged Classes & Timetable page. */
@@ -195,6 +199,7 @@ export const CLASSES: ClassEntry[] = [
     price: 10,
     priceNote: 'drop in, or included in Monthly Flow',
     availability: 'Small group, drop-in. Book ahead to reserve your mat.',
+    photo: 'classTue',
   },
 ]
 
@@ -229,8 +234,8 @@ export interface Practice {
   text: string
   to: string
   cta: string
-  /** Key into PHOTOS. Every practice slot is 4/5, so the row cannot drift. */
-  photo: string
+  /** Every practice slot is 4/5, so the row cannot drift. */
+  photo: PhotoKey
 }
 
 export const PRACTICES: Practice[] = [

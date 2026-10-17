@@ -12,6 +12,18 @@ export function formatRange(v: Pick<Venue, 'start' | 'end'>): string {
   return `${formatTime(v.start)} to ${formatTime(v.end)}`
 }
 
+/** "18:30"→"19:30" reads as "60 minutes"; the brief asks booking to state duration. */
+export function formatDuration(v: Pick<Venue, 'start' | 'end'>): string {
+  const mins = (hhmm: string) => {
+    const [h, m] = hhmm.split(':').map(Number)
+    return h * 60 + m
+  }
+  const total = mins(v.end) - mins(v.start)
+  if (total % 60 === 0) return `${total / 60} hour${total === 60 ? '' : 's'}`
+  if (total < 60) return `${total} minutes`
+  return `${Math.floor(total / 60)} hr ${total % 60} min`
+}
+
 function atTime(date: Date, hhmm: string): Date {
   const [h, m] = hhmm.split(':').map(Number)
   const d = new Date(date)

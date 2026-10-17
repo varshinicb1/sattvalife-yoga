@@ -138,6 +138,16 @@
         "source": "/timetable-for-wordpress-sample-:n",
         "destination": "/classes",
         "type": 301
+      },
+      {
+        "source": "/about",
+        "destination": "/teachers",
+        "type": 301
+      },
+      {
+        "source": "/about/",
+        "destination": "/teachers",
+        "type": 301
       }
     ],
     "rewrites": [

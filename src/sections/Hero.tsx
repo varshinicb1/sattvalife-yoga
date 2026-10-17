@@ -39,7 +39,7 @@ export default function Hero() {
       <div className="container-page relative grid items-center gap-10 pb-12 pt-8 sm:gap-12 sm:pb-14 sm:pt-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:pb-16 lg:pt-6">
         <div className="max-w-2xl">
           <motion.p {...enter(0.05)} className="eyebrow">
-            Vinyasa yoga in Oadby &amp; Thurnby, Leicester
+            Vinyasa yoga in Oadby, Leicester
           </motion.p>
           <motion.h1
             {...enter(0.15)}

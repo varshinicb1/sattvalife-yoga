@@ -8,8 +8,12 @@ type Tone = 'light' | 'dark'
  * The one social row used site-wide: every live account in its original brand
  * colours, then the Google reviews link. Accounts without a URL are skipped, so
  * TikTok and YouTube appear everywhere at once when their links are added to
- * SOCIALS. Each mark sits on a light disc so the brand colours read on cream and
- * on the dark footer alike.
+ * SOCIALS.
+ *
+ * On cream the coloured marks stand on their own, so there is no disc behind
+ * them. On the dark footer they would sink into the green, so there the disc
+ * stays. Either way the <a> keeps a 44px box: the circle is what goes, not the
+ * touch target.
  */
 export default function SocialLinks({
   tone = 'light',
@@ -22,9 +26,11 @@ export default function SocialLinks({
 }) {
   const live = SOCIALS.filter((s) => s.url)
   const box = size === 'sm' ? 'h-9 w-9' : 'h-11 w-11'
-  const icon = size === 'sm' ? 'h-[18px] w-[18px]' : 'h-5 w-5'
-  const disc = `flex ${box} items-center justify-center rounded-full border transition duration-200 hover:-translate-y-0.5 hover:border-amber-400 hover:shadow-soft ${
-    tone === 'dark' ? 'border-transparent bg-cream-50' : 'border-forest-900/10 bg-white'
+  const icon = size === 'sm' ? 'h-[20px] w-[20px]' : 'h-6 w-6'
+  const disc = `flex ${box} items-center justify-center rounded-full transition duration-200 hover:-translate-y-0.5 ${
+    tone === 'dark'
+      ? 'border border-transparent bg-cream-50 hover:border-amber-400 hover:shadow-soft'
+      : 'hover:bg-amber-50'
   }`
 
   return (

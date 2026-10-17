@@ -96,7 +96,7 @@ export const COURSES: Course[] = [
     name: 'Drop-In Class',
     price: 10,
     unit: 'per class',
-    blurb: 'Try a class, or come when it suits you. Join any group session in Oadby or Thurnby.',
+    blurb: 'Try a class, or come when it suits you. Join our Tuesday evening group class in Oadby.',
     features: [
       'Any scheduled group class',
       'Small groups, individual attention',
@@ -115,7 +115,7 @@ export const COURSES: Course[] = [
     features: [
       'All weekly group classes',
       'Personalised to your needs and abilities',
-      'Priority booking at both venues',
+      'Priority booking on every class',
       'Wellness tips and habit-building support',
     ],
     focus: ['Back', 'Belly', 'Breath'],
@@ -140,7 +140,7 @@ export const COURSES: Course[] = [
 ]
 
 export interface Venue {
-  id: 'tue' | 'thu'
+  id: string
   day: string
   /** 0 = Sunday … 6 = Saturday */
   dayIndex: number
@@ -168,28 +168,20 @@ export const TIMETABLE: { title: string; subtitle: string; venues: Venue[] } = {
       end: '19:30',
       mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Trinity+Methodist+Church+Oadby+LE2+5AB',
     },
-    {
-      id: 'thu',
-      day: 'Thursday',
-      dayIndex: 4,
-      hall: 'Thurnby Memorial Hall',
-      area: 'Thurnby',
-      postcode: 'LE7 9PN',
-      start: '19:00',
-      end: '20:00',
-      mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Thurnby+Memorial+Hall+LE7+9PN',
-    },
   ],
 }
 
 export interface ClassEntry {
-  id: 'tue' | 'thu'
+  id: string
   name: string
   blurb: string
+  /** Who the class suits, shown as the "Level" row when booking. */
   audience: string
   venueId: Venue['id']
   price: number
   priceNote: string
+  /** How a place is held. No live seat count: bookings go through Stripe, not a seat map. */
+  availability: string
 }
 
 /** One row per weekly class on the merged Classes & Timetable page. */
@@ -202,17 +194,25 @@ export const CLASSES: ClassEntry[] = [
     venueId: 'tue',
     price: 10,
     priceNote: 'drop in, or included in Monthly Flow',
-  },
-  {
-    id: 'thu',
-    name: 'Thursday Evening Flow',
-    blurb: 'The same personal approach in a slightly shorter hour. Poses are adapted for every body, whatever your age or ability.',
-    audience: 'All levels, beginners welcome',
-    venueId: 'thu',
-    price: 10,
-    priceNote: 'drop in, or included in Monthly Flow',
+    availability: 'Small group, drop-in. Book ahead to reserve your mat.',
   },
 ]
+
+/**
+ * Thursday evenings at Thurnby ended in October 2026. Rather than leave a dead
+ * row in the timetable, the site asks people to register interest, so the studio
+ * knows where the demand is before committing to a second night. Posts to the
+ * Worker's /api/newsletter with its own source, so these sign-ups are
+ * distinguishable from footer subscribers in the admin app.
+ */
+export const UPCOMING = {
+  eyebrow: 'Upcoming classes',
+  title: 'Looking for another day?',
+  text: 'Right now we teach on Tuesday evenings in Oadby. More classes are being planned. Leave your email and we will tell you first when a new day, time or venue opens.',
+  cta: 'Keep me posted',
+  note: 'Class news only, a few times a year. Unsubscribe any time.',
+  source: 'upcoming-classes',
+}
 
 export interface Instructor {
   name: string

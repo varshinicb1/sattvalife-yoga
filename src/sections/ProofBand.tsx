@@ -5,7 +5,7 @@ import { formatTime } from '@/lib/schedule'
 
 /** The essentials at a glance, directly under the hero. */
 export default function ProofBand() {
-  const [tue, thu] = TIMETABLE.venues
+  const [tue] = TIMETABLE.venues
   const from = Math.min(...COURSES.filter((c) => c.id !== 'corporate').map((c) => c.price))
 
   const items = [
@@ -34,11 +34,11 @@ export default function ProofBand() {
       ),
     },
     {
-      key: 'thu',
+      key: 'upcoming',
       content: (
-        <Link to="/classes" className="block hover:text-ink-900">
-          <span className="block font-semibold text-ink-900">{thu.day}s, {formatTime(thu.start)}</span>
-          <span className="mt-1 block text-sm text-ink-700/75">{thu.hall}</span>
+        <Link to="/classes#upcoming" className="block hover:text-ink-900">
+          <span className="block font-semibold text-ink-900">More classes coming</span>
+          <span className="mt-1 block text-sm text-ink-700/75">Register your interest</span>
         </Link>
       ),
     },

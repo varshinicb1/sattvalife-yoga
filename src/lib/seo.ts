@@ -7,11 +7,11 @@ export const SITE_URL = 'https://sattvalife-yoga.web.app'
 const ROUTE_META: Record<string, { title: string; desc: string }> = {
   '/': {
     title: 'Sattvalife Yoga | Vinyasa Yoga Classes in Leicester',
-    desc: 'Small-group Vinyasa yoga in Oadby and Thurnby, Leicester. Personal attention for every age and ability, plus workplace wellbeing sessions. Rated 5.0 on Google.',
+    desc: 'Small-group Vinyasa yoga in Oadby, Leicester. Personal attention for every age and ability, plus workplace wellbeing sessions for Leicestershire teams. Rated 5.0 on Google.',
   },
   '/classes': {
     title: 'Classes & Timetable | Sattvalife Yoga Leicester',
-    desc: 'Tuesdays 6:30pm in Oadby and Thursdays 7pm in Thurnby. See what each class involves, who it suits and what it costs, then book online from £10.',
+    desc: 'Tuesday evenings, 6:30pm at Trinity Methodist Church, Oadby. See what the class involves, who it suits and what it costs, then book online from £10.',
   },
   '/contact': {
     title: 'Contact Us | Sattvalife Yoga Leicester',
@@ -31,7 +31,7 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
   },
   '/corporate': {
     title: 'Corporate Yoga in Leicester | Sattvalife@Work',
-    desc: 'On-site and online yoga for workplaces: seated desk yoga, wellbeing mornings and tailored programmes for teams across Leicestershire.',
+    desc: 'Corporate wellness in Leicester: on-site and online yoga, seated desk yoga, wellbeing mornings and tailored programmes for teams across Leicestershire. Request a proposal.',
   },
   '/experiences': {
     title: 'Wellness Celebrations & Experiences | Sattvalife Yoga Leicester',

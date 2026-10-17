@@ -73,7 +73,7 @@ export default function BlogPostPage() {
 
         <aside className="mx-auto mt-16 max-w-3xl rounded-3xl bg-forest-800 p-8 text-center sm:p-12">
           <h2 className="text-3xl !text-cream-50 sm:text-4xl">Practise it with us</h2>
-          <p className="mx-auto mt-3 max-w-md text-cream-100/80">Small classes in Oadby and Thurnby with guidance tailored to your body.</p>
+          <p className="mx-auto mt-3 max-w-md text-cream-100/80">Small classes in Oadby with guidance tailored to your body.</p>
           <Link to="/classes" className="btn-primary btn-lg mt-8">
             Book a class
           </Link>

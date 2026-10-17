@@ -48,14 +48,6 @@ const slots = {
     src: null,
     alt: 'The Tuesday evening class at Trinity Methodist Church, Oadby',
   },
-  classThu: {
-    where: 'Classes page, Thursday row',
-    brief: 'The Thursday class at Thurnby Memorial Hall, same idea as Tuesday',
-    ratio: '4/3',
-    supply: '1200 x 900px',
-    src: null,
-    alt: 'The Thursday evening class at Thurnby Memorial Hall',
-  },
   celebration: {
     where: 'Celebrations page, top of the occasions row',
     brief: 'A celebration session in progress: a group in a home or hall, candles or mats, people smiling',

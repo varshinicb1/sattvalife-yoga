@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 import { ArrowRight, Building2, CalendarDays, Sparkles, type LucideIcon } from 'lucide-react'
 import { Reveal } from '@/components/motion-primitives'
 import { COURSES, TIMETABLE } from '@/data/content'
-import { formatTime } from '@/lib/schedule'
+import { formatDuration, formatTime } from '@/lib/schedule'
 
 /**
  * The three things people come here for. One click from the homepage to each.
@@ -21,15 +21,15 @@ interface Route {
 }
 
 function buildRoutes(): Route[] {
-  const [tue, thu] = TIMETABLE.venues
+  const [tue] = TIMETABLE.venues
   const from = Math.min(...COURSES.filter((c) => c.id !== 'corporate').map((c) => c.price))
 
   return [
     {
       to: '/classes',
       title: 'Classes & timetable',
-      text: 'Small evening classes in two friendly community halls, with personal attention for every age and ability.',
-      meta: [`${tue.day}s ${formatTime(tue.start)}, ${tue.area}`, `${thu.day}s ${formatTime(thu.start)}, ${thu.area}`, `From £${from}`],
+      text: 'A small Tuesday evening class in Oadby, with personal attention for every age and ability.',
+      meta: [`${tue.day}s ${formatTime(tue.start)}, ${tue.area}`, formatDuration(tue), `From £${from}`],
       Icon: CalendarDays,
     },
     {

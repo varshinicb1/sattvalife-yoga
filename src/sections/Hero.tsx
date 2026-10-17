@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import Photo from '@/components/Photo'
 import { RATING, TIMETABLE } from '@/data/content'
 import { useCmsContent } from '@/hooks/useCmsContent'
 import { openBooking } from '@/lib/bookingStore'
@@ -21,11 +22,11 @@ const sentenceCase = (s: string) => (s ? s.charAt(0).toUpperCase() + s.slice(1).
 /**
  * Built to the hero on page 3 of the client's brief: a soft sage panel, the
  * benefit-led tagline, and the two actions it names — Explore classes and Book
- * now. There is deliberately no photograph. The brief rules out stock and
- * AI-looking imagery, and the only genuine photographs we hold are either
- * headshots or phone snaps too soft for a panel this size, so the gold lotus
- * carries the panel until a real shoot lands. Drop a <Photo> into the motif
- * column when it does; nothing else needs to move.
+ * now, with a photograph beside them.
+ *
+ * The photograph is the heroPortrait slot, so swapping it for a class shot
+ * after the shoot is a one-line change in photos.ts. The gold lotus stays as a
+ * watermark behind the frame rather than as the subject.
  */
 export default function Hero() {
   const { brand } = useCmsContent()
@@ -42,7 +43,7 @@ export default function Hero() {
     <section className="relative pt-[calc(84px+env(safe-area-inset-top))]">
       <div className="container-page pb-10 pt-5 sm:pb-12 sm:pt-7">
         <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-forest-100/80 via-cream-100/70 to-cream-200/60 px-6 py-12 sm:rounded-[2.5rem] sm:px-10 sm:py-16 lg:px-16 lg:py-20">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+          <div className="grid items-center gap-12 sm:gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
             <div>
               <motion.p {...enter(0.05)} className="eyebrow">
                 Vinyasa yoga in Oadby, Leicester
@@ -102,23 +103,28 @@ export default function Hero() {
               </motion.div>
             </div>
 
-            {/* The motif from the brief's wireframe, in Sattvalife gold */}
             <motion.div
-              initial={reduce ? false : { opacity: 0, scale: 0.94 }}
+              initial={reduce ? false : { opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.1, delay: 0.15, ease: EASE }}
-              aria-hidden="true"
-              className="relative mx-auto hidden aspect-square w-full max-w-[22rem] lg:block"
+              className="relative mx-auto w-full max-w-[17rem] sm:max-w-[19rem] lg:max-w-[21rem]"
             >
-              <div className="absolute inset-0 rounded-full bg-forest-200/45" />
-              <div className="absolute inset-[12%] rounded-full border border-amber-400/25" />
+              {/* the lotus sits behind the frame, not in place of it */}
               <img
                 src="/images/opt/lotus-mark-900.webp"
                 alt=""
+                aria-hidden="true"
                 width={900}
                 height={484}
-                className={`absolute left-1/2 top-1/2 w-[62%] -translate-x-1/2 -translate-y-1/2 ${reduce ? '' : 'animate-float'}`}
+                className="pointer-events-none absolute -left-[20%] top-[8%] -z-0 w-[140%] max-w-none opacity-[0.14]"
               />
+              <div className="relative">
+                <Photo slot="heroPortrait" priority className="arch w-full shadow-lift" />
+                <Photo
+                  slot="heroInset"
+                  className="absolute -bottom-6 -left-5 h-24 w-24 rounded-full border-[5px] border-cream-50 shadow-lift sm:-left-7 sm:h-28 sm:w-28"
+                />
+              </div>
             </motion.div>
           </div>
 

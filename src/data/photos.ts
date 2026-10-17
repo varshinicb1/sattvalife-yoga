@@ -23,13 +23,15 @@ export interface PhotoSlot {
 
 const slots = {
   heroPortrait: {
-    where: 'Homepage hero — the motif column, once a real photograph exists',
+    where: 'Homepage hero, the large arched photo',
     brief:
-      'Amisha or Nish mid-pose at Trinity Methodist Church, full body, upright crop with space above the head. The stock image that used to sit here was removed: the client asked for genuine Sattvalife photography only.',
+      'Amisha or Nish mid-pose at Trinity Methodist Church, full body, upright crop with space above the head. Currently filled with a portrait of Amisha: it is the highest-resolution genuine photograph we hold, and the brief asks for real images of the instructors. Replace it with a class photograph from the shoot.',
     ratio: '4/5',
     supply: '1230 x 1536px',
-    src: null,
-    alt: 'Amisha teaching at the Tuesday evening class in Oadby',
+    src: '/images/opt/amisha-800.webp',
+    srcSet: '/images/opt/amisha-480.webp 480w, /images/opt/amisha-800.webp 800w',
+    sizes: '(min-width: 1024px) 420px, 78vw',
+    alt: 'Amisha Soni, founder and teacher at Sattvalife Yoga',
   },
   focusBack: {
     where: 'Homepage, the large "Back" panel in Back · Belly · Breath',

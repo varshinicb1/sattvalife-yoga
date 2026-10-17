@@ -7,7 +7,7 @@ export const SITE_URL = 'https://sattvalife-yoga.web.app'
 const ROUTE_META: Record<string, { title: string; desc: string }> = {
   '/': {
     title: 'Sattvalife Yoga | Vinyasa Yoga Classes in Leicester',
-    desc: 'Small-group Vinyasa yoga in Oadby, Leicester. Personal attention for every age and ability, plus workplace wellbeing sessions for Leicestershire teams. Rated 5.0 on Google.',
+    desc: 'Small-group Vinyasa yoga in Oadby, Leicester. Personal attention for every age and ability, plus workplace wellbeing sessions. Rated 5.0 on Google.',
   },
   '/classes': {
     title: 'Classes & Timetable | Sattvalife Yoga Leicester',
@@ -31,11 +31,11 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
   },
   '/corporate': {
     title: 'Corporate Yoga in Leicester | Sattvalife@Work',
-    desc: 'Corporate wellness in Leicester: on-site and online yoga, seated desk yoga, wellbeing mornings and tailored programmes for teams across Leicestershire. Request a proposal.',
+    desc: 'Corporate wellness in Leicester: on-site and online yoga, desk stretches and wellbeing mornings for teams across Leicestershire. Request a proposal.',
   },
   '/experiences': {
     title: 'Wellness Celebrations & Experiences | Sattvalife Yoga Leicester',
-    desc: 'Baby showers, birthdays, hen parties and special occasions hosted as a wellness experience: Bollywood yoga and dance, Pilates, soundbath, breathwork, plus healthy nibbles and mocktails.',
+    desc: 'Baby showers, birthdays and hen parties hosted as a wellness experience in Leicester: Bollywood yoga and dance, Pilates, soundbath and breathwork.',
   },
   '/reviews': {
     title: 'Reviews | Sattvalife Yoga Leicester',

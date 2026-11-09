@@ -93,16 +93,18 @@ export function GoogleG({ className = 'h-5 w-5' }: { className?: string }) {
   )
 }
 
-/** Brass lotus mark (brand asset). */
+/** Sacred Gold Shiva Trishul mark (Master Brand Asset). */
 export function LotusMark({ className = 'h-6 w-auto' }: { className?: string }) {
   return (
     <img
-      src="/images/opt/lotus-192.png"
-      width={192}
-      height={103}
-      alt=""
+      src="/images/opt/trishul-mark.png"
+      width={180}
+      height={220}
+      alt="Sattvalife Gold Trishul"
       aria-hidden="true"
-      className={className}
+      className={`${className} object-contain`}
     />
   )
 }
+
+export const TrishulMark = LotusMark

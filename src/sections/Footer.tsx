@@ -23,13 +23,13 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-forest-900 text-cream-100">
       <img
-        src="/images/opt/lotus-mark-900.webp"
+        src="/images/opt/trishul-mark.png"
         alt=""
         aria-hidden="true"
         loading="lazy"
-        width={900}
-        height={484}
-        className="pointer-events-none absolute -right-24 -top-10 w-[34rem] max-w-none opacity-[0.05]"
+        width={400}
+        height={500}
+        className="pointer-events-none absolute -right-12 -top-10 w-96 max-w-none opacity-[0.07] object-contain"
       />
 
       <div className="container-page relative">

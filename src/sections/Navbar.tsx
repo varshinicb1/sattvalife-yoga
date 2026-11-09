@@ -121,7 +121,7 @@ export default function Navbar() {
           <div className="flex items-center gap-1.5 sm:gap-3">
             <SocialLinks size="sm" className="hidden xl:flex" />
             <Link
-              to="/classes"
+              to="/checkout"
               className="btn-primary !px-3 !py-2.5 !text-[0.68rem] !tracking-[0.04em] xs:!px-5 xs:!text-[0.82rem] xs:!tracking-[0.08em] sm:!px-6 sm:!text-sm"
             >
               BOOK NOW
@@ -179,7 +179,7 @@ export default function Navbar() {
                 ))}
               </ul>
               <div className="mt-8 grid gap-3">
-                <Link to="/classes" className="btn-primary btn-lg w-full !tracking-[0.08em]">
+                <Link to="/checkout" className="btn-primary btn-lg w-full !tracking-[0.08em]">
                   BOOK NOW
                 </Link>
                 <a href={whatsappHref(settings.whatsappNumber)} target="_blank" rel="noreferrer" className="btn-outline btn-lg w-full">

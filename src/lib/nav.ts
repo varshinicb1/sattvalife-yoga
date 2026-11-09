@@ -7,6 +7,7 @@
 export const NAV_LINKS = [
   { label: 'Home', to: '/' },
   { label: 'Classes', to: '/classes' },
+  { label: 'Posture Lab', to: '/posture-lab' },
   { label: 'Experiences', to: '/experiences' },
   { label: 'Corporate Wellness', to: '/corporate' },
   { label: 'About', to: '/teachers' },
@@ -16,6 +17,8 @@ export const NAV_LINKS = [
 /** Footer "Explore" column. */
 export const FOOTER_EXPLORE = [
   { label: 'Classes & Timetable', to: '/classes' },
+  { label: 'Global Pass & Checkout', to: '/checkout' },
+  { label: 'AI Posture Lab', to: '/posture-lab' },
   { label: 'Corporate Wellness', to: '/corporate' },
   { label: 'Wellness Experiences & Celebrations', to: '/experiences' },
   { label: 'Reviews', to: '/reviews' },

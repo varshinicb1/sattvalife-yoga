@@ -11,6 +11,8 @@ const AccessibilityPage = lazy(() => import('@/pages/AccessibilityPage'))
 const TeachersPage = lazy(() => import('@/pages/TeachersPage'))
 const CorporatePage = lazy(() => import('@/pages/CorporatePage'))
 const ExperiencesPage = lazy(() => import('@/pages/ExperiencesPage'))
+const PostureLabPage = lazy(() => import('@/pages/PostureLabPage'))
+const CheckoutPage = lazy(() => import('@/pages/CheckoutPage'))
 const ReviewsPage = lazy(() => import('@/pages/ReviewsPage'))
 const BlogPage = lazy(() => import('@/pages/BlogPage'))
 const BlogPostPage = lazy(() => import('@/pages/BlogPostPage'))
@@ -34,6 +36,10 @@ export default function App() {
         <Route path="cookies" element={page(<CookiesPage />)} />
         <Route path="accessibility" element={page(<AccessibilityPage />)} />
         <Route path="teachers" element={page(<TeachersPage />)} />
+        <Route path="posture-lab" element={page(<PostureLabPage />)} />
+        <Route path="checkout" element={page(<CheckoutPage />)} />
+        <Route path="join" element={<Navigate to="/checkout" replace />} />
+        <Route path="book" element={<Navigate to="/checkout" replace />} />
         <Route path="experiences" element={page(<ExperiencesPage />)} />
         <Route path="corporate" element={page(<CorporatePage />)} />
         <Route path="reviews" element={page(<ReviewsPage />)} />

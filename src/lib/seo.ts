@@ -53,6 +53,14 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
     title: 'Privacy Policy | Sattvalife Yoga Leicester',
     desc: 'How Sattvalife Yoga collects, uses and protects your personal data under UK GDPR.',
   },
+  '/posture-lab': {
+    title: 'AI Posture Analysis Lab | Sattvalife Yoga Leicester',
+    desc: 'Real-time biomechanical computer vision posture analysis guiding your yoga postures with safety, grace, and clinical alignment precision.',
+  },
+  '/checkout': {
+    title: 'Global Class Registration & Checkout | Sattvalife Yoga',
+    desc: 'Book your 30-day global yoga pass, flexible class packs, or drop-in sessions with live streaming, 24/7 video replays, and AI Posture Lab.',
+  },
   '/terms': {
     title: 'Terms & Conditions | Sattvalife Yoga Leicester',
     desc: 'Booking, payment, cancellation and safety terms for Sattvalife Yoga classes in Leicester.',

@@ -15,11 +15,6 @@
         "type": 301
       },
       {
-        "source": "/posture-lab",
-        "destination": "/",
-        "type": 301
-      },
-      {
         "source": "/courses",
         "destination": "/classes",
         "type": 301
@@ -174,7 +169,7 @@
           },
           {
             "key": "Permissions-Policy",
-            "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+            "value": "camera=(self), microphone=(self), geolocation=(), interest-cohort=()"
           }
         ]
       },

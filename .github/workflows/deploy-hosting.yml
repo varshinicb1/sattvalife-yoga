@@ -15,6 +15,9 @@ jobs:
   build_and_deploy:
     name: Build & Deploy to Firebase
     runs-on: ubuntu-latest
+    env:
+      HAS_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SATTVALIFE_YOGA != '' }}
+      HAS_FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN != '' }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -31,10 +34,21 @@ jobs:
       - name: Build Production Bundle
         run: npm run build
 
-      - name: Deploy to Firebase Hosting
+      - name: Deploy via Firebase Service Account
+        if: env.HAS_SERVICE_ACCOUNT == 'true'
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SATTVALIFE_YOGA }}
           projectId: sattvalife-yoga
           channelId: live
+
+      - name: Deploy via Firebase Token (Fallback)
+        if: env.HAS_SERVICE_ACCOUNT != 'true' && env.HAS_FIREBASE_TOKEN == 'true'
+        run: npx firebase-tools deploy --only hosting --project sattvalife-yoga --token "${{ secrets.FIREBASE_TOKEN }}"
+
+      - name: Warning if No Credentials Configured
+        if: env.HAS_SERVICE_ACCOUNT != 'true' && env.HAS_FIREBASE_TOKEN != 'true'
+        run: |
+          echo "::error::Missing Firebase deployment secret! Please add FIREBASE_SERVICE_ACCOUNT_SATTVALIFE_YOGA to GitHub repository secrets."
+          exit 1

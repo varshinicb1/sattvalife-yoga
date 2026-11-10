@@ -4,8 +4,7 @@
 	"name": "sattvalife-yoga",
 	"compatibility_date": "2026-07-14",
 	"compatibility_flags": [
-		"nodejs_compat",
-		"global_fetch_strictly_public"
+		"nodejs_compat"
 	],
 	"assets": {
 		"directory": ".open-next/assets",

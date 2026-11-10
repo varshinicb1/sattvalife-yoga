@@ -95,13 +95,13 @@ export function Header({ navigation: nav }: { navigation?: Array<{ name: string;
             ))}
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 md:space-x-4">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-              className="md:hidden"
+              className="hidden sm:inline-flex"
             >
               {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
@@ -114,64 +114,59 @@ export function Header({ navigation: nav }: { navigation?: Array<{ name: string;
               <Link href="/register">Book a Class</Link>
             </Button>
 
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setMobileMenuOpen(true)}
-              aria-label="Open menu"
-            >
-              <Menu className="h-6 w-6" />
-            </Button>
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="md:hidden"
+                  aria-label="Open menu"
+                >
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-72 p-4">
+                <div className="flex items-center justify-between mb-8">
+                  <Link href="/" className="flex items-center gap-2">
+                    <Image src="/brand/lotus.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" aria-hidden="true" />
+                    <span className="font-display text-lg font-semibold">Sattvalife</span>
+                  </Link>
+                  <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
+                    <X className="h-6 w-6" />
+                  </Button>
+                </div>
+
+                <nav className="flex flex-col space-y-2" aria-label="Mobile navigation">
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={cn(
+                        "flex items-center px-4 py-3 rounded-xl text-base font-medium transition-colors",
+                        pathname === item.href
+                          ? "bg-primary/10 text-primary"
+                          : "text-muted-foreground hover:bg-accent/50 hover:text-foreground"
+                      )}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </nav>
+
+                <div className="mt-8 border-t pt-6 space-y-3">
+                  <Button variant="outline" className="w-full justify-start" asChild>
+                    <Link href="/schedule" onClick={() => setMobileMenuOpen(false)}>View Classes</Link>
+                  </Button>
+                  <Button className="w-full justify-start" asChild>
+                    <Link href="/register" onClick={() => setMobileMenuOpen(false)}>Book a Class</Link>
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </nav>
-
-      <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-        <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" className="md:hidden">
-            <Menu className="h-6 w-6" />
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="right" className="w-72 p-4">
-          <div className="flex items-center justify-between mb-8">
-            <Link href="/" className="flex items-center gap-2">
-              <Image src="/brand/lotus.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" aria-hidden="true" />
-              <span className="font-display text-lg font-semibold">Sattvalife</span>
-            </Link>
-            <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
-              <X className="h-6 w-6" />
-            </Button>
-          </div>
-
-          <nav className="flex flex-col space-y-2" aria-label="Mobile navigation">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={cn(
-                  "flex items-center px-4 py-3 rounded-xl text-base font-medium transition-colors",
-                  pathname === item.href
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:bg-accent/50 hover:text-foreground"
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="mt-8 border-t pt-6 space-y-3">
-            <Button variant="outline" className="w-full justify-start" asChild>
-              <Link href="/schedule" onClick={() => setMobileMenuOpen(false)}>View Classes</Link>
-            </Button>
-            <Button className="w-full justify-start" asChild>
-              <Link href="/register" onClick={() => setMobileMenuOpen(false)}>Book a Class</Link>
-            </Button>
-          </div>
-        </SheetContent>
-      </Sheet>
     </header>
   );
 }

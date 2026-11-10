@@ -1,32 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'features/auth/screens/login_screen.dart';
-import 'features/dashboard/screens/dashboard_screen.dart';
-import 'features/courses/screens/courses_screen.dart';
-import 'features/courses/screens/course_form_screen.dart';
-import 'features/bookings/screens/bookings_screen.dart';
-import 'features/students/screens/students_screen.dart';
-import 'features/instructors/screens/instructors_screen.dart';
-import 'features/corporate/screens/corporate_screen.dart';
-import 'features/analytics/screens/analytics_screen.dart';
-import 'features/messages/screens/messages_screen.dart';
-import 'features/blog/screens/blog_screen.dart';
-import 'features/settings/screens/settings_screen.dart';
-import 'features/auth/providers/auth_provider.dart';
+import 'package:sattvalife_admin/features/auth/screens/login_screen.dart';
+import 'package:sattvalife_admin/features/dashboard/screens/dashboard_screen.dart';
+import 'package:sattvalife_admin/features/courses/screens/courses_screen.dart';
+import 'package:sattvalife_admin/features/courses/screens/course_form_screen.dart';
+import 'package:sattvalife_admin/features/bookings/screens/bookings_screen.dart';
+import 'package:sattvalife_admin/features/students/screens/students_screen.dart';
+import 'package:sattvalife_admin/features/instructors/screens/instructors_screen.dart';
+import 'package:sattvalife_admin/features/corporate/screens/corporate_screen.dart';
+import 'package:sattvalife_admin/features/analytics/screens/analytics_screen.dart';
+import 'package:sattvalife_admin/features/messages/screens/messages_screen.dart';
+import 'package:sattvalife_admin/features/blog/screens/blog_screen.dart';
+import 'package:sattvalife_admin/features/settings/screens/settings_screen.dart';
+import 'package:sattvalife_admin/features/auth/providers/auth_provider.dart';
 
-part 'app_router.g.dart';
-
-@riverpod
-GoRouter appRouter(Ref ref) {
+final appRouterProvider = Provider<GoRouter>((ref) {
   final authState = ref.watch(authStateProvider);
   
   return GoRouter(
     initialLocation: '/login',
     redirect: (context, state) {
-      final isLoggedIn = authState.value?.isLoggedIn ?? false;
+      final isLoggedIn = authState.isLoggedIn;
       final isAuthRoute = state.matchedLocation == '/login';
       
       if (!isLoggedIn && !isAuthRoute) {
@@ -112,7 +108,7 @@ GoRouter appRouter(Ref ref) {
       ),
     ],
   );
-}
+});
 
 class _AdminShell extends ConsumerWidget {
   final Widget child;
@@ -244,9 +240,9 @@ class _Sidebar extends ConsumerWidget {
                   ListTile(
                     leading: const Icon(Icons.logout, size: 22),
                     title: const Text('Sign Out'),
-                    onTap: () async {
+                    onTap: () {
                       final authNotifier = ref.read(authStateProvider.notifier);
-                      await authNotifier.signOut();
+                      authNotifier.signOut();
                       if (context.mounted) context.go('/login');
                     },
                   ),
@@ -278,7 +274,7 @@ class _TopBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authState = ref.watch(authStateProvider);
-    final user = authState.value?.user;
+    final user = authState.user;
     
     return Container(
       height: 64,

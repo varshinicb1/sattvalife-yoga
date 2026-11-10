@@ -380,14 +380,17 @@ export default function HomePage() {
               <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl border-0 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
                 <CardContent className="p-8 md:p-12">
                   <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
-                    <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0 rounded-2xl overflow-hidden bg-primary/10">
-                      <div className="absolute inset-0 flex items-center justify-center text-primary">
-                        <PersonStanding className="h-16 w-16" />
-                      </div>
+                    <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0 rounded-2xl overflow-hidden shadow-md">
+                      <Image
+                        src="/brand/pose.jpg"
+                        alt="Amisha Soni - Yoga & Fitness Instructor"
+                        fill
+                        className="object-cover object-center"
+                      />
                     </div>
                     <div className="text-center md:text-left">
                       <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-3">
-                        Yoga & Fitness Instructor
+                        Yoga &amp; Fitness Instructor
                       </div>
                       <h3 className="font-display text-2xl md:text-3xl font-bold mb-2">Amisha Soni</h3>
                       <p className="text-muted-foreground leading-relaxed">
@@ -407,10 +410,13 @@ export default function HomePage() {
               <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl border-0 bg-gradient-to-br from-accent/5 to-accent/10 border-accent/20">
                 <CardContent className="p-8 md:p-12">
                   <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
-                    <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0 rounded-2xl overflow-hidden bg-accent/10">
-                      <div className="absolute inset-0 flex items-center justify-center text-accent">
-                        <Heart className="h-16 w-16" />
-                      </div>
+                    <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0 rounded-2xl overflow-hidden shadow-md">
+                      <Image
+                        src="/brand/class-1.jpg"
+                        alt="Nish Soni - Yoga Instructor"
+                        fill
+                        className="object-cover object-center"
+                      />
                     </div>
                     <div className="text-center md:text-left">
                       <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-3">

@@ -88,7 +88,6 @@ class AppTheme {
         color: Colors.white,
         surfaceTintColor: Colors.white,
         shadowColor: Colors.black.withValues(alpha: 0.03),
-        elevation: 0,
         margin: EdgeInsets.zero,
       ),
       
@@ -196,7 +195,6 @@ class AppTheme {
           color: const Color(0xFFC62828),
           fontSize: 12,
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       ),
       
       // Chips
@@ -350,9 +348,6 @@ class AppTheme {
         linearTrackColor: primaryLight.withValues(alpha: 0.2),
         circularTrackColor: primaryLight.withValues(alpha: 0.2),
       ),
-      
-      // Scaffold
-      scaffoldBackgroundColor: const Color(0xFFFAFAF9),
       
       // Platform Overrides
       platform: TargetPlatform.iOS,
@@ -526,7 +521,6 @@ class AppTheme {
           color: const Color(0xFFEF5350),
           fontSize: 12,
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       ),
       
       chipTheme: ChipThemeData(
@@ -672,8 +666,7 @@ class AppTheme {
         circularTrackColor: const Color(0xFF78A37D).withValues(alpha: 0.2),
       ),
       
-      scaffoldBackgroundColor: const Color(0xFF1A1A18),
-      
+      // Platform Overrides
       platform: TargetPlatform.iOS,
     );
   }

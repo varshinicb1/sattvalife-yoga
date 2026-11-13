@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { FindYourPractice } from "@/components/home/find-your-practice";
 import { Button } from "@/components/ui/button";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -222,6 +223,8 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        <FindYourPractice />
 
         {/* About Vinyasa Section */}
         <section className="py-20 md:py-28 bg-primary text-primary-foreground" id="vinyasa">

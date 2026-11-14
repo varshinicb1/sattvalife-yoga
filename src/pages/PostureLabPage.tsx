@@ -541,17 +541,17 @@ export default function PostureLabPage() {
             {/* Premium Studio Offer */}
             <div className="rounded-3xl border border-amber-600/30 bg-gradient-to-br from-forest-950 via-forest-900 to-forest-950 p-6 text-cream-50 shadow-lg">
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-amber-400">
-                <Award className="h-4 w-4" /> Sattvalife Online &amp; Studio Membership
+                <Award className="h-4 w-4" /> Practise with a teacher
               </div>
-              <h3 className="font-serif text-xl text-cream-50 mt-2 font-bold">Unlimited AI Posture Lab</h3>
+              <h3 className="font-serif text-xl text-cream-50 mt-2 font-bold">Bring your alignment to class</h3>
               <p className="mt-2 text-xs leading-relaxed text-cream-100/70">
-                Studio and virtual members receive session alignment history, custom joint angle metrics, and teacher guidance from Amisha.
+                The Posture Lab is a free practice aid. For hands-on corrections and a sequence built around your body, join the Tuesday class in Oadby or book a private session.
               </p>
               <Link
                 to="/checkout"
                 className="mt-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 px-5 py-2.5 text-xs font-bold text-forest-950 hover:from-amber-400 hover:to-amber-500 transition-all cursor-pointer"
               >
-                Join Global Membership <ArrowRight className="h-3.5 w-3.5" />
+                Book a class <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
 

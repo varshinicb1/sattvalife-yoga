@@ -10,7 +10,7 @@ import { GoogleG, Stars } from '@/components/motion-primitives'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
-/** Splits the CMS tagline ("Stop Worrying, Start Living") so the second clause can be set in italic. */
+/** Splits the CMS tagline ("Reset Lifestyle, with Modern Yoga") so the second clause can be set in italic. */
 function splitTagline(tagline: string): [string, string] {
   const i = tagline.indexOf(',')
   if (i === -1) return [tagline, '']
@@ -46,12 +46,12 @@ export default function Hero() {
           <div className="grid items-center gap-12 sm:gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
             <div>
               <motion.p {...enter(0.05)} className="eyebrow">
-                Vinyasa yoga in Oadby, Leicester
+                Move · Breathe · Be well
               </motion.p>
 
               <motion.h1
                 {...enter(0.15)}
-                className="mt-4 pb-1 text-[2.9rem] font-medium leading-[1.04] tracking-[-0.02em] sm:text-6xl lg:text-[4.75rem] lg:leading-[1.03]"
+                className="mt-4 pb-1 text-[2.5rem] xs:text-[2.9rem] font-medium leading-[1.04] tracking-[-0.02em] sm:text-6xl lg:text-[4.75rem] lg:leading-[1.03]"
               >
                 {sentenceCase(lead)}
                 {rest && (
@@ -63,7 +63,7 @@ export default function Hero() {
               </motion.h1>
 
               <motion.p {...enter(0.26)} className="lead mt-5 max-w-md">
-                You don’t have to fit yoga. We help yoga fit into your life.
+                Traditional practice, for a calmer, healthier, happier you. You don’t have to fit yoga. We help yoga fit into your life.
               </motion.p>
 
               <motion.div {...enter(0.36)} className="mt-8 flex flex-col gap-3 sm:flex-row">

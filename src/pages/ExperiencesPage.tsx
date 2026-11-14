@@ -76,7 +76,7 @@ export default function ExperiencesPage() {
             Celebrate with <em className="font-normal text-forest-600">something calmer</em>
           </>
         }
-        intro="Baby showers, birthdays, hen parties and special occasions, hosted as a wellness experience your guests will remember. We come to you, and shape the session around your group."
+        intro="Baby showers, birthdays, pre-wedding celebrations, wellness days and gatherings, hosted as a wellness experience your guests will remember. We come to you, across Leicestershire, London and UK wide, and curate the day around your group."
       >
         <Link to="/experiences#enquire" className="btn-primary btn-lg">
           Enquire about your event
@@ -152,17 +152,25 @@ export default function ExperiencesPage() {
               </Reveal>
             ))}
             <Reveal delay={0.16}>
-              <article className="flex h-full flex-col justify-between rounded-3xl bg-forest-800 p-7 text-cream-50 sm:p-8">
-                <div>
+              <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-forest-800 text-cream-50">
+                <div className="overflow-hidden">
+                  <img
+                    src="/images/opt/office-session-2-800.webp"
+                    alt="A Sattvalife workplace session with an office team"
+                    loading="lazy"
+                    className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-7">
                   <h3 className="text-2xl !text-cream-50 sm:text-3xl">Workplace wellbeing</h3>
-                  <p className="mt-3 text-base leading-relaxed text-cream-100/85">
+                  <p className="mt-3 flex-1 text-base leading-relaxed text-cream-100/85">
                     Wellbeing mornings, seated desk yoga and regular on-site sessions for teams. That has a page of its own.
                   </p>
-                </div>
-                <Link to="/corporate" className="btn-primary mt-8 self-start">
+                <Link to="/corporate" className="btn-primary mt-6 self-start">
                   Sattvalife@Work
                   <ArrowRight className="h-4 w-4" />
                 </Link>
+                </div>
               </article>
             </Reveal>
           </div>

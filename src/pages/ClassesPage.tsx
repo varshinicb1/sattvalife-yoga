@@ -1,10 +1,10 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router'
 import { CalendarPlus, Check, Clock, MapPin, Plus, Ticket, Users } from 'lucide-react'
 import PageHero from '@/components/PageHero'
 import { Reveal, SectionHeading } from '@/components/motion-primitives'
 import { PlanCards, PaymentNote } from '@/sections/Courses'
-import { CLASSES, FAQS, TIMETABLE, type ClassEntry } from '@/data/content'
+import { CLASSES, FAQS, ONLINE, TIMETABLE, type ClassEntry } from '@/data/content'
 import Photo from '@/components/Photo'
 import { PHOTOS } from '@/data/photos'
 import { openBooking } from '@/lib/bookingStore'
@@ -101,7 +101,18 @@ function ClassRow({ entry, index }: { entry: ClassEntry; index: number }) {
   )
 }
 
+/** The filter the client's 23 Sep checklist asks for. Thurnby is retired, so it is All | Oadby | Online. */
+const FILTERS = ['All', 'Oadby', 'Online'] as const
+type Filter = (typeof FILTERS)[number]
+
 export default function ClassesPage() {
+  const [filter, setFilter] = useState<Filter>('All')
+  const shown = CLASSES.filter((c) => {
+    if (filter === 'All') return true
+    if (filter === 'Online') return false
+    return TIMETABLE.venues.find((v) => v.id === c.venueId)?.area === filter
+  })
+
   return (
     <>
       <PageHero
@@ -116,18 +127,46 @@ export default function ClassesPage() {
 
       <section className="section-pb pt-2">
         <div className="container-page">
-          <div className="grid gap-5">
-            {CLASSES.map((c, i) => (
-              <ClassRow key={c.id} entry={c} index={i} />
+          <div role="group" aria-label="Filter classes by location" className="mb-6 flex flex-wrap gap-2">
+            {FILTERS.map((f) => (
+              <button
+                key={f}
+                type="button"
+                aria-pressed={filter === f}
+                onClick={() => setFilter(f)}
+                className={`rounded-full border px-5 py-2 text-[0.95rem] font-medium transition-colors duration-200 ${
+                  filter === f
+                    ? 'border-amber-400 bg-amber-300 text-ink-950'
+                    : 'border-forest-900/15 text-ink-700 hover:border-amber-400 hover:bg-amber-300 hover:text-ink-950'
+                }`}
+              >
+                {f}
+              </button>
             ))}
           </div>
 
-          {/* Replaces the Thursday row the client asked us to retire. */}
-          <Reveal className="mt-5">
-            <div id="upcoming" className="scroll-mt-28">
-              <UpcomingClasses />
+          {shown.length > 0 && (
+            <div className="grid gap-5">
+              {shown.map((c, i) => (
+                <ClassRow key={c.id} entry={c} index={i} />
+              ))}
             </div>
-          </Reveal>
+          )}
+
+          {/* Replaces the Thursday row the client asked us to retire. */}
+          {filter !== 'Online' && (
+            <Reveal className="mt-5">
+              <div id="upcoming" className="scroll-mt-28">
+                <UpcomingClasses />
+              </div>
+            </Reveal>
+          )}
+
+          {filter !== 'Oadby' && (
+            <div id="online" className={`scroll-mt-28 ${filter === 'Online' ? '' : 'mt-5'}`}>
+              <UpcomingClasses copy={ONLINE} />
+            </div>
+          )}
 
           <Reveal className="mt-10">
             <p className="rounded-3xl border border-forest-900/[0.08] bg-cream-100/70 px-6 py-5 text-base text-ink-700">

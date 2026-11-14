@@ -8,7 +8,7 @@ import type { PhotoKey } from '@/data/photos'
 
 export const BRAND = {
   name: 'Sattvalife Yoga',
-  tagline: 'Stop Worrying, Start Living',
+  tagline: 'Reset Lifestyle, with Modern Yoga',
   location: 'Leicester, UK',
   copyright: 'Sattvalife Yoga',
 }
@@ -192,8 +192,8 @@ export interface ClassEntry {
 export const CLASSES: ClassEntry[] = [
   {
     id: 'tue',
-    name: 'Tuesday Evening Flow',
-    blurb: 'A steady Vinyasa flow to unwind midweek, working through back, belly and breath and closing in guided stillness.',
+    name: 'Restorative & Vinyasa Yoga',
+    blurb: 'A steady Vinyasa flow to unwind midweek, working through back, belly and breath, then easing into restorative postures and guided stillness.',
     audience: 'All levels, beginners welcome',
     venueId: 'tue',
     price: 10,
@@ -220,6 +220,20 @@ export const UPCOMING = {
 }
 
 /**
+ * Online wellness, asked for in the client's 23 Sep checklist ("Online
+ * Wellness" route and an Online filter). No live online timetable exists yet,
+ * so this collects interest rather than selling a class that is not running.
+ */
+export const ONLINE = {
+  eyebrow: 'Online wellness',
+  title: 'Practise with us from anywhere',
+  text: 'Live online yoga, breathwork and meditation with Amisha and Nish are on their way, so you can join from home, wherever you are in the world. Leave your email and you will be first to hear when the online timetable opens.',
+  cta: 'Tell me first',
+  note: 'Online class news only. Unsubscribe any time.',
+  source: 'online-interest',
+}
+
+/**
  * "Find your practice" — the six services the client's brief names.
  *
  * Only Yoga and Corporate Wellness have a published price and a schedule, so
@@ -242,7 +256,7 @@ export const PRACTICES: Practice[] = [
   {
     id: 'yoga',
     name: 'Yoga',
-    text: 'Our weekly Vinyasa class in Oadby. Small groups, every ability welcome.',
+    text: 'Restorative & Vinyasa yoga, Tuesdays at 6:30pm in Oadby. Small group, every ability welcome.',
     to: '/classes',
     cta: 'See the timetable',
     photo: 'practiceYoga',
@@ -258,7 +272,7 @@ export const PRACTICES: Practice[] = [
   {
     id: 'breathwork',
     name: 'Breathwork & Meditation',
-    text: 'Guided breathing and candle meditation to settle a busy mind.',
+    text: 'Breathwork, mindfulness and candle meditation. Ignites focus, releases tension, elevates.',
     to: '/contact#enquiry',
     cta: 'Enquire',
     photo: 'practiceBreathwork',
@@ -266,7 +280,7 @@ export const PRACTICES: Practice[] = [
   {
     id: 'soundbath',
     name: 'Sound Baths',
-    text: 'Deep rest with singing bowls, as part of a celebration or a wellbeing morning.',
+    text: 'Deep rest with singing bowls, on its own or as part of a celebration or wellbeing day.',
     to: '/contact#enquiry',
     cta: 'Enquire',
     photo: 'practiceSound',
@@ -274,7 +288,7 @@ export const PRACTICES: Practice[] = [
   {
     id: 'private',
     name: 'Private Sessions',
-    text: 'One to one or a small group, in your space or ours, shaped around you.',
+    text: 'Private 1-2-1 or a small group, in your space or ours, shaped entirely around you.',
     to: '/contact#enquiry',
     cta: 'Enquire',
     photo: 'practicePrivate',
@@ -282,7 +296,7 @@ export const PRACTICES: Practice[] = [
   {
     id: 'corporate',
     name: 'Corporate Wellness',
-    text: 'Desk yoga and wellbeing mornings for teams across Leicestershire.',
+    text: 'Classes and workshops curated to your organisation’s needs, in Leicestershire, London and UK wide.',
     to: '/corporate',
     cta: 'Request a proposal',
     photo: 'practiceCorporate',
@@ -444,8 +458,8 @@ export interface EventOffering {
 export const CELEBRATION_OCCASIONS = [
   { title: 'Baby showers', text: 'A gentle, joyful way to gather before the baby arrives, with everything adapted for mums-to-be.' },
   { title: 'Birthdays', text: 'Mark the year with movement, breath and something nourishing, instead of the usual meal out.' },
-  { title: 'Hen parties', text: 'A calm, memorable start to the celebration, and a session that suits everyone in the group.' },
-  { title: 'Special occasions', text: 'Anniversaries, reunions, team days, or simply an excuse to bring your people together.' },
+  { title: 'Hen & pre-wedding', text: 'A calm, memorable start to the wedding celebrations, and a session that suits everyone in the group.' },
+  { title: 'Wellness days & gatherings', text: 'Anniversaries, reunions, team days, or simply an excuse to bring your people together. We curate the day around you.' },
 ]
 
 /** What we can bring to an event, grouped the way the studio describes them. */

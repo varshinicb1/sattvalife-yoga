@@ -19,7 +19,16 @@ export interface PhotoSlot {
   srcSet?: string
   sizes?: string
   alt: string
+  /**
+   * While src is null, draw this illustrated plate (gold line art on olive, in
+   * the style of the A5 flyer's service roundels) instead of an empty frame.
+   */
+  art?: PlateArt
+  /** One line set on the plate, taken from the studio's own flyer copy. */
+  plateLine?: string
 }
+
+export type PlateArt = 'bowl' | 'mat' | 'lotus'
 
 const slots = {
   heroPortrait: {
@@ -116,6 +125,8 @@ const slots = {
     supply: '760 x 950px',
     src: null,
     alt: 'A Sattvalife sound bath',
+    art: 'bowl',
+    plateLine: 'Reduces stress, triggers deep healing and relaxation',
   },
   practicePrivate: {
     where: 'Homepage, "Find your practice" — Private Sessions card',
@@ -124,6 +135,8 @@ const slots = {
     supply: '760 x 950px',
     src: null,
     alt: 'A private Sattvalife session',
+    art: 'mat',
+    plateLine: 'Tailored, deep, intimate. Fast-tracks transformation',
   },
   practiceCorporate: {
     where: 'Homepage, "Find your practice" — Corporate Wellness card',

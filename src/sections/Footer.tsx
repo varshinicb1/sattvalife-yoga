@@ -50,7 +50,7 @@ export default function Footer() {
               <Logo light />
             </Link>
             <p className="mt-5 max-w-xs text-base leading-relaxed text-cream-100/70">
-              Personalised yoga for small groups, individuals and workplaces in Leicester. You don’t have to fit yoga. We help yoga fit into your life.
+              Mind-body mastery and purposeful living, from Oadby to anywhere in the world. You don’t have to fit yoga. We help yoga fit into your life.
             </p>
           </div>
 

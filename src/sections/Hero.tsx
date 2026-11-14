@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Photo from '@/components/Photo'
 import { RATING, TIMETABLE } from '@/data/content'
@@ -39,18 +39,25 @@ export default function Hero() {
       ? {}
       : { initial: { opacity: 0, y: 22 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.9, delay, ease: EASE } }
 
+  /*
+   * The headline is the page's Largest Contentful Paint. Fading it in from
+   * opacity 0 held LCP back by ~1.5s on mobile, so it only slides, it never hides.
+   */
+  const enterVisible = (delay: number) =>
+    reduce ? {} : { initial: { y: 14 }, animate: { y: 0 }, transition: { duration: 0.9, delay, ease: EASE } }
+
   return (
     <section className="relative pt-[calc(84px+env(safe-area-inset-top))]">
       <div className="container-page pb-10 pt-5 sm:pb-12 sm:pt-7">
         <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-forest-100/80 via-cream-100/70 to-cream-200/60 px-6 py-12 sm:rounded-[2.5rem] sm:px-10 sm:py-16 lg:px-16 lg:py-20">
           <div className="grid items-center gap-12 sm:gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
             <div>
-              <motion.p {...enter(0.05)} className="eyebrow">
+              <m.p {...enter(0.05)} className="eyebrow">
                 Move · Breathe · Be well
-              </motion.p>
+              </m.p>
 
-              <motion.h1
-                {...enter(0.15)}
+              <m.h1
+                {...enterVisible(0)}
                 className="mt-4 pb-1 text-[2.5rem] xs:text-[2.9rem] font-medium leading-[1.04] tracking-[-0.02em] sm:text-6xl lg:text-[4.75rem] lg:leading-[1.03]"
               >
                 {sentenceCase(lead)}
@@ -60,13 +67,13 @@ export default function Hero() {
                     <em className="font-normal text-forest-600">{rest.toLowerCase()}</em>
                   </>
                 )}
-              </motion.h1>
+              </m.h1>
 
-              <motion.p {...enter(0.26)} className="lead mt-5 max-w-md">
+              <m.p {...enter(0.26)} className="lead mt-5 max-w-md">
                 Traditional practice, for a calmer, healthier, happier you. You don’t have to fit yoga. We help yoga fit into your life.
-              </motion.p>
+              </m.p>
 
-              <motion.div {...enter(0.36)} className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <m.div {...enter(0.36)} className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link to="/classes" className="btn-primary btn-lg">
                   Explore classes
                   <ArrowRight className="h-4 w-4" />
@@ -78,10 +85,10 @@ export default function Hero() {
                 >
                   Book now
                 </button>
-              </motion.div>
+              </m.div>
 
               {/* Proof and the new-student route, both one line, both one click */}
-              <motion.div {...enter(0.46)} className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <m.div {...enter(0.46)} className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <a
                   href={RATING.googleUrl}
                   target="_blank"
@@ -100,10 +107,10 @@ export default function Hero() {
                     Register before your first class
                   </Link>
                 </p>
-              </motion.div>
+              </m.div>
             </div>
 
-            <motion.div
+            <m.div
               initial={reduce ? false : { opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.1, delay: 0.15, ease: EASE }}
@@ -125,16 +132,16 @@ export default function Hero() {
                   className="absolute -bottom-6 -left-5 h-24 w-24 rounded-full border-[5px] border-cream-50 shadow-lift sm:-left-7 sm:h-28 sm:w-28"
                 />
               </div>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* The one fact a first-time visitor needs, inside the panel */}
-          <motion.p {...enter(0.56)} className="mt-10 text-sm font-medium text-ink-700 lg:mt-12">
+          <m.p {...enter(0.56)} className="mt-10 text-sm font-medium text-ink-700 lg:mt-12">
             <span className="text-ink-900">
               {tue.day}s {formatTime(tue.start)}
             </span>{' '}
             · {tue.hall}, {tue.area} · Mats and props provided
-          </motion.p>
+          </m.p>
         </div>
       </div>
     </section>

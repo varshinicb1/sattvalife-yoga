@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { GoogleG, Reveal, Stars } from '@/components/motion-primitives'
 import { RATING, REVIEWS, type Review } from '@/data/content'
@@ -48,7 +48,7 @@ export function ReviewsShowcase() {
         <Reveal delay={0.1} className="flex flex-col justify-between">
           <div className="relative min-h-[15rem] sm:min-h-[13rem]" aria-live="polite">
             <AnimatePresence mode="wait">
-              <motion.figure
+              <m.figure
                 key={r.author}
                 initial={reduce ? false : { opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ export function ReviewsShowcase() {
                   <span className="block font-semibold text-ink-900">{r.author}</span>
                   {r.context && <span className="text-ink-700/70">{r.context}</span>}
                 </figcaption>
-              </motion.figure>
+              </m.figure>
             </AnimatePresence>
           </div>
           <div className="mt-10 flex items-center gap-3">

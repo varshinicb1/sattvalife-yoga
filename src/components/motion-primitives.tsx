@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -21,7 +21,7 @@ export function Reveal({
   const reduce = useReducedMotion()
   if (reduce) return <div className={className}>{children}</div>
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
@@ -29,7 +29,7 @@ export function Reveal({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -97,9 +97,11 @@ export function GoogleG({ className = 'h-5 w-5' }: { className?: string }) {
 export function LotusMark({ className = 'h-6 w-auto' }: { className?: string }) {
   return (
     <img
-      src="/images/opt/trishul-mark.png"
-      width={180}
-      height={220}
+      src="/images/opt/trishul-mark-64.webp"
+      srcSet="/images/opt/trishul-mark-64.webp 52w, /images/opt/trishul-mark-128.webp 105w"
+      sizes="48px"
+      width={52}
+      height={64}
       alt="Sattvalife Gold Trishul"
       aria-hidden="true"
       className={`${className} object-contain`}

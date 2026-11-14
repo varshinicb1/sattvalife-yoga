@@ -54,8 +54,8 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
     desc: 'How Sattvalife Yoga collects, uses and protects your personal data under UK GDPR.',
   },
   '/posture-lab': {
-    title: 'AI Posture Analysis Lab | Sattvalife Yoga Leicester',
-    desc: 'Real-time biomechanical computer vision posture analysis guiding your yoga postures with safety, grace, and clinical alignment precision.',
+    title: 'Posture Lab: Free Yoga Alignment Aid | Sattvalife Yoga',
+    desc: 'A free in-browser practice aid from Sattvalife Yoga: hold a pose in front of your camera for real-time alignment cues. Nothing leaves your device.',
   },
   '/checkout': {
     title: 'Book & Pay | Sattvalife Yoga Oadby, Leicester',

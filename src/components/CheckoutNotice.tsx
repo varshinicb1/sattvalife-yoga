@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { Link } from 'react-router'
 import { CheckCircle2, X } from 'lucide-react'
 import { CHECKOUT_RETURN_PARAM } from '@/config'
@@ -27,7 +27,7 @@ export default function CheckoutNotice() {
   return (
     <AnimatePresence>
       {open && status && (
-        <motion.div
+        <m.div
           role="status"
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -59,7 +59,7 @@ export default function CheckoutNotice() {
               <X className="h-5 w-5" />
             </button>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   )

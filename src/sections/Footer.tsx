@@ -23,7 +23,7 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-forest-900 text-cream-100">
       <img
-        src="/images/opt/trishul-mark.png"
+        src="/images/opt/trishul-mark.webp"
         alt=""
         aria-hidden="true"
         loading="lazy"

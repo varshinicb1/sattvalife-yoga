@@ -267,9 +267,9 @@ export default function PostureLabPage() {
   return (
     <div className="bg-cream-50 text-ink-900 min-h-screen">
       <PageHero
-        eyebrow="Sattva Bio-AI Studio"
+        eyebrow="Practice aid · runs on your device"
         title="AI Posture Analysis Lab"
-        intro="Real-time biomechanical computer vision guiding your yoga postures with safety, grace, and clinical alignment precision."
+        intro="Hold a pose in front of your camera and get gentle, real-time cues on your alignment. A helpful companion to class, not a replacement for a teacher or medical advice."
       />
 
       <section className="container-page py-10 md:py-14">
@@ -366,7 +366,7 @@ export default function PostureLabPage() {
                   </div>
                   <h3 className="font-serif text-2xl text-cream-50 font-bold">Launch AI Posture Studio</h3>
                   <p className="mt-2 max-w-sm text-xs leading-relaxed text-cream-100/70">
-                    Position your device 6–8 feet away so your full body is visible in frame. All pose calculations execute on your device for absolute privacy.
+                    Position your device 6–8 feet away so your full body is visible in frame. Everything is worked out on your device. No video leaves your phone or computer.
                   </p>
 
                   {cameraError && (

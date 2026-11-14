@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router'
-import { motion, AnimatePresence, useMotionValueEvent, useScroll, useReducedMotion } from 'framer-motion'
+import { m, AnimatePresence, useMotionValueEvent, useScroll, useReducedMotion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { BrandIcon } from '@/components/BrandIcon'
 import SocialLinks from '@/components/SocialLinks'
@@ -78,7 +78,7 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.header
+      <m.header
         animate={{ y: hidden && !open ? '-100%' : '0%' }}
         transition={{ duration: reduce ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed inset-x-0 top-0 z-nav transition-[background-color,box-shadow,border-color] duration-300 ${
@@ -139,16 +139,16 @@ export default function Navbar() {
             </button>
           </div>
         </div>
-      </motion.header>
+      </m.header>
 
       {/*
-        The panel must live OUTSIDE <motion.header>: the header animates `y`, and a
+        The panel must live OUTSIDE <m.header>: the header animates `y`, and a
         transformed ancestor becomes the containing block for fixed children, which
         collapsed this overlay to zero height (menu invisible on mobile).
       */}
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             id="mobile-menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -160,7 +160,7 @@ export default function Navbar() {
             <nav aria-label="Mobile" className="container-page flex min-h-full flex-col pb-10 pt-4">
               <ul className="divide-y divide-forest-900/[0.07] border-y border-forest-900/[0.07]">
                 {NAV_LINKS.map((l, i) => (
-                  <motion.li
+                  <m.li
                     key={l.to}
                     initial={reduce ? false : { opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -175,7 +175,7 @@ export default function Navbar() {
                     >
                       {l.label}
                     </NavLink>
-                  </motion.li>
+                  </m.li>
                 ))}
               </ul>
               <div className="mt-8 grid gap-3">
@@ -193,7 +193,7 @@ export default function Navbar() {
                 </a>
               </div>
             </nav>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

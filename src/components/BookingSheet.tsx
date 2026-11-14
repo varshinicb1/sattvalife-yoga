@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router'
 import { ArrowRight, Check, Lock, X } from 'lucide-react'
 import { COURSES, TIMETABLE, type Venue } from '@/data/content'
@@ -80,7 +80,7 @@ export default function BookingSheet({ request }: { request: BookingRequest }) {
   }
 
   return (
-    <motion.div
+    <m.div
       className="fixed inset-0 z-sheet flex items-end justify-center bg-forest-950/55 backdrop-blur-sm sm:items-center sm:p-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -88,7 +88,7 @@ export default function BookingSheet({ request }: { request: BookingRequest }) {
       transition={{ duration: reduce ? 0 : 0.2 }}
       onClick={closeBooking}
     >
-      <motion.div
+      <m.div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
@@ -210,7 +210,7 @@ export default function BookingSheet({ request }: { request: BookingRequest }) {
             </>
           )}
         </div>
-      </motion.div>
-    </motion.div>
+      </m.div>
+    </m.div>
   )
 }

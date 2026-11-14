@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, LazyMotion, domAnimation } from 'framer-motion'
 import Navbar from '@/sections/Navbar'
 import Footer from '@/sections/Footer'
 import Community from '@/sections/Community'
@@ -20,8 +20,9 @@ export default function Layout() {
   usePageMeta()
   const booking = useBookingRequest()
 
+  /* LazyMotion + the `m` components keep the animation runtime to the small DOM feature set. */
   return (
-    <>
+    <LazyMotion features={domAnimation} strict>
       <ScrollToTop />
       <Navbar />
       <main id="main" tabIndex={-1} className="outline-none">
@@ -35,6 +36,6 @@ export default function Layout() {
       <CheckoutNotice />
       <CookieConsent />
       <AnimatePresence>{booking && <BookingSheet key={booking.courseId + (booking.venueId ?? '')} request={booking} />}</AnimatePresence>
-    </>
+    </LazyMotion>
   )
 }

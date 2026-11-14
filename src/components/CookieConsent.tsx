@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { m, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router'
 import { setConsent, useConsent } from '@/lib/consent'
 import { ANALYTICS_ENABLED } from '@/hooks/usePostHog'
@@ -16,7 +16,7 @@ export default function CookieConsent() {
   return (
     <AnimatePresence>
       {show && (
-        <motion.div
+        <m.div
           role="region"
           aria-label="Cookie preferences"
           initial={reduce ? false : { opacity: 0, y: 24 }}
@@ -43,7 +43,7 @@ export default function CookieConsent() {
               </button>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   )

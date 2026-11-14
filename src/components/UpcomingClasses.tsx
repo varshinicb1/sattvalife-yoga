@@ -9,7 +9,14 @@ import { HONEYPOT, submitForm } from '@/lib/api'
  * endpoint as the newsletter but with its own `source`, so the studio can tell
  * "wants another class day" apart from "wants the newsletter" in the admin app.
  */
-export default function UpcomingClasses({ className = '' }: { className?: string }) {
+export default function UpcomingClasses({
+  className = '',
+  copy = UPCOMING,
+}: {
+  className?: string
+  /** Swap the wording and sign-up source, e.g. for online-class interest. */
+  copy?: typeof UPCOMING
+}) {
   const id = useId()
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [error, setError] = useState('')
@@ -22,7 +29,7 @@ export default function UpcomingClasses({ className = '' }: { className?: string
     try {
       await submitForm('/api/newsletter', {
         email: data.email.trim(),
-        source: UPCOMING.source,
+        source: copy.source,
         [HONEYPOT]: data[HONEYPOT],
       })
       setStatus('sent')
@@ -38,17 +45,17 @@ export default function UpcomingClasses({ className = '' }: { className?: string
         <div className="lg:flex-1">
           <p className="eyebrow flex items-center gap-2">
             <BellRing className="h-4 w-4" strokeWidth={1.9} aria-hidden="true" />
-            {UPCOMING.eyebrow}
+            {copy.eyebrow}
           </p>
-          <h2 className="mt-3 text-[1.9rem] leading-tight sm:text-4xl">{UPCOMING.title}</h2>
-          <p className="mt-3 max-w-[52ch] text-base leading-relaxed text-ink-700/85">{UPCOMING.text}</p>
+          <h2 className="mt-3 text-[1.9rem] leading-tight sm:text-4xl">{copy.title}</h2>
+          <p className="mt-3 max-w-[52ch] text-base leading-relaxed text-ink-700/85">{copy.text}</p>
         </div>
 
         <div className="lg:w-[25rem] lg:shrink-0">
           {status === 'sent' ? (
             <p role="status" className="flex items-start gap-3 rounded-2xl border border-amber-400/40 bg-white/80 px-5 py-4 text-ink-800">
               <Check className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" strokeWidth={2.2} />
-              Thank you — you are on the list. We will email you as soon as a new class opens.
+              Thank you — you are on the list. We will email you as soon as it opens.
             </p>
           ) : (
             <form onSubmit={onSubmit}>
@@ -69,7 +76,7 @@ export default function UpcomingClasses({ className = '' }: { className?: string
                 />
                 <input type="text" name={HONEYPOT} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
                 <button type="submit" disabled={status === 'sending'} className="btn-primary shrink-0">
-                  {status === 'sending' ? 'Sending…' : UPCOMING.cta}
+                  {status === 'sending' ? 'Sending…' : copy.cta}
                   <ArrowRight className="h-4 w-4" />
                 </button>
               </div>
@@ -79,7 +86,7 @@ export default function UpcomingClasses({ className = '' }: { className?: string
                 </p>
               )}
               <p className="mt-3 text-sm text-ink-700/75">
-                {UPCOMING.note}{' '}
+                {copy.note}{' '}
                 <Link to="/privacy" className="link-underline inline-block py-0.5 font-medium">
                   Privacy policy
                 </Link>

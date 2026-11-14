@@ -115,7 +115,7 @@ export function buildIcs(venue: Venue, first: Date): string {
     'RRULE:FREQ=WEEKLY',
     `SUMMARY:${icsEscape(`Sattvalife Yoga: ${venue.day} Vinyasa flow`)}`,
     `LOCATION:${icsEscape(`${venue.hall}, ${venue.postcode}`)}`,
-    `DESCRIPTION:${icsEscape('Bring water and comfortable clothes. Mats and props are provided. Book at https://sattvalife-yoga.web.app/courses')}`,
+    `DESCRIPTION:${icsEscape('Bring water and comfortable clothes. Mats and props are provided. Book at https://sattvalife.yoga/classes')}`,
     'BEGIN:VALARM',
     'TRIGGER:-PT2H',
     'ACTION:DISPLAY',

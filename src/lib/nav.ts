@@ -17,10 +17,10 @@ export const NAV_LINKS = [
 /** Footer "Explore" column. */
 export const FOOTER_EXPLORE = [
   { label: 'Classes & Timetable', to: '/classes' },
-  { label: 'Global Pass & Checkout', to: '/checkout' },
-  { label: 'AI Posture Lab', to: '/posture-lab' },
-  { label: 'Corporate Wellness', to: '/corporate' },
+  { label: 'Online Wellness', to: '/classes#online' },
+  { label: 'Workplace Wellbeing', to: '/corporate' },
   { label: 'Wellness Experiences & Celebrations', to: '/experiences' },
+  { label: 'AI Posture Lab', to: '/posture-lab' },
   { label: 'Reviews', to: '/reviews' },
   { label: 'Journal', to: '/blog' },
 ]

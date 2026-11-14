@@ -21,7 +21,7 @@ export const STRIPE_CONFIG = {
 
 /**
  * Configure each Payment Link in Stripe (After payment → Redirect) to:
- *   https://sattvalife-yoga.web.app/?checkout=success
+ *   https://sattvalife.yoga/?checkout=success
  * The site shows a confirmation banner when it sees that parameter.
  */
 export const CHECKOUT_RETURN_PARAM = 'checkout'

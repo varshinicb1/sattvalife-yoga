@@ -2,12 +2,12 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router'
 import { useCmsContent } from '@/hooks/useCmsContent'
 
-export const SITE_URL = 'https://sattvalife-yoga.web.app'
+export const SITE_URL = 'https://sattvalife.yoga'
 
 const ROUTE_META: Record<string, { title: string; desc: string }> = {
   '/': {
-    title: 'Sattvalife Yoga | Vinyasa Yoga Classes in Leicester',
-    desc: 'Small-group Vinyasa yoga in Oadby, Leicester. Personal attention for every age and ability, plus workplace wellbeing sessions. Rated 5.0 on Google.',
+    title: 'Sattvalife Yoga | Yoga Classes in Oadby, Leicester',
+    desc: 'Restorative & Vinyasa yoga in Oadby, Leicester, plus Pilates, breathwork, corporate yoga and wellness celebrations. Rated 5.0 from 62 Google reviews.',
   },
   '/classes': {
     title: 'Classes & Timetable | Sattvalife Yoga Leicester',
@@ -58,8 +58,8 @@ const ROUTE_META: Record<string, { title: string; desc: string }> = {
     desc: 'Real-time biomechanical computer vision posture analysis guiding your yoga postures with safety, grace, and clinical alignment precision.',
   },
   '/checkout': {
-    title: 'Global Class Registration & Checkout | Sattvalife Yoga',
-    desc: 'Book your 30-day global yoga pass, flexible class packs, or drop-in sessions with live streaming, 24/7 video replays, and AI Posture Lab.',
+    title: 'Book & Pay | Sattvalife Yoga Oadby, Leicester',
+    desc: 'Book the Tuesday Restorative & Vinyasa class in Oadby: drop in for £10 or join Monthly Flow for £35. Secure payment through Stripe.',
   },
   '/terms': {
     title: 'Terms & Conditions | Sattvalife Yoga Leicester',

@@ -220,6 +220,20 @@ export const UPCOMING = {
 }
 
 /**
+ * Online wellness, asked for in the client's 23 Sep checklist ("Online
+ * Wellness" route and an Online filter). No live online timetable exists yet,
+ * so this collects interest rather than selling a class that is not running.
+ */
+export const ONLINE = {
+  eyebrow: 'Online wellness',
+  title: 'Practise with us from anywhere',
+  text: 'Live online yoga, breathwork and meditation with Amisha and Nish are on their way, so you can join from home, wherever you are in the world. Leave your email and you will be first to hear when the online timetable opens.',
+  cta: 'Tell me first',
+  note: 'Online class news only. Unsubscribe any time.',
+  source: 'online-interest',
+}
+
+/**
  * "Find your practice" — the six services the client's brief names.
  *
  * Only Yoga and Corporate Wellness have a published price and a schedule, so

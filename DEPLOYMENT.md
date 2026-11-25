@@ -21,13 +21,14 @@ Deployment is automatic once the two one-time steps below are done.
 
 The domain is registered at GoDaddy and currently serves the old WordPress site from Bluehost.
 
-1. Firebase console → Hosting → **Add custom domain** → `sattvalife.yoga`. Tick "Redirect www.sattvalife.yoga to sattvalife.yoga" and add `www.sattvalife.yoga` as well.
-2. Firebase shows a TXT record (ownership) and A record(s). In GoDaddy → My Products → sattvalife.yoga → **DNS**:
+1. GitHub → Actions → **Connect custom domain** → Run workflow (needs the step 1 secret). It adds `sattvalife.yoga` and `www.sattvalife.yoga` (redirecting to the apex) to Firebase Hosting and lists the exact DNS records in the run summary. Re-run it any time to see the current status.
+   (Manual alternative: Firebase console → Hosting → **Add custom domain** → `sattvalife.yoga`, tick "Redirect www.sattvalife.yoga to sattvalife.yoga", then add `www.sattvalife.yoga`.)
+2. The run summary (or Firebase console) shows a TXT record (ownership) and A record(s). In GoDaddy → My Products → sattvalife.yoga → **DNS**:
    - Add the TXT record exactly as Firebase shows it.
    - Replace the existing `@` **A** record(s) with the Firebase IP(s).
    - Change the `www` record to what Firebase shows.
    - **Do not change the nameservers, and do not touch the MX, SPF, DKIM or other email records.** `info@sattvalife.yoga` keeps working only if those stay as they are.
-3. Click Verify in Firebase. DNS usually switches within an hour (up to 24h). Firebase then issues the HTTPS certificate on its own.
+3. Re-run **Connect custom domain** (or click Verify in Firebase). DNS usually switches within an hour (up to 24h). Firebase then issues the HTTPS certificate on its own.
 4. Keep the Bluehost plan until the new site has been live for a couple of weeks, so the old WordPress site can be restored by switching the A record back.
 
 Old WordPress URLs (`/about-us`, `/terms-and-conditions`, the three blog posts, `/feed`, sitemaps) are already 301-redirected to their new pages in `firebase.json`, so Google rankings carry over.

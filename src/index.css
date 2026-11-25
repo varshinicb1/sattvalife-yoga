@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Shape system (keep consistent site-wide):
+ *   buttons & chips  → full pill (rounded-full)
+ *   cards & images   → rounded-3xl (24px); hero/portrait frames use the arch (rounded-t-full)
+ *   inputs           → rounded-xl (12px)
+ */
+
+@layer base {
+  :root {
+    /* ───── Brand theme (sage / brass / cream) ───── */
+    --background: 38 30% 96%;         /* cream-100 */
+    --foreground: 26 40% 12%;         /* ink-900, warm dark brown */
+    --card: 0 0% 100%;
+    --card-foreground: 26 40% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 26 40% 12%;
+    --primary: 78 20% 27%;            /* forest-600 */
+    --primary-foreground: 38 30% 96%;
+    --secondary: 38 30% 94%;
+    --secondary-foreground: 78 20% 27%;
+    --muted: 38 30% 94%;
+    --muted-foreground: 78 10% 40%;
+    --accent: 42 79% 44%;             /* gold-400 #C89018, the master brand gold */
+    --accent-foreground: 26 40% 12%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 38 30% 96%;
+    --border: 78 15% 80%;
+    --input: 78 15% 80%;
+    --ring: 78 20% 27%;
+    --radius: 0.75rem;
+    --sidebar-background: 38 30% 96%;
+    --sidebar-foreground: 26 40% 12%;
+    --sidebar-primary: 78 20% 27%;
+    --sidebar-primary-foreground: 38 30% 96%;
+    --sidebar-accent: 42 79% 44%;
+    --sidebar-accent-foreground: 26 40% 12%;
+    --sidebar-border: 78 15% 80%;
+    --sidebar-ring: 78 20% 27%;
+    color-scheme: light;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    /* Lenis drives smooth scrolling; native smooth-scroll would fight it */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overscroll-behavior-y: none;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-cream-50 text-ink-800 font-sans text-base antialiased;
+    /* Playfair sets old-style figures by default; prices & times read better lining */
+    font-variant-numeric: lining-nums proportional-nums;
+    font-feature-settings: "lnum" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif text-ink-900;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: rgb(224 183 90 / 0.45);
+    color: #2C1E13;
+  }
+
+  :focus-visible {
+    outline: 2px solid #8A6310;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  a, button {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  img {
+    /* width/height attributes set the aspect ratio; CSS controls the rendered size */
+    height: auto;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[90rem] px-4 xs:px-5 sm:px-8 xl:px-12;
+  }
+
+  /* Vertical rhythm: one padding for every full section, one tighter one for slim bands */
+  .section-y {
+    @apply py-14 sm:py-16 lg:py-20;
+  }
+  .section-pb {
+    @apply pb-14 sm:pb-16 lg:pb-20;
+  }
+  .band-y {
+    @apply py-10 sm:py-12;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-amber-600;
+  }
+
+  .lead {
+    @apply text-lg leading-relaxed text-ink-700/85 sm:text-xl sm:leading-relaxed;
+  }
+
+  /* ───── Buttons ───── */
+  .btn {
+    @apply gold-click relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3 text-[0.95rem] font-semibold transition-all duration-300 ease-out active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-lg {
+    @apply px-8 py-4 text-base;
+  }
+  /* One gold capsule everywhere: gold fill for actions, a gold tint for hover,
+     current page and selected chips. Forest stays as the resting outline colour. */
+  .btn-primary {
+    @apply btn border border-amber-400/40 bg-amber-300 text-ink-950 shadow-soft hover:border-amber-300 hover:bg-amber-200 hover:shadow-lift;
+  }
+  .btn-outline {
+    @apply btn border border-forest-600/35 text-ink-800 hover:border-amber-400 hover:bg-amber-300 hover:text-ink-950;
+  }
+  .btn-ghost-light {
+    @apply btn border border-cream-50/35 text-cream-50 hover:border-amber-300 hover:bg-amber-300 hover:text-ink-950;
+  }
+
+  /* Pill used for filters and checkbox/radio options. Hover = gold tint, selected = gold capsule. */
+  .chip {
+    @apply inline-flex cursor-pointer items-center rounded-full border border-forest-900/15 px-5 py-2 text-[0.95rem] font-medium text-ink-700 transition-colors duration-200 hover:border-amber-300/70 hover:bg-amber-50 hover:text-amber-700;
+  }
+  .chip[aria-pressed='true'],
+  .peer:checked + .chip {
+    @apply border-amber-400/60 bg-amber-100 font-semibold text-amber-700;
+  }
+  .peer:focus-visible + .chip {
+    @apply outline outline-2 outline-offset-2 outline-amber-600;
+  }
+
+  .link-underline {
+    @apply underline decoration-amber-400/70 decoration-1 underline-offset-4 transition-colors hover:decoration-amber-600;
+  }
+
+  /* ───── Forms ───── */
+  .field-label {
+    @apply mb-1.5 block text-sm font-semibold text-ink-700;
+  }
+  .field {
+    @apply w-full rounded-xl border border-forest-300/70 bg-white px-4 py-3 text-base text-ink-900 shadow-xs outline-none transition placeholder:text-ink-500/80 focus:border-forest-600 focus:ring-4 focus:ring-forest-600/15;
+  }
+  .field-dark {
+    @apply w-full rounded-xl border border-cream-50/25 bg-cream-50/10 px-4 py-3 text-base text-cream-50 outline-none transition placeholder:text-cream-100/60 focus:border-amber-300 focus:ring-4 focus:ring-amber-300/20;
+  }
+  .field-help {
+    @apply mt-1.5 text-sm text-ink-600/80;
+  }
+
+  .card {
+    @apply rounded-3xl border border-forest-900/[0.06] bg-white/80 shadow-soft;
+  }
+
+  /* Temple-arch frame used for portraits & hero imagery */
+  .arch {
+    border-radius: 999px 999px 1.5rem 1.5rem;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .glass {
+    @apply border border-white/60 bg-white/70 backdrop-blur-xl;
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ───── Metallic brass click shimmer (buttons only) ───── */
+@layer components {
+  .gold-click {
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .gold-click::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 30%, #E0B75A 45%, #F3E0AE 50%, #C89018 55%, transparent 70%);
+    background-size: 300% 300%;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .gold-click:active::after {
+    animation: goldShimmer 0.5s ease-out forwards;
+  }
+}
+@keyframes goldShimmer {
+  0%   { background-position: 200% 200%; opacity: 0.9; }
+  60%  { opacity: 0.9; }
+  100% { background-position: -200% -200%; opacity: 0; }
+}
+
+/* ───── Paper grain: one fixed, non-interactive layer (never on scrolling containers) ───── */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  .grain::before, header, footer, [data-print-hide] { display: none !important; }
+}

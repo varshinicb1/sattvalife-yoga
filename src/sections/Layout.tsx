@@ -1,0 +1,41 @@
+import { Outlet } from 'react-router'
+import { AnimatePresence, LazyMotion, domAnimation } from 'framer-motion'
+import Navbar from '@/sections/Navbar'
+import Footer from '@/sections/Footer'
+import Community from '@/sections/Community'
+import CookieConsent from '@/components/CookieConsent'
+import WhatsAppButton from '@/components/WhatsAppButton'
+import StickyBook from '@/components/StickyBook'
+import NewsletterPopup from '@/components/NewsletterPopup'
+import ScrollToTop from '@/components/ScrollToTop'
+import CheckoutNotice from '@/components/CheckoutNotice'
+import BookingSheet from '@/components/BookingSheet'
+import { usePostHog } from '@/hooks/usePostHog'
+import { usePageMeta } from '@/lib/seo'
+import { useBookingRequest } from '@/lib/bookingStore'
+
+/** Shared shell: nav, footer, booking sheet, consent, per-route meta. */
+export default function Layout() {
+  usePostHog()
+  usePageMeta()
+  const booking = useBookingRequest()
+
+  /* LazyMotion + the `m` components keep the animation runtime to the small DOM feature set. */
+  return (
+    <LazyMotion features={domAnimation} strict>
+      <ScrollToTop />
+      <Navbar />
+      <main id="main" tabIndex={-1} className="outline-none">
+        <Outlet />
+      </main>
+      <Community />
+      <Footer />
+      <WhatsAppButton />
+      <StickyBook />
+      <NewsletterPopup />
+      <CheckoutNotice />
+      <CookieConsent />
+      <AnimatePresence>{booking && <BookingSheet key={booking.courseId + (booking.venueId ?? '')} request={booking} />}</AnimatePresence>
+    </LazyMotion>
+  )
+}

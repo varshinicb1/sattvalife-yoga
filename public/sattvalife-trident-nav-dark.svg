@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGradientH" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFEBB0" />
+      <stop offset="30%" stop-color="#DDA136" />
+      <stop offset="55%" stop-color="#FDF1B8" />
+      <stop offset="80%" stop-color="#B87B14" />
+      <stop offset="100%" stop-color="#734702" />
+    </linearGradient>
+    <linearGradient id="shadowGoldH" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#734702" />
+      <stop offset="50%" stop-color="#A56E13" />
+      <stop offset="100%" stop-color="#462A00" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left Icon -->
+  <g transform="translate(15, 8) scale(0.13)">
+    <path d="M 400 50 C 388 150 365 260 372 370 L 400 380 Z" fill="url(#goldGradientH)" />
+    <path d="M 400 50 C 412 150 435 260 428 370 L 400 380 Z" fill="url(#shadowGoldH)" />
+    <path d="M 380 435 C 310 440 215 390 205 280 C 198 195 240 135 272 105 C 274 103 277 106 276 110 C 255 165 240 230 262 290 C 285 350 340 385 385 395 Z" fill="url(#goldGradientH)" />
+    <path d="M 420 435 C 490 440 585 390 595 280 C 602 195 560 135 528 105 C 526 103 523 106 524 110 C 545 165 560 230 538 290 C 515 350 460 385 415 395 Z" fill="url(#shadowGoldH)" />
+    <path d="M 400 375 C 370 390 355 425 385 440 C 395 445 405 445 415 440 C 445 425 430 390 400 375 Z" fill="url(#goldGradientH)" />
+    <ellipse cx="400" cy="445" rx="35" ry="9" fill="url(#goldGradientH)" />
+    <ellipse cx="400" cy="470" rx="32" ry="8" fill="url(#goldGradientH)" />
+    <path d="M 390 475 L 390 730 C 390 745 400 755 400 755 C 400 755 410 745 410 730 L 410 475 Z" fill="url(#goldGradientH)" />
+    <path d="M 388 730 L 400 780 L 412 730 Z" fill="url(#goldGradientH)" />
+  </g>
+
+  <!-- Typography Right -->
+  <g transform="translate(145, 0)">
+    <text x="0" y="65" 
+          font-family="'Playfair Display', 'Cormorant Garamond', Georgia, serif" 
+          font-size="46" 
+          font-weight="600" 
+          letter-spacing="2" 
+          fill="#FDFBF7">Sattvalife</text>
+    <text x="4" y="94" 
+          font-family="'Plus Jakarta Sans', sans-serif" 
+          font-size="12" 
+          font-weight="600" 
+          letter-spacing="8" 
+          fill="#D4AF37">YOGA &amp; WELLNESS</text>
+  </g>
+</svg>

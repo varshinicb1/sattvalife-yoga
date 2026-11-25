@@ -1,0 +1,104 @@
+name: Deploy to Firebase Hosting
+
+# Fully automatic:
+#  - every pull request into master gets its own preview URL (posted on the PR),
+#  - every merge into master goes live on https://sattvalife.yoga
+#    (and https://sattvalife-yoga.web.app), then the live site is smoke-tested.
+#
+# One-time setup (needs the Firebase project owner): add the repository secret
+# FIREBASE_SERVICE_ACCOUNT_SATTVALIFE_YOGA. See DEPLOYMENT.md.
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+concurrency:
+  group: deploy-hosting-${{ github.event_name == 'pull_request' && github.event.number || 'live' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  LIVE_URLS: https://sattvalife.yoga https://sattvalife-yoga.web.app
+
+jobs:
+  build_and_deploy:
+    name: Build & deploy
+    runs-on: ubuntu-latest
+    env:
+      HAS_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SATTVALIFE_YOGA != '' }}
+      HAS_FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN != '' }}
+      IS_LIVE: ${{ github.event_name != 'pull_request' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Stop if no deploy credentials
+        if: env.HAS_SERVICE_ACCOUNT != 'true' && env.HAS_FIREBASE_TOKEN != 'true'
+        run: |
+          echo "::error::Add the FIREBASE_SERVICE_ACCOUNT_SATTVALIFE_YOGA repository secret (see DEPLOYMENT.md). The build passed; nothing was deployed."
+          exit 1
+
+      - name: Deploy preview channel (pull request)
+        if: env.IS_LIVE != 'true' && env.HAS_SERVICE_ACCOUNT == 'true'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SATTVALIFE_YOGA }}
+          projectId: sattvalife-yoga
+          expires: 7d
+
+      - name: Deploy live (service account)
+        if: env.IS_LIVE == 'true' && env.HAS_SERVICE_ACCOUNT == 'true'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SATTVALIFE_YOGA }}
+          projectId: sattvalife-yoga
+          channelId: live
+
+      - name: Deploy live (CI token fallback)
+        if: env.IS_LIVE == 'true' && env.HAS_SERVICE_ACCOUNT != 'true' && env.HAS_FIREBASE_TOKEN == 'true'
+        run: npx firebase-tools deploy --only hosting --project sattvalife-yoga --token "${{ secrets.FIREBASE_TOKEN }}"
+
+      - name: Smoke-test the live site
+        if: env.IS_LIVE == 'true'
+        run: |
+          sleep 20
+          status=0
+          for url in $LIVE_URLS; do
+            for path in / /classes /experiences /corporate /contact /og-image.jpg; do
+              code=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 20 "$url$path" || echo 000)
+              echo "$code  $url$path"
+              [ "$code" = "200" ] || status=1
+            done
+            # The new site, not the old WordPress one, must be answering.
+            if curl -s -L --max-time 20 "$url/" | grep -q '/assets/index-'; then
+              echo "ok    $url serves the new site"
+            else
+              echo "::warning::$url is not serving the new site yet (DNS may still point at the old host)."
+            fi
+          done
+          if [ $status -ne 0 ]; then
+            echo "::warning::Some pages did not return 200. If only sattvalife.yoga failed, the domain is not connected to Firebase yet (see DEPLOYMENT.md)."
+          fi

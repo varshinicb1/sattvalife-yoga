@@ -4,8 +4,8 @@ Deployment is automatic once the two one-time steps below are done.
 
 | What happens | When |
 | --- | --- |
-| A preview URL is built and posted on the PR (expires after 7 days) | Every pull request into `production-spa` |
-| The site goes live on https://sattvalife.yoga and https://sattvalife-yoga.web.app, then key pages are checked | Every merge into `production-spa` |
+| A preview URL is built and posted on the PR (expires after 7 days) | Every pull request into `master` |
+| The site goes live on https://sattvalife.yoga and https://sattvalife-yoga.web.app, then key pages are checked | Every merge into `master` |
 | A manual redeploy | Actions → "Deploy to Firebase Hosting" → Run workflow |
 
 ## One-time step 1: let GitHub deploy to Firebase

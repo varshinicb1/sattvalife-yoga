@@ -20,4 +20,14 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    // Vendored shadcn/ui primitives: they export variant helpers next to
+    // components and contain upstream effect patterns. Keep them as upstream
+    // ships them so they can be re-synced with the shadcn CLI.
+    files: ['src/components/ui/**/*.{ts,tsx}', 'src/hooks/use-mobile.ts'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+      'react-hooks/set-state-in-effect': 'off',
+    },
+  },
 ])

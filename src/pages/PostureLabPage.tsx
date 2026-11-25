@@ -52,10 +52,13 @@ export default function PostureLabPage() {
   const lastSpokenTimeRef = useRef<number>(0)
   const selectedAsanaIdRef = useRef(selectedAsanaId)
 
-  useEffect(() => {
-    selectedAsanaIdRef.current = selectedAsanaId
+  // Switching pose resets the hold timer. Done in the event handler rather
+  // than an effect so React doesn't render twice.
+  const selectAsana = useCallback((id: string) => {
+    selectedAsanaIdRef.current = id
+    setSelectedAsanaId(id)
     setHoldTimer(0)
-  }, [selectedAsanaId])
+  }, [])
 
   // Voice Cue Assistant with strict 5s debounce
   const speakCue = useCallback((cue: string) => {
@@ -463,7 +466,7 @@ export default function PostureLabPage() {
             <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-2">
               <button
                 type="button"
-                onClick={() => setSelectedAsanaId('auto')}
+                onClick={() => selectAsana('auto')}
                 className={`flex flex-col items-start rounded-2xl border p-3.5 text-left transition-all cursor-pointer ${
                   selectedAsanaId === 'auto'
                     ? 'border-amber-600 bg-amber-50/90 shadow-md ring-1 ring-amber-600/30'
@@ -483,7 +486,7 @@ export default function PostureLabPage() {
                   <button
                     key={p.id}
                     type="button"
-                    onClick={() => setSelectedAsanaId(p.id)}
+                    onClick={() => selectAsana(p.id)}
                     className={`flex flex-col items-start rounded-2xl border p-3.5 text-left transition-all cursor-pointer ${
                       isSelected
                         ? 'border-amber-600 bg-amber-50/90 shadow-md ring-1 ring-amber-600/30'

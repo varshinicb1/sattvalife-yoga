@@ -1,8 +1,8 @@
 name: Deploy to Firebase Hosting
 
 # Fully automatic:
-#  - every pull request into production-spa gets its own preview URL (posted on the PR),
-#  - every merge into production-spa goes live on https://sattvalife.yoga
+#  - every pull request into master gets its own preview URL (posted on the PR),
+#  - every merge into master goes live on https://sattvalife.yoga
 #    (and https://sattvalife-yoga.web.app), then the live site is smoke-tested.
 #
 # One-time setup (needs the Firebase project owner): add the repository secret
@@ -11,10 +11,10 @@ name: Deploy to Firebase Hosting
 on:
   push:
     branches:
-      - production-spa
+      - master
   pull_request:
     branches:
-      - production-spa
+      - master
   workflow_dispatch:
 
 permissions:

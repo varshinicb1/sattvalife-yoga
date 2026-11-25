@@ -8,12 +8,12 @@ npm run build
 Write-Host "`n=== 2. Deploying to Firebase Hosting ===" -ForegroundColor Cyan
 npx firebase-tools deploy --only hosting --project sattvalife-yoga
 
-Write-Host "`n=== 3. Syncing with GitHub (production-spa) ===" -ForegroundColor Cyan
+Write-Host "`n=== 3. Syncing with GitHub (master) ===" -ForegroundColor Cyan
 git add .
 $status = git status --porcelain
 if ($status) {
     git commit -m $CommitMessage
-    git push origin master:production-spa
+    git push origin HEAD:master
 } else {
     Write-Host "No uncommitted code changes to push." -ForegroundColor Yellow
 }

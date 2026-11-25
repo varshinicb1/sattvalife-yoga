@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "sattvalife-yoga",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "deploy": "npm run build && npx firebase-tools deploy --only hosting --project sattvalife-yoga",
     "lint": "eslint .",
+    "check": "npm run lint && npm run build",
     "preview": "vite preview"
   },
   "dependencies": {

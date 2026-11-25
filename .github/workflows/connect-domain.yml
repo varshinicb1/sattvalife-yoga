@@ -1,0 +1,86 @@
+name: Connect custom domain
+
+# Run manually (Actions → "Connect custom domain" → Run workflow).
+# Adds sattvalife.yoga and www.sattvalife.yoga (redirecting to the apex) to
+# Firebase Hosting and prints the exact DNS records to enter at GoDaddy.
+# Safe to re-run: it only creates what is missing, then reports status.
+# Uses the same FIREBASE_SERVICE_ACCOUNT_SATTVALIFE_YOGA secret as the deploy.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PROJECT: sattvalife-yoga
+  SITE: sattvalife-yoga
+  APEX: sattvalife.yoga
+  WWW: www.sattvalife.yoga
+
+jobs:
+  connect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Authenticate
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SATTVALIFE_YOGA }}
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Add domains and print DNS records
+        run: |
+          set -euo pipefail
+          TOKEN=$(gcloud auth print-access-token)
+          API="https://firebasehosting.googleapis.com/v1beta1/projects/$PROJECT/sites/$SITE/customDomains"
+          call() { curl -sS -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" "$@"; }
+
+          ensure() {  # $1 domain, $2 JSON body
+            code=$(curl -sS -o /tmp/get.json -w '%{http_code}' -H "Authorization: Bearer $TOKEN" "$API/$1")
+            if [ "$code" = "200" ]; then
+              echo "$1 is already added to Firebase Hosting."
+            else
+              echo "Adding $1 ..."
+              call -X POST "$API?customDomainId=$1" -d "$2" | tee /tmp/create.json
+              if jq -e '.error' /tmp/create.json >/dev/null; then
+                echo "::error::Could not add $1. If this is a permissions error, add it in the Firebase console (Hosting → Add custom domain) instead."
+                exit 1
+              fi
+            fi
+          }
+
+          ensure "$APEX" '{}'
+          ensure "$WWW" "{\"redirectTarget\":\"$APEX\"}"
+
+          # Records are computed asynchronously; give Firebase a moment.
+          sleep 30
+          {
+            echo "## DNS records to set at GoDaddy"
+            echo
+            echo "Only change the records below. Leave nameservers and all MX / SPF / DKIM / email records untouched."
+            echo
+          } >> "$GITHUB_STEP_SUMMARY"
+          for d in "$APEX" "$WWW"; do
+            call "$API/$d" > /tmp/d.json
+            echo "---- $d ----"
+            jq '{hostState, ownershipState, certState: .cert.state, requiredDnsUpdates}' /tmp/d.json
+            {
+              echo "### $d"
+              echo
+              echo "Status: host \`$(jq -r '.hostState // "?"' /tmp/d.json)\`, ownership \`$(jq -r '.ownershipState // "?"' /tmp/d.json)\`, certificate \`$(jq -r '.cert.state // "?"' /tmp/d.json)\`"
+              echo
+              echo "| Action | Type | Name | Value |"
+              echo "| --- | --- | --- | --- |"
+              jq -r '
+                (.requiredDnsUpdates.desired // [])[] | .records[]? |
+                "| \((.requiredAction // "ADD") | ascii_downcase) | \(.type) | \(.domainName) | \(.rdata) |"' /tmp/d.json
+              jq -r '
+                (.requiredDnsUpdates.discovered // [])[] | .records[]? |
+                select(.requiredAction == "DELETE") |
+                select(.type != "MX" and (.rdata | test("spf|dkim|dmarc"; "i") | not)) |
+                "| remove | \(.type) | \(.domainName) | \(.rdata) |"' /tmp/d.json
+              echo
+            } >> "$GITHUB_STEP_SUMMARY"
+          done

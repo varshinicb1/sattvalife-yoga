@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sattvalife Yoga Journal</title>
+    <link>https://sattvalife.yoga/blog</link>
+    <description>Yoga tips, wellbeing insights and class updates from Sattvalife Yoga in Leicester.</description>
+    <language>en-gb</language>
+    <atom:link href="https://sattvalife.yoga/rss.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Mon, 21 Sep 2026 00:00:00 +0000</lastBuildDate>
+
+    <item>
+      <title>3 Quick Yoga Asanas to Get Relief from Back Pain</title>
+      <link>https://sattvalife.yoga/blog/3-quick-yoga-asanas-for-back-pain</link>
+      <description>Sitting is the new smoking. Learn three powerful yoga poses to counter the effects of prolonged desk work.</description>
+      <pubDate>Thu, 30 Jun 2022 12:00:00 +0000</pubDate>
+      <guid>https://sattvalife.yoga/blog/3-quick-yoga-asanas-for-back-pain</guid>
+    </item>
+
+    <item>
+      <title>Yoga and Meditation</title>
+      <link>https://sattvalife.yoga/blog/yoga-and-meditation</link>
+      <description>Discover how meditation complements your yoga practice and why it matters for mental clarity and wellbeing.</description>
+      <pubDate>Wed, 27 Mar 2024 12:00:00 +0000</pubDate>
+      <guid>https://sattvalife.yoga/blog/yoga-and-meditation</guid>
+    </item>
+
+    <item>
+      <title>Empowering Children Through Yoga</title>
+      <link>https://sattvalife.yoga/blog/empowering-children-through-yoga</link>
+      <description>Children face immense stress too. Yoga gives them tools for self-health, relaxation, and inner fulfilment.</description>
+      <pubDate>Wed, 27 Mar 2024 12:00:00 +0000</pubDate>
+      <guid>https://sattvalife.yoga/blog/empowering-children-through-yoga</guid>
+    </item>
+  </channel>
+</rss>
